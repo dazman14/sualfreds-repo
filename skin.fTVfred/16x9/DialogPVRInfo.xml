@@ -5,6 +5,7 @@
 	<controls>
 		<!-- Background -->
 		<include>DialogTextBackgroundImage</include>
+
 		<control type="group">
 			<animation reversible="true" type="WindowOpen">
 				<effect center="auto" easing="inout" end="100" start="92" time="120" tween="sine" type="zoom" />
@@ -29,7 +30,7 @@
 				<!-- Arrow up -->
 				<control type="image">
 					<left>942</left>
-					<top>52</top>
+					<top>92</top>
 					<width>36</width>
 					<height>20</height>
 					<texture>views/arrow_up.png</texture>
@@ -40,21 +41,21 @@
 				<!-- Text -->
 				<control id="3001" type="textbox">
 					<centerleft>50%</centerleft>
-					<centertop>50%</centertop>
+					<centertop>50%</centertop>					
 					<width>788</width>
-					<height>452</height>
+					<height>352</height>
 					<align>left</align>
 					<font>Reg36Spaced</font>
 					<pagecontrol>3000</pagecontrol>
 					<autoscroll>false</autoscroll>
 					<textcolor>ffdadada</textcolor>
 					<label>[B][COLOR ffffffff]$INFO[ListItem.Title][CR][/B][/COLOR]$VAR[Plot]</label>
-					<animation condition="true" effect="slide" start="0,0" end="0,-46" time="0">Conditional</animation>
+					<animation condition="true" effect="slide" start="0,0" end="0,-31" time="0">Conditional</animation>
 				</control>
 				<!-- Arrow down -->
 				<control type="image">
 					<left>942</left>
-					<top>610</top>
+					<top>600</top>
 					<width>36</width>
 					<height>20</height>
 					<texture>views/arrow_down.png</texture>
@@ -67,17 +68,17 @@
 					<left>1394</left>
 					<centertop>50%</centertop>
 					<width>8</width>
-					<height>452</height>
-					<onup>5</onup>
-					<ondown>5</ondown>
-					<onleft>noop</onleft>
-					<onright>noop</onright>
+					<height>352</height>
+					<onup>noop</onup>
+					<ondown>SetFocus(5)</ondown>
+					<onleft>Close</onleft>
+					<onright>Close</onright>
 					<showonepage>false</showonepage>
 					<orientation>vertical</orientation>
 					<texturesliderbarfocus border="3">common/Scrollbar.png</texturesliderbarfocus>
 					<visible allowhiddenfocus="true">Control.HasFocus(3000)</visible>
 					<animation condition="System.IdleTime(1)" effect="fade" end="0" start="100" time="200">Conditional</animation>
-					<animation condition="true" effect="slide" start="0,0" end="0,-46" time="0">Conditional</animation>
+					<animation condition="true" effect="slide" start="0,0" end="0,-31" time="0">Conditional</animation>
 				</control>
 				<!-- Button grouplist -->
 				<control type="grouplist" id="2000">
@@ -92,6 +93,7 @@
 					<ondown>noop</ondown>
 					<align>center</align>
 					<orientation>horizontal</orientation>
+
 					<!-- Switch Button -->
 					<control type="button" id="5">
 						<width>320</width>
@@ -99,15 +101,13 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<font>Med24</font>
-						<onup condition="Container(3001).HasPrevious">SetFocus(3000)</onup>
-						<onup condition="Container(3001).HasPrevious">PageUp(3000)</onup>
-						<ondown condition="Container(3001).HasNext">SetFocus(3000)</ondown>
-						<ondown condition="Container(3001).HasNext">PageDown(3000)</ondown>
+						<onup condition="Container(3001).HasNext | Container(3001).HasPrevious">SetFocus(3000)</onup>
 						<textoffsetx>23</textoffsetx>
 						<textoffsety>27</textoffsety>
 						<label>19165</label>
 						<visible>Control.IsEnabled(5)</visible>
 					</control>
+
 					<!-- Cancel Button -->
 					<control type="button" id="7">
 						<width>320</width>
@@ -115,15 +115,13 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<font>Med24</font>
-						<onup condition="Container(3001).HasPrevious">SetFocus(3000)</onup>
-						<onup condition="Container(3001).HasPrevious">PageUp(3000)</onup>
-						<ondown condition="Container(3001).HasNext">SetFocus(3000)</ondown>
-						<ondown condition="Container(3001).HasNext">PageDown(3000)</ondown>
+						<onup condition="Container(3001).HasNext | Container(3001).HasPrevious">SetFocus(3000)</onup>
 						<textoffsetx>23</textoffsetx>
 						<textoffsety>27</textoffsety>
 						<label>$LOCALIZE[222]</label>
 						<visible>false</visible>
 					</control>
+
 					<!-- Rec Button -->
 					<control type="button" id="6">
 						<width>320</width>
@@ -131,16 +129,15 @@
 						<align>center</align>
 						<aligny>top</aligny>
 						<font>Med24</font>
-						<onup condition="Container(3001).HasPrevious">SetFocus(3000)</onup>
-						<onup condition="Container(3001).HasPrevious">PageUp(3000)</onup>
-						<ondown condition="Container(3001).HasNext">SetFocus(3000)</ondown>
-						<ondown condition="Container(3001).HasNext">PageDown(3000)</ondown>
+						<onup condition="Container(3001).HasNext | Container(3001).HasPrevious">SetFocus(3000)</onup>
 						<textoffsetx>23</textoffsetx>
 						<textoffsety>27</textoffsety>
 						<label>-</label>
 					</control>
+
 				</control>
 			</control>
 		</control>
+
 	</controls>
 </window>

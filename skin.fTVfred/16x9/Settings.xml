@@ -55,7 +55,7 @@
 					<font>Light32</font>
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
-					<label>$NUMBER[8]</label>
+					<label>$NUMBER[10]</label>
 				</control>
 			</control>
 		</control>
@@ -79,8 +79,9 @@
 				<effect easing="out" end="-20,0" start="0,0" time="60" tween="sine" type="slide" />
 				<effect delay="80" easing="out" end="20,0" start="0,0" time="120" tween="sine" type="slide" />
 			</animation>
-			<animation condition="Window.Previous(home) + String.IsEqual(Container(9000).CurrentItem,1)" easing="inout" effect="slide" end="0,0" start="209,0" time="300" tween="sine">WindowOpen</animation>
-			<animation condition="String.IsEqual(Container(9000).CurrentItem,1) + Window.Next(home)" easing="inout" effect="slide" end="209,0" start="0,0" time="300" tween="sine">WindowClose</animation>
+			<animation condition="Window.Previous(home) + StringCompare(Container(9000).CurrentItem,1)" easing="inout" effect="slide" end="0,0" start="209,0" time="300" tween="sine">WindowOpen</animation>
+			<!--<animation condition="Window.Previous(home) + !StringCompare(Container(9000).CurrentItem,1)" easing="inout" effect="fade" end="100" start="0" time="0" delay="100" tween="sine">WindowOpen</animation>-->
+			<animation condition="StringCompare(Container(9000).CurrentItem,1) + Window.Next(home)" easing="inout" effect="slide" end="209,0" start="0,0" time="300" tween="sine">WindowClose</animation>
 			<itemlayout height="497" width="300">
 				<control type="group">
 					<animation center="134,240" condition="True" effect="zoom" end="84.5" start="84.5">Conditional</animation>
@@ -126,10 +127,10 @@
 				<control type="group">
 					<animation center="134,240" condition="Window.Previous(home) | Container(9000).OnNext | Container(9000).OnPrevious" easing="inout" effect="zoom" end="100" start="84.5" time="300" tween="sine">Focus</animation>
 					<animation center="134,240" condition="!Window.Next(home)" easing="inout" effect="zoom" end="84.5" start="100" time="300" tween="sine">UnFocus</animation>
-					<animation condition="Window.Next(home) + String.IsEqual(Container(9000).CurrentItem,1)" reversible="false" type="Conditional">
+					<animation condition="Window.Next(home) + StringCompare(Container(9000).CurrentItem,1)" reversible="false" type="Conditional">
 						<effect center="134,240" easing="inout" end="84.5" start="100" time="300" tween="sine" type="zoom" />
 					</animation>
-					<animation condition="Window.Next(home) + !String.IsEqual(Container(9000).CurrentItem,1)" reversible="false" type="Conditional">
+					<animation condition="Window.Next(home) + !StringCompare(Container(9000).CurrentItem,1)" reversible="false" type="Conditional">
 						<effect center="134,240" easing="inout" end="84.5" start="100" time="0" tween="sine" type="zoom" />
 					</animation>
 					<control type="image">
@@ -162,7 +163,7 @@
 						<texture>views/OverlayNF.png</texture>
 						<animation center="auto" easing="inout" effect="fade" end="0" start="100" time="300" tween="sine">Focus</animation>
 						<animation center="auto" easing="inout" effect="fade" end="100" start="0" time="300" tween="sine">UnFocus</animation>
-						<animation condition="Window.Next(home) + !String.IsEqual(Container(9000).CurrentItem,1)" reversible="false" type="Conditional">
+						<animation condition="Window.Next(home) + !StringCompare(Container(9000).CurrentItem,1)" reversible="false" type="Conditional">
 							<effect end="0" start="100" time="0" type="fade" />
 						</animation>
 					</control>
@@ -170,8 +171,8 @@
 			</focusedlayout>
 			<content>
 				<item>
-					<onclick>ActivateWindow(InterfaceSettings)</onclick>
-					<label>14206</label>
+					<onclick>ActivateWindow(appearancesettings)</onclick>
+					<label>480</label>
 					<label2>$LOCALIZE[31115]</label2>
 					<icon>settings/icon_appearance.png</icon>
 				</item>
@@ -182,22 +183,34 @@
 					<icon>settings/icon_addons.png</icon>
 				</item>
 				<item>
-					<onclick>ActivateWindow(LibrarySettings)</onclick>
-					<label>14202</label>
+					<onclick>ActivateWindow(videossettings)</onclick>
+					<label>3</label>
 					<label2>$LOCALIZE[31117]</label2>
-					<icon>settings/icon_library.png</icon>
+					<icon>settings/icon_videos.png</icon>
 				</item>
 				<item>
-					<onclick>ActivateWindow(PlayerSettings)</onclick>
-					<label>14200</label>
+					<onclick>ActivateWindow(musicsettings)</onclick>
+					<label>2</label>
 					<label2>$LOCALIZE[31118]</label2>
-					<icon>settings/icon_player.png</icon>
+					<icon>settings/icon_music.png</icon>
 				</item>
 				<item>
 					<onclick>ActivateWindow(pvrsettings)</onclick>
 					<label>$LOCALIZE[19020]</label>
 					<label2>$LOCALIZE[36201]</label2>
 					<icon>settings/icon_tv.png</icon>
+				</item>
+				<item>
+					<onclick>ActivateWindow(weathersettings)</onclick>
+					<label>8</label>
+					<label2>$LOCALIZE[31119]</label2>
+					<icon>settings/icon_weather.png</icon>
+				</item>
+				<item>
+					<onclick>ActivateWindow(picturessettings)</onclick>
+					<label>1</label>
+					<label2>$LOCALIZE[31120]</label2>
+					<icon>settings/icon_pictures.png</icon>
 				</item>
 				<item>
 					<onclick>ActivateWindow(systemsettings)</onclick>
@@ -212,7 +225,7 @@
 					<icon>settings/icon_service.png</icon>
 				</item>
 				<item>
-					<onclick>ActivateWindow(servicesettings)</onclick>
+					<onclick>ActivateWindow(weathersettings)</onclick>
 					<label>22082</label>
 					<label2>$LOCALIZE[31123]</label2>
 					<icon>settings/icon_more.png</icon>

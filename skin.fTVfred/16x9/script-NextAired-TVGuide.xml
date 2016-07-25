@@ -19,7 +19,7 @@
 				<fadetime>400</fadetime>
 				<colordiffuse>26ffffff</colordiffuse>
 				<texture background="true">$VAR[NextAiredFanart]</texture>
-				<visible>!String.IsEmpty(Window(Home).Property(TVGuide.BackgroundFanart))</visible>
+				<visible>!IsEmpty(Window(Home).Property(TVGuide.BackgroundFanart))</visible>
 			</control>
 			<!-- No results -->
 			<control type="group">
@@ -138,25 +138,25 @@
 					</control>
 				</focusedlayout>
 				<content>
-					<include content="NextAiredItems">
+					<include name="NextAiredItems">
 						<param name="ItemID" value="200" />
 					</include>
-					<include content="NextAiredItems">
+					<include name="NextAiredItems">
 						<param name="ItemID" value="201" />
 					</include>
-					<include content="NextAiredItems">
+					<include name="NextAiredItems">
 						<param name="ItemID" value="202" />
 					</include>
-					<include content="NextAiredItems">
+					<include name="NextAiredItems">
 						<param name="ItemID" value="203" />
 					</include>
-					<include content="NextAiredItems">
+					<include name="NextAiredItems">
 						<param name="ItemID" value="204" />
 					</include>
-					<include content="NextAiredItems">
+					<include name="NextAiredItems">
 						<param name="ItemID" value="205" />
 					</include>
-					<include content="NextAiredItems">
+					<include name="NextAiredItems">
 						<param name="ItemID" value="206" />
 					</include>
 				</content>
@@ -207,25 +207,25 @@
 		</control>
 		<!-- Lists group -->
 		<control type="group" id="9999">
-			<include content="NextAiredLists">
+			<include name="NextAiredLists">
 				<param name="ListID" value="200" />
 			</include>
-			<include content="NextAiredLists">
+			<include name="NextAiredLists">
 				<param name="ListID" value="201" />
 			</include>
-			<include content="NextAiredLists">
+			<include name="NextAiredLists">
 				<param name="ListID" value="202" />
 			</include>
-			<include content="NextAiredLists">
+			<include name="NextAiredLists">
 				<param name="ListID" value="203" />
 			</include>
-			<include content="NextAiredLists">
+			<include name="NextAiredLists">
 				<param name="ListID" value="204" />
 			</include>
-			<include content="NextAiredLists">
+			<include name="NextAiredLists">
 				<param name="ListID" value="205" />
 			</include>
-			<include content="NextAiredLists">
+			<include name="NextAiredLists">
 				<param name="ListID" value="206" />
 			</include>
 		</control>

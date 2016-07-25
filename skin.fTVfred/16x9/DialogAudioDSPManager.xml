@@ -34,9 +34,9 @@
 				<width>422</width>
 				<height>565</height>
 				<onleft>noop</onleft>
-				<onright condition="Integer.IsGreater(Container(21).NumItems,0)">21</onright>
-				<onright condition="!Integer.IsGreater(Container(21).NumItems,0) + Integer.IsGreater(Container(20).NumItems,0)">20</onright>
-				<onright condition="!Integer.IsGreater(Container(21).NumItems,0) + !Integer.IsGreater(Container(20).NumItems,0)">9001</onright>
+				<onright condition="IntegerGreaterThan(Container(21).NumItems,0)">21</onright>
+				<onright condition="!IntegerGreaterThan(Container(21).NumItems,0) + IntegerGreaterThan(Container(20).NumItems,0)">20</onright>
+				<onright condition="!IntegerGreaterThan(Container(21).NumItems,0) + !IntegerGreaterThan(Container(20).NumItems,0)">9001</onright>
 				<onup>noop</onup>
 				<ondown>noop</ondown>
 				<scrolltime>0</scrolltime>
@@ -51,7 +51,7 @@
 						<width>422</width>
 						<height>113</height>
 						<font>Light32</font>
-						<textwidth>350</textwidth>
+						<textwidth>422</textwidth>
 						<textoffsetx>40</textoffsetx>
 						<textcolor>ff505153</textcolor>
 						<label>$INFO[ListItem.Label]</label>
@@ -67,7 +67,7 @@
 						<width>422</width>
 						<height>113</height>
 						<font>Light32</font>
-						<textwidth>350</textwidth>
+						<textwidth>422</textwidth>
 						<textoffsetx>40</textoffsetx>
 						<textcolor>ffffaf37</textcolor>
 						<label>$INFO[ListItem.Label]</label>
@@ -77,13 +77,50 @@
 						<width>422</width>
 						<height>113</height>
 						<font>Light32</font>
-						<textwidth>350</textwidth>
+						<textwidth>422</textwidth>
 						<textoffsetx>40</textoffsetx>
 						<textcolor>ffffffff</textcolor>
 						<label>$INFO[ListItem.Label]</label>
 						<visible>!Control.HasFocus(9000)</visible>
 					</control>
 				</focusedlayout>
+				<content>
+					<item id="91">
+						<label>$LOCALIZE[15057]</label>
+						<label2>$LOCALIZE[15114]</label2>
+						<visible>true</visible>
+						<onclick>noop</onclick>
+						<property name="currentMode">InputResampling</property>
+					</item>
+					<item id="92">
+						<label>$LOCALIZE[15058]</label>
+						<label2>$LOCALIZE[15113]</label2>
+						<visible>true</visible>
+						<onclick>noop</onclick>
+						<property name="currentMode">Preprocessing</property>
+					</item>
+					<item id="93">
+						<label>$LOCALIZE[15059]</label>
+						<label2>$LOCALIZE[15115]</label2>
+						<visible>true</visible>
+						<onclick>noop</onclick>
+						<property name="currentMode">Masterprocessing</property>
+					</item>
+					<item id="94">
+						<label>$LOCALIZE[15060]</label>
+						<label2>$LOCALIZE[15117]</label2>
+						<visible>true</visible>
+						<onclick>noop</onclick>
+						<property name="currentMode">Postprocessing</property>
+					</item>
+					<item id="95">
+						<label>$LOCALIZE[15061]</label>
+						<label2>$LOCALIZE[15116]</label2>
+						<visible>true</visible>
+						<onclick>noop</onclick>
+						<property name="currentMode">OutputResampling</property>
+					</item>
+				</content>
 			</control>			
 			<!-- Active  -->
 			<control type="group">
@@ -124,7 +161,7 @@
 				<!-- No active mode -->
 				<control type="group">
 					<top>60</top>
-					<visible>!Integer.IsGreater(Container(21).NumItems,0)</visible>
+					<visible>!IntegerGreaterThan(Container(21).NumItems,0)</visible>
 					<control type="image">
 						<width>958</width>
 						<height>84</height>
@@ -164,7 +201,7 @@
 							<textwidth>878</textwidth>
 							<textoffsetx>40</textoffsetx>
 							<textcolor>ff505153</textcolor>
-							<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Label2,,: ]$INFO[ListItem.Label]</label>
+							<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Property(AddonName),,: ]$INFO[ListItem.Property(Name)]</label>
 						</control>
 					</itemlayout>
 					<focusedlayout width="958" height="84">
@@ -182,7 +219,7 @@
 								<textwidth>878</textwidth>
 								<textoffsetx>40</textoffsetx>
 								<textcolor>ff505153</textcolor>
-								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Label2,,: ]$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Property(AddonName),,: ]$INFO[ListItem.Property(Name)]</label>
 							</control>
 						</control>
 						<control type="group">
@@ -199,7 +236,7 @@
 								<textwidth>878</textwidth>
 								<textoffsetx>40</textoffsetx>
 								<textcolor>ffffaf37</textcolor>
-								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Label2,,: ]$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Property(AddonName),,: ]$INFO[ListItem.Property(Name)]</label>
 							</control>
 						</control>
 					</focusedlayout>
@@ -245,7 +282,7 @@
 				<!-- no available modes -->
 				<control type="group">
 					<top>60</top>
-					<visible>!Integer.IsGreater(Container(20).NumItems,0)</visible>
+					<visible>!IntegerGreaterThan(Container(20).NumItems,0)</visible>
 					<control type="image">
 						<width>958</width>
 						<height>84</height>
@@ -285,7 +322,7 @@
 							<textwidth>878</textwidth>
 							<textoffsetx>40</textoffsetx>
 							<textcolor>ff505153</textcolor>
-							<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Label2,,: ]$INFO[ListItem.Label]</label>
+							<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Property(AddonName),,: ]$INFO[ListItem.Property(Name)]</label>
 						</control>
 					</itemlayout>
 					<focusedlayout width="958" height="84">
@@ -303,7 +340,7 @@
 								<textwidth>878</textwidth>
 								<textoffsetx>40</textoffsetx>
 								<textcolor>ff505153</textcolor>
-								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Label2,,: ]$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Property(AddonName),,: ]$INFO[ListItem.Property(Name)]</label>
 							</control>
 						</control>
 						<control type="group">
@@ -320,7 +357,7 @@
 								<textwidth>878</textwidth>
 								<textoffsetx>40</textoffsetx>
 								<textcolor>ffffaf37</textcolor>
-								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Label2,,: ]$INFO[ListItem.Label]</label>
+								<label>$INFO[ListItem.Property(Number),,.  ]$INFO[ListItem.Property(AddonName),,: ]$INFO[ListItem.Property(Name)]</label>
 							</control>
 						</control>
 					</focusedlayout>
@@ -381,12 +418,6 @@
 					<textoffsety>27</textoffsety>
 					<label>14070</label>
 				</control>
-			</control>
-			<control type="image">
-				<left>422</left>
-				<width>40</width>
-				<height>625</height>
-				<texture border="0,20,0,0">common/shadow.png</texture>
 			</control>
 		</control>
 	</controls>

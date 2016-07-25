@@ -4,8 +4,8 @@
 	<backgroundcolor>0xff12161b</backgroundcolor>
 	<onload>ClearProperty(SettingHeading,home)</onload>
 	<onload>ClearProperty(SettingInfo,home)</onload>
-	<onload condition="!String.IsEqual(Window(settings).Property(SettingsCurrentItem),8)">SetFocus(3)</onload>
-	<onload condition="String.IsEqual(Window(settings).Property(SettingsCurrentItem),8)">SetFocus(9001)</onload>
+	<onload condition="!StringCompare(Window(settings).Property(SettingsCurrentItem),10)">SetFocus(3)</onload>
+	<onload condition="StringCompare(Window(settings).Property(SettingsCurrentItem),10)">SetFocus(9001)</onload>
 	<controls>
 		<control id="6" type="label">
 			<font>-</font>
@@ -51,13 +51,13 @@
 				<font>Light32</font>
 				<aligny>bottom</aligny>
 				<textcolor>ff505050</textcolor>
-				<label>$NUMBER[8]</label>
+				<label>$NUMBER[10]</label>
 			</control>
 		</control>
 		<control type="group">
 			<left>-28</left>
 			<top>289</top>
-			<visible>!Window.IsVisible(InterfaceSettings)</visible>
+			<visible>!Window.IsVisible(appearancesettings)</visible>
 			<animation condition="!Window.Previous(systeminfo) + !Window.Previous(profiles)" easing="inout" effect="slide" end="0,0" start="-49,0" time="125" tween="sine">WindowOpen</animation>
 			<animation condition="!Window.Next(systeminfo) + !Window.Next(profiles)" easing="inout" effect="slide" end="-49,0" start="0,0" time="125" tween="sine">WindowClose</animation>
 			<control type="group">
@@ -98,11 +98,10 @@
 		<control type="group">
 			<animation easing="inout" effect="slide" end="589,0" start="0,0" time="125" tween="sine">WindowOpen</animation>
 			<animation easing="inout" effect="slide" end="0,0" start="589,0" time="125" tween="sine">WindowClose</animation>
-			<!-- 1 -->
 			<control type="group">
 				<left>523</left>
 				<top>289</top>
-				<visible>Integer.IsLess(Window(settings).Property(SettingsCurrentItem),8)</visible>
+				<visible>!StringCompare(Window(settings).Property(SettingsCurrentItem),10)</visible>
 				<control type="group">
 					<width>333</width>
 					<height>497</height>
@@ -137,12 +136,11 @@
 						<texture>views/OverlayNF.png</texture>
 					</control>
 				</control>
-			</control>			
-			<!-- 2 -->
+			</control>
 			<control type="group">
 				<left>823</left>
 				<top>289</top>
-				<visible>Integer.IsLess(Window(settings).Property(SettingsCurrentItem),7)</visible>
+				<visible>!Window.IsVisible(servicesettings) + !StringCompare(Window(settings).Property(SettingsCurrentItem),10)</visible>
 				<control type="group">
 					<width>333</width>
 					<height>497</height>
@@ -177,12 +175,11 @@
 						<texture>views/OverlayNF.png</texture>
 					</control>
 				</control>
-			</control>			
-			<!-- 3 -->
+			</control>
 			<control type="group">
 				<left>1123</left>
 				<top>289</top>
-				<visible>Integer.IsLess(Window(settings).Property(SettingsCurrentItem),6)</visible>
+				<visible>!Window.IsVisible(systemsettings) + !Window.IsVisible(servicesettings) + !StringCompare(Window(settings).Property(SettingsCurrentItem),10)</visible>
 				<control type="group">
 					<width>333</width>
 					<height>497</height>
@@ -217,12 +214,11 @@
 						<texture>views/OverlayNF.png</texture>
 					</control>
 				</control>
-			</control>			
-			<!-- 4 -->
+			</control>
 			<control type="group">
 				<left>1423</left>
 				<top>289</top>
-				<visible>Integer.IsLess(Window(settings).Property(SettingsCurrentItem),5)</visible>
+				<visible>!Window.IsVisible(picturessettings) + !Window.IsVisible(systemsettings) + !Window.IsVisible(servicesettings) + !StringCompare(Window(settings).Property(SettingsCurrentItem),10)</visible>
 				<control type="group">
 					<width>333</width>
 					<height>497</height>
@@ -257,12 +253,11 @@
 						<texture>views/OverlayNF.png</texture>
 					</control>
 				</control>
-			</control>			
-			<!-- 5 -->
+			</control>
 			<control type="group">
 				<left>1723</left>
 				<top>289</top>
-				<visible>Integer.IsLess(Window(settings).Property(SettingsCurrentItem),4)</visible>
+				<visible>!Window.IsVisible(weathersettings) + !Window.IsVisible(picturessettings) + !Window.IsVisible(systemsettings) + !Window.IsVisible(servicesettings) + !StringCompare(Window(settings).Property(SettingsCurrentItem),10)</visible>
 				<control type="group">
 					<width>333</width>
 					<height>497</height>
@@ -299,7 +294,6 @@
 				</control>
 			</control>
 		</control>
-		<!-- Active settings category -->
 		<control type="group">
 			<left>223</left>
 			<top>289</top>
@@ -336,7 +330,7 @@
 				<left>-359</left>
 				<width>40</width>
 				<height>480</height>
-				<texture flipx="true">common/shadow.png</texture>
+				<texture flipx="true">settings/shadow.png</texture>
 				<animation condition="!Window.Previous(systeminfo) + !Window.Previous(profiles)" reversible="false" type="WindowOpen">
 					<effect easing="inout" end="100" start="0" time="125" tween="sine" type="fade" />
 				</animation>
@@ -358,7 +352,7 @@
 				</control>
 			</control>
 			<control type="group">
-				<visible>!String.IsEqual(Window(settings).Property(SettingsCurrentItem),8)</visible>
+				<visible>!StringCompare(Window(settings).Property(SettingsCurrentItem),10)</visible>
 				<animation reversible="false" type="WindowOpen">
 					<effect delay="200" easing="inout" end="100" start="0" time="125" tween="sine" type="fade" />
 				</animation>
@@ -394,11 +388,11 @@
 				<control type="image">
 					<width>40</width>
 					<height>480</height>
-					<texture>common/shadow.png</texture>
+					<texture>settings/shadow.png</texture>
 				</control>
 			</control>
 			<control type="group">
-				<visible>String.IsEqual(Window(settings).Property(SettingsCurrentItem),8)</visible>
+				<visible>StringCompare(Window(settings).Property(SettingsCurrentItem),10)</visible>
 				<animation condition="!Window.Previous(systeminfo) + !Window.Previous(profiles)" reversible="false" type="WindowOpen">
 					<effect delay="200" easing="inout" end="100" start="0" time="125" tween="sine" type="fade" />
 				</animation>
@@ -497,7 +491,7 @@
 				<control type="image">
 					<width>40</width>
 					<height>480</height>
-					<texture>common/shadow.png</texture>
+					<texture>settings/shadow.png</texture>
 				</control>
 			</control>
 		</control>
@@ -578,34 +572,34 @@
 				<height>436</height>
 				<font>Med24</font>
 				<aligny>top</aligny>
-				<pagecontrol>96</pagecontrol>
-				<autoscroll>false</autoscroll>
-				<textcolor>ffdadada</textcolor>
-				<label>$INFO[Control.GetLabel(6)]</label>
-			</control>
-			<control id="96" type="scrollbar">
-				<top>22</top>
-				<width>420</width>
-				<height>436</height>
-				<showonepage>false</showonepage>
-				<orientation>vertical</orientation>
-			</control>
-			<!-- More button -->
-			<control id="3000" type="button">
-				<left>1380</left>
-				<top>424</top>
-				<width>37</width>
-				<height>23</height>
-				<onup>noop</onup>
-				<ondown>noop</ondown>
-				<onleft>5</onleft>
-				<onright>noop</onright>
+ 				<pagecontrol>96</pagecontrol>
+ 				<autoscroll>false</autoscroll>
+  				<textcolor>ffdadada</textcolor>
+ 				<label>$INFO[Control.GetLabel(6)]</label>
+ 			</control>
+ 			<control id="96" type="scrollbar">
+ 				<top>22</top>
+ 				<width>420</width>
+ 				<height>436</height>
+ 				<showonepage>false</showonepage>
+ 				<orientation>vertical</orientation>
+ 			</control>
+ 			<!-- More button -->
+ 			<control id="3000" type="button">
+ 				<left>1380</left>
+ 				<top>424</top>
+ 				<width>37</width>
+ 				<height>23</height>
+ 				<onup>noop</onup>
+ 				<ondown>noop</ondown>
+ 				<onleft>5</onleft>
+ 				<onright>noop</onright>
 				<onclick>SetProperty(NoLabel,1,home)</onclick>
-				<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[Control.GetLabel(6)]')</onclick>
-				<visible>Control.IsVisible(96)</visible>
-				<texturefocus>views/more_fo.png</texturefocus>
-				<texturenofocus>views/more_nf.png</texturenofocus>
-			</control>
+ 				<onclick>RunScript(script.toolbox,info=textviewer,header=,text='$ESCINFO[Control.GetLabel(6)]')</onclick>
+ 				<visible>Control.IsVisible(96)</visible>
+ 				<texturefocus>views/more_fo.png</texturefocus>
+ 				<texturenofocus>views/more_nf.png</texturenofocus>
+  			</control>
 		</control>
 		<control id="7" type="button">
 			<width>958</width>
@@ -643,13 +637,12 @@
 			<font>Light32</font>
 			<textoffsetx>40</textoffsetx>
 			<textcolor>ff505153</textcolor>
-			<textwidth>490</textwidth>
 			<focusedcolor>ffffaf37</focusedcolor>
 			<selectedcolor2>ffffffff</selectedcolor2>
 			<texturefocus border="3">settings/button_focus.png</texturefocus>
 			<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 			<aligny>center</aligny>
-			<reverse>true</reverse>
+			<reverse>yes</reverse>
 		</control>
 		<control id="11" type="image">
 			<top>-1</top>

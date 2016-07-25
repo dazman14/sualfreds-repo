@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
-	id="skin.fTVfred-krypton"
-	version="3.1.5"
-	name="fTV Fred Edition"
+	id="skin.fTVfred"
+	version="2.2.1"
+	name="fTV (with Live TV + Mods)"
 	provider-name="Sualfred (Orignal skin by Hitcher)">
 	<requires>
-		<import addon="xbmc.gui" version="5.12.0"/>
+		<import addon="xbmc.gui" version="5.10.0"/>
 		<import addon="script.toolbox" version="1.0.0"/>
 		<import addon="script.favourites" version="5.0.2"/>
 		<import addon="script.extendedinfo" version="2.0.3"/>
@@ -23,22 +23,5 @@
 		<summary lang="en">Skin based on the Fire TV UI</summary>
 		<disclaimer lang="en">Does not support:[CR]Mouse[CR]Touch[CR]Live TV</disclaimer>
 		<description lang="en">Basic fTV skin (by Hitcher) with nearly full PVR functionality, plus changed a lot of behaviours and added dozens of other features[CR]Skin description: Provides the look and feel of the Fire TV user interface.[CR]For the complete experience enable 'TV Show wide icons' and either use Artwork Downloader to grab logos or create your own artwork and add it to the database (see forum for more details).</description>
-		<assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.jpg</fanart>
-            <screenshot>resources/screen1.jpg</screenshot>
-            <screenshot>resources/screen2.jpg</screenshot>
-        </assets>
-		<news>Changelog:
-
-[B]3.1.5[/B]
-- Krypton work
-- Added screenshot support to addon info dialog
-- Added 4k corner badge for widgets and views
-- Added delay to pseudo NextUp for TV playback
-- Added and forced poster view for actors videonode
-- Replaced icon and fanart
-
-See changelog.txt for more details.</news>
 	</extension>
 </addon>

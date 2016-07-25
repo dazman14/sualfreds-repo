@@ -14,7 +14,7 @@
 			<control type="image">
 				<width>1540</width>
 				<height>664</height>
-				<texture border="5,65,5,5">dialogs/dialog_back.png</texture>
+				<texture>dialogs/skin_shortcuts_back.png</texture>
 			</control>
 			<!-- Heading -->
 			<control type="label" id="500">
@@ -92,6 +92,7 @@
 				<orientation>vertical</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
 				<scrolltime tween="sine" easing="out">240</scrolltime>
+
 				<!-- Channel activated -->
 				<control type="radiobutton" id="7">
 					<radiowidth>125</radiowidth>
@@ -116,6 +117,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19074</label>
 				</control>
+
 				<!-- Channel name -->
 				<control type="edit" id="8">
 					<width>870</width>
@@ -129,6 +131,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19201</label>
 				</control>
+
 				<!-- Channel logo button -->
 				<control type="button" id="9">
 					<width>870</width>
@@ -142,16 +145,17 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19202</label>
 				</control>
+
 				<!-- Current channel logo -->
 				<control type="image" id="10">
 					<top>-84</top>
-					<right>20</right>
+					<left>710</left>
 					<height>84</height>
-					<width max="150">auto</width>
-					<aspectratio align="right">keep</aspectratio>
+					<aspectratio>keep</aspectratio>
 					<bordersize>10</bordersize>
 					<texture>$INFO[ListItem.Icon]</texture>
 				</control>
+
 				<!-- EPG activated -->
 				<control type="radiobutton" id="12">
 					<radiowidth>125</radiowidth>
@@ -177,6 +181,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19074</label>
 				</control>
+
 				<!-- EPG source -->
 				<control type="spincontrolex" id="13">
 					<width>870</width>
@@ -190,6 +195,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19200</label>
 				</control>
+
 				<!-- Parental locked -->
 				<control type="radiobutton" id="14">
 					<radiowidth>125</radiowidth>
@@ -214,6 +220,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19267</label>
 				</control>
+
 				<!-- Edit channel button -->
 				<control type="button" id="31">
 					<width>870</width>
@@ -227,6 +234,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19203</label>
 				</control>
+
 				<!-- Delete channel button -->
 				<control type="button" id="32">
 					<width>870</width>
@@ -240,6 +248,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19211</label>
 				</control>
+
 				<!-- New channel button -->
 				<control type="button" id="33">
 					<width>870</width>
@@ -253,6 +262,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>19204</label>
 				</control>
+
 			</control>
 			<!-- Button grouplist -->
 			<control type="grouplist" id="9001">
@@ -315,13 +325,6 @@
 					<textoffsety>27</textoffsety>
 					<label>19205</label>
 				</control>
-			</control>
-			<control type="image">
-				<top>60</top>
-				<left>670</left>
-				<width>40</width>
-				<height>504</height>
-				<texture border="0,20,0,0">common/shadow.png</texture>
 			</control>
 		</control>
 	</controls>

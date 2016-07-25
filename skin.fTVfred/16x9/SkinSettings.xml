@@ -48,7 +48,7 @@
 					<font>Light32</font>
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
-					<label>$NUMBER[8]</label>
+					<label>$NUMBER[10]</label>
 				</control>
 			</control>
 			<control type="group">
@@ -416,55 +416,13 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<onclick>SetProperty(Dialog.NumItems,3)</onclick>
-					<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571] - $LOCALIZE[31001])</onclick>
+					<onclick>SetProperty(Dialog.1.Label,Default - US)</onclick>
 					<onclick>SetProperty(Dialog.1.BuiltIn,Skin.SetString(RatingCountry,US))</onclick>
-					<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31002])</onclick>
+					<onclick>SetProperty(Dialog.2.Label,UK)</onclick>
 					<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(RatingCountry,UK))</onclick>
-					<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31003])</onclick>
+					<onclick>SetProperty(Dialog.3.Label,Germany)</onclick>
 					<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(RatingCountry,Germany))</onclick>
-					<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31135])</onclick> 
-				</control>
-				<control id="25" type="button">
-					<width>958</width>
-					<height>84</height>
-					<font>Light32</font>
-					<label>$LOCALIZE[31120]</label>
-					<label2>$VAR[MovieRatingProviderLabel]</label2>
-					<textoffsetx>40</textoffsetx>
-					<textcolor>ff505153</textcolor>
-					<focusedcolor>ffffaf37</focusedcolor>
-					<texturefocus border="3">settings/button_focus.png</texturefocus>
-					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
-					<onclick>SetProperty(Dialog.NumItems,3)</onclick>
-					<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571] - IMDb)</onclick>
-					<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(MovieRatingProvider))</onclick>
-					<onclick>SetProperty(Dialog.2.Label,TMDb)</onclick>
-					<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(MovieRatingProvider,tmdb))</onclick>
-					<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[14224])</onclick>
-					<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(MovieRatingProvider,other))</onclick>
-					<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31120])</onclick> 
-				</control>
-				<control id="26" type="button">
-					<width>958</width>
-					<height>84</height>
-					<font>Light32</font>
-					<label>$LOCALIZE[31287]</label>
-					<label2>$VAR[TVShowRatingProviderLabel]</label2>
-					<textoffsetx>40</textoffsetx>
-					<textcolor>ff505153</textcolor>
-					<focusedcolor>ffffaf37</focusedcolor>
-					<texturefocus border="3">settings/button_focus.png</texturefocus>
-					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
-					<onclick>SetProperty(Dialog.NumItems,3)</onclick>
-					<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571] - TVDB)</onclick>
-					<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(TVShowRatingProvider))</onclick>
-					<onclick>SetProperty(Dialog.2.Label,TMDb)</onclick>
-					<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(TVShowRatingProvider,tmdb))</onclick>
-					<onclick>SetProperty(Dialog.3.Label,IMDb)</onclick>
-					<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(TVShowRatingProvider,imdb))</onclick>
-					<onclick>SetProperty(Dialog.4.Label,$LOCALIZE[14224])</onclick>
-					<onclick>SetProperty(Dialog.4.BuiltIn,Skin.SetString(TVShowRatingProvider,other))</onclick>
-					<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31287])</onclick> 
+					<onclick>RunScript(script.toolbox,info=selectdialog,header=Select Rating Country)</onclick> 
 				</control>
 				<control id="18" type="radiobutton">
 					<width>958</width>
@@ -529,46 +487,6 @@
 					<onclick>SetProperty(Dialog.3.Label,$LOCALIZE[31160])</onclick>
 					<onclick>SetProperty(Dialog.3.BuiltIn,Skin.SetString(FavouritesLayout,$LOCALIZE[31160]))</onclick>
 					<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31198])</onclick>
-				</control>
-				<control id="27" type="button">
-					<width>958</width>
-					<height>84</height>
-					<font>Light32</font>
-					<label>$LOCALIZE[31292]</label>
-					<label2>$VAR[PVRChannelsOSDLayout]</label2>
-					<textoffsetx>40</textoffsetx>
-					<textcolor>ff505153</textcolor>
-					<focusedcolor>ffffaf37</focusedcolor>
-					<texturefocus border="3">settings/button_focus.png</texturefocus>
-					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
-					<onclick>SetProperty(Dialog.NumItems,2)</onclick>
-					<onclick>SetProperty(Dialog.1.Label,$LOCALIZE[571] - $LOCALIZE[31290])</onclick>
-					<onclick>SetProperty(Dialog.1.BuiltIn,Skin.Reset(PVRChannelsOSDLayout))</onclick>
-					<onclick>SetProperty(Dialog.2.Label,$LOCALIZE[31291])</onclick>
-					<onclick>SetProperty(Dialog.2.BuiltIn,Skin.SetString(PVRChannelsOSDLayout,vertical))</onclick>
-					<onclick>RunScript(script.toolbox,info=selectdialog,header=$LOCALIZE[31292])</onclick>
-				</control>
-				<control id="28" type="radiobutton">
-					<width>958</width>
-					<height>84</height>
-					<font>Light32</font>
-					<label>$LOCALIZE[31309]</label>
-					<textoffsetx>40</textoffsetx>
-					<textcolor>ff505153</textcolor>
-					<focusedcolor>ffffaf37</focusedcolor>
-					<radiowidth>125</radiowidth>
-					<radioheight>53</radioheight>
-					<radioposx>813</radioposx>
-					<textureradioonfocus>settings/radio_on_focus.png</textureradioonfocus>
-					<textureradioonnofocus>settings/radio_on_no_focus.png</textureradioonnofocus>
-					<textureradioondisabled>settings/radio_on_disabled.png</textureradioondisabled>
-					<textureradioofffocus>settings/radio_off_focus.png</textureradioofffocus>
-					<textureradiooffnofocus>settings/radio_off_no_focus.png</textureradiooffnofocus>
-					<textureradiooffdisabled>settings/radio_off_disabled.png</textureradiooffdisabled>
-					<texturefocus border="3">settings/button_focus.png</texturefocus>
-					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
-					<onclick>Skin.ToggleSetting(PVRNextUpDisabled)</onclick>
-					<selected>!Skin.HasSetting(PVRNextUpDisabled)</selected>
 				</control>
 				<control id="23" type="button">
 					<width>958</width>

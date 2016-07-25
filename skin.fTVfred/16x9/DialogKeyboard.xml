@@ -18,14 +18,14 @@
 				<width>980</width>
 				<height>700</height>
 				<texture border="32">dialogs/DialogMessageBackground.png</texture>
-				<visible>!String.IsEmpty(Window(Home).Property(DisableSuggestions)) | !Integer.IsGreater(Container(9091).NumItems,0)</visible>
+				<visible>!IsEmpty(Window(Home).Property(DisableSuggestions)) | !IntegerGreaterThan(Container(9091).NumItems,0)</visible>
 			</control>
 			<control type="image">
 				<centerleft>50%</centerleft>
 				<width>980</width>
 				<height>1145</height>
 				<texture border="32">dialogs/DialogMessageBackground.png</texture>
-				<visible>String.IsEmpty(Window(Home).Property(DisableSuggestions)) + Integer.IsGreater(Container(9091).NumItems,0)</visible>
+				<visible>IsEmpty(Window(Home).Property(DisableSuggestions)) + IntegerGreaterThan(Container(9091).NumItems,0)</visible>
 			</control>
 			<!-- Control group -->
 			<control type="group">
@@ -60,7 +60,7 @@
 				</control>
 				<!-- auto completion -->
 				<control type="list" id="9091">
-					<visible>String.IsEmpty(Window(Home).Property(DisableSuggestions))</visible>
+					<visible>IsEmpty(Window(Home).Property(DisableSuggestions))</visible>
 					<left>7</left>
 					<top>607</top>
 					<width>846</width>
@@ -111,7 +111,7 @@
 					<height>48</height>
 					<onup>4000</onup>
 					<onright>300</onright>
-					<ondown condition="Integer.IsGreater(Container(9091).NumItems,0)">9091</ondown>
+					<ondown condition="IntegerGreaterThan(Container(9091).NumItems,0)">9091</ondown>
 					<onclick>300</onclick>
 					<font>Light39</font>
 					<textcolor>ffdadada</textcolor>
@@ -138,19 +138,19 @@
 						<onleft>8000</onleft>
 						<onright>8000</onright>
 						<orientation>vertical</orientation>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">inputtype</param>
 							<param name="ID">309</param>
 						</include>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">symbols</param>
 							<param name="ID">304</param>
 						</include>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">shift</param>
 							<param name="ID">302</param>
 						</include>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">space</param>
 							<param name="ID">32</param>
 						</include>
@@ -164,19 +164,19 @@
 						<onleft>8001</onleft>
 						<onright>8001</onright>
 						<orientation>vertical</orientation>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">cancel</param>
 							<param name="ID">301</param>
 						</include>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">ip</param>
 							<param name="ID">307</param>
 						</include>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">capslock</param>
 							<param name="ID">303</param>
 						</include>
-						<include content="KeyboardControlButtons">
+						<include name="KeyboardControlButtons">
 							<param name="name">backspace</param>
 							<param name="ID">8</param>
 						</include>
@@ -188,14 +188,14 @@
 						<height>44</height>
 						<itemgap>12</itemgap>
 						<onup>8</onup>
-						<ondown condition="Integer.IsGreater(Container(9091).NumItems,0)">9091</ondown>
+						<ondown condition="IntegerGreaterThan(Container(9091).NumItems,0)">9091</ondown>
 						<onleft>312</onleft>
 						<align>right</align>
 						<orientation>horizontal</orientation>
 						<control id="300" type="button">
 							<onup>8</onup>
-							<ondown condition="Integer.IsGreater(Container(9091).NumItems,0)">9091</ondown>
-							<include content="BottomControlButtons">
+							<ondown condition="IntegerGreaterThan(Container(9091).NumItems,0)">9091</ondown>
+							<include name="BottomControlButtons">
 								<param name="name">enter</param>
 							</include>
 						</control>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window>
+	<!-- videolibrary -->
 	<menucontrol>5000</menucontrol>
 	<backgroundcolor>0xff12161b</backgroundcolor>
 	<defaultcontrol always="true">50</defaultcontrol>
@@ -7,17 +8,16 @@
 	<onload>RunScript(script.tv.show.next.aired,backend=True)</onload>
 	<onload condition="System.HasAddon(script.tvtunes)">RunScript(script.tvtunes,backend=True)</onload>
 	<onload condition="Window.Previous(home) + system.getbool(filelists.showparentdiritems)">Control.Move($VAR[ContainerID],1)</onload>
-	<onunload condition="Window.Next(home)">Control.Move($VAR[ContainerID],$INFO[Container.CurrentItem,-])</onunload>
-	<onunload condition="Window.Next(home) + !system.getbool(filelists.showparentdiritems)">Control.Move($VAR[ContainerID],1)</onunload>
 	<onunload>ClearProperty(TVShowTitle,home)</onunload>
 	<onunload>ClearProperty(TVShowRating,home)</onunload>
+	<onunload condition="Window.Next(home)">Control.Move($VAR[ContainerID],$INFO[Container.CurrentItem,-])</onunload>
+	<onunload condition="Window.Next(home) + !system.getbool(filelists.showparentdiritems)">Control.Move($VAR[ContainerID],1)</onunload>
 	<onunload>ClearProperty(ForceViewType,home)</onunload>
-	<views>60,61,50,51,52,53,55,56,57,58</views>
-	<animation effect="fade" start="0" end="0" time="0">WindowClose</animation>
+	<views>60,61,50,51,52,53,55,56,57</views>
 	<controls>
 		<control id="2" type="button">
 			<include>HiddenControl</include>
-			<visible>!String.IsEmpty(Container.PluginName)</visible>
+			<visible>!IsEmpty(Container.PluginName)</visible>
 		</control>
 		<control id="3" type="button">
 			<include>HiddenControl</include>
@@ -35,10 +35,9 @@
 		<include>Viewtype55</include>
 		<include>Viewtype56</include>
 		<include>Viewtype57</include>
-		<include>Viewtype58</include>
 		<control type="group">
 			<include>LabelsDelayFadeAnimation</include>
-			<visible>String.IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation)) + !Control.IsVisible(58)</visible>
+			<visible>IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
 			<!-- Heading / Current item / Total items -->
 			<control type="grouplist">
 				<left>198</left>
@@ -48,7 +47,7 @@
 				<orientation>horizontal</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
 				<include>VisibleDelayFadeAnimation</include>
-				<visible>!Container.Content(seasons) + !Container.Content(episodes) + !String.IsEmpty(Container.NumItems)</visible>
+				<visible>!Container.Content(seasons) + !Container.Content(episodes) + !IsEmpty(Container.NumItems)</visible>
 				<control type="label">
 					<width>auto</width>
 					<height>60</height>
@@ -65,7 +64,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ffdadada</textcolor>
 					<label>$INFO[Container.CurrentItem]</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>14</top>
@@ -75,7 +74,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>|</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>15</top>
@@ -85,7 +84,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>$INFO[Container.NumItems]</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 			</control>
 			<!-- Title -->
@@ -114,7 +113,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ffdadada</textcolor>
 					<label>$INFO[Container.CurrentItem]</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>14</top>
@@ -124,7 +123,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>|</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>15</top>
@@ -134,7 +133,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>$INFO[Container.NumItems]</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 			</control>
 			<!-- Details -->
@@ -153,14 +152,14 @@
 					<height>24</height>
 					<texture>$INFO[Window(home).Property(TVShowRating),rating/rating,.png]</texture>
 					<aspectratio align="left">keep</aspectratio>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowRating))</visible>
+					<visible>!IsEmpty(Window(home).Property(TVShowRating))</visible>
 				</control>
 				<control type="image">
 					<top>3</top>
-					<width>48</width>
+					<width>47</width>
 					<height>23</height>
-					<texture>$VAR[TVShowRatingProvider]</texture>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowRating))</visible>
+					<texture>views/tvdb.png</texture>
+					<visible>!IsEmpty(Window(home).Property(TVShowRating))</visible>
 				</control>
 				<control type="label">
 					<top>-13</top>
@@ -170,7 +169,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ffdadada</textcolor>
 					<label>$INFO[Window(home).Property(TVShowRating),,/10]</label>
-					<visible>!String.IsEmpty(Window(home).Property(TVShowRating))</visible>
+					<visible>!IsEmpty(Window(home).Property(TVShowRating))</visible>
 				</control>
 			</control>
 			<!-- Details -->
@@ -182,21 +181,21 @@
 				<orientation>horizontal</orientation>
 				<usecontrolcoords>true</usecontrolcoords>
 				<include>VisibleDelayFadeAnimation</include>
-				<visible>Container.Content(episodes) + !String.Contains(Container.FolderPath,recentlyaddedepisodes)</visible>
+				<visible>Container.Content(episodes) + !SubString(Container.FolderPath,recentlyaddedepisodes)</visible>
 				<control type="image">
 					<top>2</top>
 					<width>147</width>
 					<height>24</height>
 					<texture>$INFO[ListItem.UserRating,rating/rating,.png]</texture>
 					<aspectratio align="left">keep</aspectratio>
-					<visible>!String.IsEmpty(ListItem.UserRating)</visible>
+					<visible>!IsEmpty(ListItem.UserRating)</visible>
 				</control>
 				<control type="image">
 					<top>3</top>
-					<width>48</width>
+					<width>47</width>
 					<height>23</height>
-					<texture>$VAR[TVShowRatingProvider]</texture>
-					<visible>!String.IsEmpty(ListItem.Rating)</visible>
+					<texture>views/tvdb.png</texture>
+					<visible>!IsEmpty(ListItem.Rating)</visible>
 				</control>
 				<control type="label">
 					<top>-13</top>
@@ -206,7 +205,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ffdadada</textcolor>
 					<label>$INFO[ListItem.Rating,,/10]</label>
-					<visible>!String.IsEmpty(ListItem.Rating)</visible>
+					<visible>!IsEmpty(ListItem.Rating)</visible>
 				</control>
 			</control>
 			<!-- Tagline -->
@@ -232,7 +231,7 @@
 				<font>Med32</font>
 				<textcolor>ffbebebe</textcolor>
 				<label>$INFO[ListItem.TVShowTitle]</label>
-				<visible>Container.Content(episodes) + String.Contains(Container.FolderPath,recentlyaddedepisodes)</visible>
+				<visible>Container.Content(episodes) + SubString(Container.FolderPath,recentlyaddedepisodes)</visible>
 			</control>
 			<!-- Sort method -->
 			<control type="grouplist">
@@ -268,7 +267,7 @@
 				<left>196</left>
 				<top>782</top>
 				<include>VisibleDelayFadeAnimation</include>
-				<visible>[String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | String.IsEmpty(Container.PluginName)] + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
+				<visible>[SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | IsEmpty(Container.PluginName)] + [Container.Content(movies) | Container.Content(sets) | Container.Content(tvshows) | Container.Content(seasons) | Container.Content(episodes)]</visible>
 				<!-- Controls -->
 				<control id="1000" type="grouplist">
 					<left>-10</left>
@@ -304,7 +303,7 @@
 						<focusedcolor>ff222222</focusedcolor>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
-						<visible>!String.IsEqual(ListItem.Label,..) + !String.Contains(Container.FolderName,$LOCALIZE[20434]) + !String.StartsWith(ListItem.Path,videodb://movies/sets)</visible>
+						<visible>!StringCompare(ListItem.Label,..) + !SubString(Container.FolderName,$LOCALIZE[20434]) + !SubString(ListItem.Path,videodb://movies/sets,left)</visible>
 					</control>
 					<control id="1003" type="button">
 						<width min="104" max="204">auto</width>
@@ -319,7 +318,7 @@
 						<textoffsetx>28</textoffsetx>
 						<textcolor>ffdadada</textcolor>
 						<focusedcolor>ff222222</focusedcolor>
-						<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+						<visible>!IsEmpty(ListItem.Trailer)</visible>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
@@ -329,13 +328,13 @@
 						<height>100</height>
 						<onup>50</onup>
 						<ondown>3000</ondown>
-						<onclick condition="!String.IsEqual(Playlist.Length(video),0)">ActivateWindow(videoplaylist)</onclick>
+						<onclick condition="!StringCompare(Playlist.Length(video),0)">ActivateWindow(videoplaylist)</onclick>
 						<font>Med24</font>
 						<label>$LOCALIZE[31088]</label>
 						<textoffsetx>28</textoffsetx>
 						<textcolor>ffdadada</textcolor>
 						<focusedcolor>ff222222</focusedcolor>
-						<visible>!String.IsEqual(Playlist.Length(video),0)</visible>
+						<visible>!StringCompare(Playlist.Length(video),0)</visible>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
@@ -390,55 +389,42 @@
 						<aligny>bottom</aligny>
 						<textcolor>ffbebebe</textcolor>
 						<label>$INFO[ListItem.Year,,[COLOR 00ffffff]/[/COLOR]]</label>
-						<visible>!String.IsEmpty(ListItem.Year)</visible>
+						<visible>!IsEmpty(ListItem.Year)</visible>
 					</control>
 					<include>Rating_TV</include>
-					<include condition="String.IsEmpty(Skin.String(RatingCountry)) | String.IsEqual(Skin.String(RatingCountry),US)">Rating_MPAA</include>
-					<include condition="String.IsEqual(Skin.String(RatingCountry),UK)">Rating_BBFC</include>
-					<include condition="String.IsEqual(Skin.String(RatingCountry),Germany)">Rating_FSK</include>
-					<include content="Spacer">
-						<param name="visible" value="Container.Content(movies) + !String.IsEmpty(ListItem.Mpaa)" />
-					</include>
+					<include condition="IsEmpty(Skin.String(RatingCountry)) | Stringcompare(Skin.String(RatingCountry),US)">Rating_MPAA</include>
+					<include condition="Stringcompare(Skin.String(RatingCountry),UK)">Rating_BBFC</include>
+					<include condition="Stringcompare(Skin.String(RatingCountry),Germany)">Rating_FSK</include>
 					<control type="image">
 						<top>3</top>
-						<width>35</width>
+						<width>55</width>
 						<height>23</height>
 						<colordiffuse>ffdadada</colordiffuse>
-						<aspectratio align="left">keep</aspectratio>
-						<texture>flags/cc.png</texture>
-						<visible>!String.IsEmpty(ListItem.SubtitleLanguage)</visible>
+						<aspectratio>keep</aspectratio>
+						<texture align="center">rating/cc.png</texture>
+						<visible>!IsEmpty(ListItem.SubtitleLanguage)</visible>
 					</control>
-					<include content="Spacer">
-						<param name="visible" value="!String.IsEmpty(ListItem.SubtitleLanguage)" />
-					</include>
-					<include>AudioCodec</include>
-					<include content="Spacer">
-						<param name="visible" value="!String.IsEmpty(ListItem.AudioChannels)" />
-					</include>
 					<control type="image">
 						<top>2</top>
 						<width>147</width>
 						<height>24</height>
 						<texture>$INFO[ListItem.UserRating,rating/rating,.png]</texture>
 						<aspectratio align="left">keep</aspectratio>
-						<visible>!String.IsEmpty(ListItem.UserRating)</visible>
-					</control>
-					<include content="Spacer">
-						<param name="visible" value="!String.IsEmpty(ListItem.UserRating)" />
-					</include>
-					<control type="image">
-						<top>3</top>
-						<width>48</width>
-						<height>23</height>
-						<texture>$VAR[MovieRatingProvider]</texture>
-						<visible>!String.IsEmpty(ListItem.Rating) + !Container.Content(tvshows)</visible>
+						<visible>!IsEmpty(ListItem.UserRating)</visible>
 					</control>
 					<control type="image">
 						<top>3</top>
 						<width>48</width>
 						<height>23</height>
-						<texture>$VAR[TVShowRatingProvider]</texture>
-						<visible>!String.IsEmpty(ListItem.Rating) + Container.Content(tvshows)</visible>
+						<texture>views/imdb.png</texture>
+						<visible>!IsEmpty(ListItem.Rating) + !Container.Content(tvshows)</visible>
+					</control>
+					<control type="image">
+						<top>3</top>
+						<width>47</width>
+						<height>23</height>
+						<texture>views/tvdb.png</texture>
+						<visible>!IsEmpty(ListItem.Rating) + Container.Content(tvshows)</visible>
 					</control>
 					<control type="label">
 						<top>-8</top>
@@ -448,7 +434,7 @@
 						<aligny>bottom</aligny>
 						<textcolor>ffdadada</textcolor>
 						<label>$INFO[ListItem.Rating,,/10]</label>
-						<visible>!String.IsEmpty(ListItem.Rating)</visible>
+						<visible>!IsEmpty(ListItem.Rating)</visible>
 					</control>
 				</control>
 				<!-- Movie / TV Show plot -->
@@ -542,7 +528,7 @@
 						<aligny>bottom</aligny>
 						<textcolor>ffbebebe</textcolor>
 						<label>$INFO[ListItem.Duration,, $LOCALIZE[31147]]</label>
-						<visible>!String.IsEmpty(ListItem.Duration) + Integer.IsGreater(ListItem.Duration,1)</visible>
+						<visible>!IsEmpty(ListItem.Duration) + IntegerGreaterThan(ListItem.Duration,1)</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -551,7 +537,7 @@
 						<aligny>bottom</aligny>
 						<textcolor>ffbebebe</textcolor>
 						<label>[COLOR ff707070]$LOCALIZE[31152]: [/COLOR]$VAR[AiredDate_Day] $VAR[AiredDate_Month] $VAR[AiredDate_YearStart]$VAR[AiredDate_YearEnd]</label>
-						<visible>!String.IsEmpty(ListItem.Premiered) + String.IsEqual(System.Language,English)</visible>
+						<visible>!IsEmpty(ListItem.Premiered) + StringCompare(System.Language,English)</visible>
 					</control>
 					<control type="label">
 						<width>auto</width>
@@ -560,10 +546,9 @@
 						<aligny>bottom</aligny>
 						<textcolor>ffbebebe</textcolor>
 						<label>[COLOR ff707070]$LOCALIZE[31152]: [/COLOR]$INFO[ListItem.Premiered]</label>
-						<visible>!String.IsEmpty(ListItem.Premiered) + !String.IsEqual(System.Language,English)</visible>
+						<visible>!IsEmpty(ListItem.Premiered) + !StringCompare(System.Language,English)</visible>
 					</control>
 					<include>Rating_TV_Episodes</include>
-					<include>AudioCodec</include>
 				</control>
 				<control type="group">
 					<visible>Container.Content(episodes)</visible>
@@ -608,7 +593,7 @@
 				<left>196</left>
 				<top>807</top>
 				<include>VisibleDelayFadeAnimation</include>
-				<visible>[!String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !String.IsEmpty(Container.PluginName)] | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes)]</visible>
+				<visible>[!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)] | [!Container.Content(movies) + !Container.Content(sets) + !Container.Content(tvshows) + !Container.Content(seasons) + !Container.Content(episodes)]</visible>
 				<!-- Controls -->
 				<control id="1000" type="grouplist">
 					<left>-10</left>
@@ -641,7 +626,7 @@
 						<textoffsetx>28</textoffsetx>
 						<textcolor>ffdadada</textcolor>
 						<focusedcolor>ff222222</focusedcolor>
-						<visible>!String.IsEmpty(ListItem.Trailer)</visible>
+						<visible>!IsEmpty(ListItem.Trailer)</visible>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
@@ -651,13 +636,13 @@
 						<height>100</height>
 						<onup>50</onup>
 						<ondown>3000</ondown>
-						<onclick condition="!String.IsEqual(Playlist.Length(video),0)">ActivateWindow(videoplaylist)</onclick>
+						<onclick condition="!StringCompare(Playlist.Length(video),0)">ActivateWindow(videoplaylist)</onclick>
 						<font>Med24</font>
 						<label>$LOCALIZE[31088]</label>
 						<textoffsetx>28</textoffsetx>
 						<textcolor>ffdadada</textcolor>
 						<focusedcolor>ff222222</focusedcolor>
-						<visible>!String.IsEqual(Playlist.Length(video),0)</visible>
+						<visible>!StringCompare(Playlist.Length(video),0)</visible>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
 					</control>
@@ -704,7 +689,7 @@
 						<textoffsetx>28</textoffsetx>
 						<textcolor>ffdadada</textcolor>
 						<focusedcolor>ff222222</focusedcolor>
-						<visible>Control.IsEnabled(20) + String.IsEmpty(Container.PluginName)</visible>
+						<visible>Control.IsEnabled(20) + IsEmpty(Container.PluginName)</visible>
 						<usealttexture>Library.IsScanningVideo</usealttexture>
 						<texturefocus border="13,5,6,8">views/button_fo.png</texturefocus>
 						<texturenofocus border="13,3,6,6">views/button_nf.png</texturenofocus>
@@ -750,7 +735,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<visible>String.IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
+			<visible>IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
 			<!-- Background -->
 			<control type="image">
 				<include>FullscreenDimensions</include>
@@ -788,12 +773,12 @@
 						<width>-8</width>
 						<height>0</height>
 						<label>-</label>
-						<onfocus condition="[!String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !String.IsEmpty(Container.PluginName)]">SetFocus(5022)</onfocus>
-						<onfocus condition="[String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | String.IsEmpty(Container.PluginName)] + Control.IsEnabled(3)">SetFocus(5004)</onfocus>
-						<onfocus condition="[String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | String.IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + Control.IsEnabled(4)">SetFocus(14)</onfocus>
-						<onfocus condition="[String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | String.IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + Control.IsEnabled(4) + Control.IsEnabled(14)">SetFocus(4)</onfocus>
-						<onfocus condition="[String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | String.IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Control.IsEnabled(14) + Container.CanFilter + !Container.CanFilterAdvanced">SetFocus(19)</onfocus>
-						<onfocus condition="[String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | String.IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Control.IsEnabled(14) + Container.CanFilterAdvanced">SetFocus(5011)</onfocus>
+						<onfocus condition="[!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)]">SetFocus(5022)</onfocus>
+						<onfocus condition="[SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | IsEmpty(Container.PluginName)] + Control.IsEnabled(3)">SetFocus(5004)</onfocus>
+						<onfocus condition="[SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + Control.IsEnabled(4)">SetFocus(14)</onfocus>
+						<onfocus condition="[SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + Control.IsEnabled(4) + Control.IsEnabled(14)">SetFocus(4)</onfocus>
+						<onfocus condition="[SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Control.IsEnabled(14) + Container.CanFilter + !Container.CanFilterAdvanced">SetFocus(19)</onfocus>
+						<onfocus condition="[SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) | IsEmpty(Container.PluginName)] + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Control.IsEnabled(14) + Container.CanFilterAdvanced">SetFocus(5011)</onfocus>
 						<include>NoTextures</include>
 						<visible>!Control.HasFocus(5022) + !Control.HasFocus(5004) + !Control.HasFocus(14) + !Control.HasFocus(4) + !Control.HasFocus(19) + !Control.HasFocus(5011) + !Control.HasFocus(5013)</visible>
 					</control>
@@ -801,7 +786,7 @@
 						<width>640</width>
 						<height>60</height>
 						<texture border="2">dialogs/OptionsBackgroundHeading.png</texture>
-						<visible>[!String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !String.IsEmpty(Container.PluginName)] | Container.Content(files)</visible>
+						<visible>!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="label" id="5021">
 						<left>40</left>
@@ -811,7 +796,7 @@
 						<font>Bold30</font>
 						<textcolor>ffdadada</textcolor>
 						<label>$LOCALIZE[582]:</label>
-						<visible>[!String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !String.IsEmpty(Container.PluginName)] | Container.Content(files)</visible>
+						<visible>!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="button" id="5022">
 						<height>110</height>
@@ -827,7 +812,7 @@
 						<focusedcolor>ffffaf37</focusedcolor>
 						<texturefocus border="3">dialogs/OptionsBackgroundButtonFO.png</texturefocus>
 						<texturenofocus border="3">dialogs/OptionsBackgroundButtonNF.png</texturenofocus>
-						<visible>[!String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !String.IsEmpty(Container.PluginName)] | Container.Content(files)</visible>
+						<visible>!SubString(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres) + !IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="image" id="5002">
 						<width>640</width>
@@ -865,7 +850,7 @@
 						<width>640</width>
 						<height>60</height>
 						<texture border="2">dialogs/OptionsBackgroundHeading.png</texture>
-						<visible>Control.IsEnabled(14) + String.IsEmpty(Container.PluginName)</visible>
+						<visible>Control.IsEnabled(14) + IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="label" id="5025">
 						<left>40</left>
@@ -875,7 +860,7 @@
 						<font>Bold30</font>
 						<textcolor>ffdadada</textcolor>
 						<label>$LOCALIZE[31162]:</label>
-						<visible>Control.IsEnabled(14) + String.IsEmpty(Container.PluginName)</visible>
+						<visible>Control.IsEnabled(14) + IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="togglebutton" id="14">
 						<height>110</height>
@@ -894,7 +879,7 @@
 						<alttexturefocus border="3">dialogs/OptionsBackgroundButtonFO.png</alttexturefocus>
 						<alttexturenofocus border="3">dialogs/OptionsBackgroundButtonNF.png</alttexturenofocus>
 						<usealttexture>System.Setting(hidewatched)</usealttexture>
-						<visible>Control.IsEnabled(14) + String.IsEmpty(Container.PluginName)</visible>
+						<visible>Control.IsEnabled(14) + IsEmpty(Container.PluginName)</visible>
 					</control>
 					<control type="image" id="5005">
 						<width>640</width>

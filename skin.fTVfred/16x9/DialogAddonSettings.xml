@@ -113,7 +113,7 @@
 				<texturefocus border="3">settings/button_focus.png</texturefocus>
 				<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 				<aligny>center</aligny>
-				<reverse>true</reverse>
+				<reverse>yes</reverse>
 			</control>
 			<!-- Default label -->
 			<control id="7" type="label">
@@ -193,13 +193,6 @@
 					<label>186</label>
 					<visible>Control.IsEnabled(10)</visible>
 				</control>
-			</control>
-			<control type="image">
-				<left>422</left>
-				<top>60</top>
-				<width>40</width>
-				<height>504</height>
-				<texture border="0,20,0,0">common/shadow.png</texture>
 			</control>
 		</control>
 	</controls>

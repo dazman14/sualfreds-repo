@@ -3,14 +3,13 @@
 	<!-- pictures -->
 	<menucontrol>5000</menucontrol>
 	<backgroundcolor>0xff12161b</backgroundcolor>
-	<defaultcontrol always="true">56</defaultcontrol>
+	<defaultcontrol always="true">57</defaultcontrol>
 	<onload>ClearProperty(LabelsDelayFadeAnimation,home)</onload>
 	<onload condition="Window.Previous(home) + system.getbool(filelists.showparentdiritems)">Control.Move($VAR[ContainerID],1)</onload>
-	<onload condition="!String.Contains(Control.GetLabel(9),*) | String.IsEmpty(Skin.String(PicturesRandom))">Skin.SetString(PicturesRandom,off)</onload>
+	<onload condition="!SubString(Control.GetLabel(9),*) | IsEmpty(Skin.String(PicturesRandom))">Skin.SetString(PicturesRandom,off)</onload>
 	<onunload condition="Window.Next(home)">Control.Move($VAR[ContainerID],$INFO[Container.CurrentItem,-])</onunload>
 	<onunload condition="Window.Next(home) + !system.getbool(filelists.showparentdiritems)">Control.Move($VAR[ContainerID],1)</onunload>
-	<views>56,55,57,58</views>
-	<animation effect="fade" start="0" end="0" time="0">WindowClose</animation>
+	<views>57,56,55</views>
 	<controls>
 		<control id="2" type="button">
 			<include>HiddenControl</include>
@@ -26,10 +25,9 @@
 		<include>Viewtype55</include>
 		<include>Viewtype56</include>
 		<include>Viewtype57</include>
-		<include>Viewtype58</include>
 		<control type="group">
 			<include>LabelsDelayFadeAnimation</include>
-			<visible>String.IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation)) + !Control.IsVisible(58)</visible>
+			<visible>IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
 			<!-- Heading / Current item / Total items -->
 			<control type="grouplist">
 				<left>198</left>
@@ -55,7 +53,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ffdadada</textcolor>
 					<label>$INFO[Container.CurrentItem]</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>14</top>
@@ -65,7 +63,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>|</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 				<control type="label">
 					<top>15</top>
@@ -75,7 +73,7 @@
 					<aligny>bottom</aligny>
 					<textcolor>ff505050</textcolor>
 					<label>$INFO[Container.NumItems]</label>
-					<visible>Integer.IsGreater(Container.NumItems,0)</visible>
+					<visible>IntegerGreaterThan(Container.NumItems,0)</visible>
 				</control>
 			</control>
 			<!-- Sort method -->
@@ -168,8 +166,8 @@
 						<onup>57</onup>
 						<ondown>3000</ondown>
 						<onclick>SendClick(9)</onclick>
-						<onclick condition="String.Contains(Skin.String(PicturesRandom),off)">Skin.SetString(PicturesRandom,on)</onclick>
-						<onclick condition="String.Contains(Skin.String(PicturesRandom),on)">Skin.SetString(PicturesRandom,off)</onclick>
+						<onclick condition="SubString(Skin.String(PicturesRandom),off)">Skin.SetString(PicturesRandom,on)</onclick>
+						<onclick condition="SubString(Skin.String(PicturesRandom),on)">Skin.SetString(PicturesRandom,off)</onclick>
 						<font>Med24</font>
 						<label>$VAR[RandomiseSlideshow]</label>
 						<textoffsetx>28</textoffsetx>
@@ -233,7 +231,7 @@
 			</control>
 		</control>
 		<control type="group">
-			<visible>String.IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
+			<visible>IsEmpty(Window(Home).Property(LabelsDelayFadeAnimation))</visible>
 			<!-- Background -->
 			<control type="image">
 				<include>FullscreenDimensions</include>
@@ -271,11 +269,11 @@
 						<width>-8</width>
 						<height>0</height>
 						<label>-</label>
-						<onfocus condition="Container.Content(images)">SetFocus(5022)</onfocus>
-						<onfocus condition="!Container.Content(images) + Control.IsEnabled(3)">SetFocus(5004)</onfocus>
-						<onfocus condition="!Container.Content(images) + !Control.IsEnabled(3) + Control.IsEnabled(4)">SetFocus(4)</onfocus>
-						<onfocus condition="!Container.Content(images) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilter + !Container.CanFilterAdvanced">SetFocus(19)</onfocus>
-						<onfocus condition="!Container.Content(images) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilterAdvanced">SetFocus(5011)</onfocus>
+						<onfocus condition="Control.IsEnabled(2)">SetFocus(5022)</onfocus>
+						<onfocus condition="!Control.IsEnabled(2) + Control.IsEnabled(3)">SetFocus(5004)</onfocus>
+						<onfocus condition="!Control.IsEnabled(2) + !Control.IsEnabled(3) + Control.IsEnabled(4)">SetFocus(4)</onfocus>
+						<onfocus condition="!Control.IsEnabled(2) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilter + !Container.CanFilterAdvanced">SetFocus(19)</onfocus>
+						<onfocus condition="!Control.IsEnabled(2) + !Control.IsEnabled(3) + !Control.IsEnabled(4) + Container.CanFilterAdvanced">SetFocus(5011)</onfocus>
 						<include>NoTextures</include>
 						<visible>!Control.HasFocus(5022) + !Control.HasFocus(5004) + !Control.HasFocus(4) + !Control.HasFocus(19) + !Control.HasFocus(5011) + !Control.HasFocus(5013)</visible>
 					</control>
@@ -283,7 +281,7 @@
 						<width>640</width>
 						<height>60</height>
 						<texture border="2">dialogs/OptionsBackgroundHeading.png</texture>
-						<visible>Container.Content(images)</visible>
+						<visible>Control.IsEnabled(2)</visible>
 					</control>
 					<control type="label" id="5021">
 						<left>40</left>
@@ -293,7 +291,7 @@
 						<font>Bold30</font>
 						<textcolor>ffdadada</textcolor>
 						<label>$LOCALIZE[582]:</label>
-						<visible>Container.Content(images)</visible>
+						<visible>Control.IsEnabled(2)</visible>
 					</control>
 					<control type="button" id="5022">
 						<height>110</height>
@@ -309,7 +307,7 @@
 						<focusedcolor>ffffaf37</focusedcolor>
 						<texturefocus border="3">dialogs/OptionsBackgroundButtonFO.png</texturefocus>
 						<texturenofocus border="3">dialogs/OptionsBackgroundButtonNF.png</texturenofocus>
-						<visible>Container.Content(images)</visible>
+						<visible>Control.IsEnabled(2)</visible>
 					</control>
 					<control type="image" id="5002">
 						<width>640</width>

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: skin.ftv pvr mod\n"
 "Report-Msgid-Bugs-To: http://trac.xbmc.org/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2016-07-08 09:34+0000\n"
+"PO-Revision-Date: 2016-03-08 07:29+0000\n"
 "Last-Translator: sualfred <su4lfred@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/skinrefred/skinftv-pvr-mod/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -499,25 +499,24 @@ msgstr "Organisiere die installierten Addons · Installiere Addons[CR]Passe Addo
 
 msgctxt "#31117"
 msgid ""
-"Manage your media library, set database options, change media listing "
-"options."
-msgstr "Organisiere die Medien-Bibliothek · Setze Datenbank-Optionen · Ändere die Auflistungsoptionen"
+"Manage your video library, set video playback options, change video listing "
+"options and set subtitle fonts."
+msgstr "Organisiere die Video-Bibliothek · Setze die Videoabspieloptionen · Ändere die Videoauflistungsoptionen[CR]Setze Untertitel-Schriftart"
 
 msgctxt "#31118"
 msgid ""
-"Manage your player settings, set media playback options, change the "
-"behaviour how supported media files will be handled."
-msgstr "Organisiere die Wiedergabe-Einstellungen · Setze Media Abspieloptionen · Ändere das Verhalten, wie mit Medien umgegangen wird"
+"Manage your music library, set music playback options, change music listing "
+"options, and setup song submission."
+msgstr "Organisiere die Musik-Bibliothek · Setze die Musikabspieloptionen · Ändere die Musikauflistungsoptionen[CR]Konfiguriere die Musikübertragung"
 
-#: /16x9/MyWeather.xml
 msgctxt "#31119"
-msgid "Location"
-msgstr "Standort"
+msgid ""
+"Manage your weather addons and set cities to collect weather information."
+msgstr "Organisiere die Wetter-Addons und wähle die Städte zum Sammeln der Wetter-Informationen"
 
-#: /16x9/SkinSettings.xml
 msgctxt "#31120"
-msgid "Select Movie Rating Provider"
-msgstr "Quelle der Film-Bewertungen auswählen"
+msgid "Set picture listing options and configure slideshow settings."
+msgstr "Setze Bildauflistungsoptionen · Konfiguriere Diashow"
 
 msgctxt "#31121"
 msgid ""
@@ -1013,27 +1012,27 @@ msgctxt "#31234"
 msgid "View movie info"
 msgstr "Zeige Film Info"
 
-#: /16x9/script-script.extendedinfo-DialogVideoInfo.xml:366
+#: /16x9/script-ExtendedInfo Script-DialogVideoInfo.xml:366
 msgctxt "#31235"
 msgid "Awards"
 msgstr "Awards"
 
-#: /16x9/script-script.extendedinfo-DialogVideoInfo.xml:346
+#: /16x9/script-ExtendedInfo Script-DialogVideoInfo.xml:346
 msgctxt "#31236"
 msgid "budget"
 msgstr "Budget"
 
-#: /16x9/script-script.extendedinfo-DialogVideoInfo.xml:346
+#: /16x9/script-ExtendedInfo Script-DialogVideoInfo.xml:346
 msgctxt "#31237"
 msgid "grossed"
 msgstr "eingespielt"
 
-#: /16x9/script-script.extendedinfo-DialogVideoInfo.xml:366
+#: /16x9/script-ExtendedInfo Script-DialogVideoInfo.xml:366
 msgctxt "#31238"
 msgid "Budget and revenue"
 msgstr "Budget und Einnahmen"
 
-#: /16x9/script-script.extendedinfo-DialogVideoInfo.xml:331
+#: /16x9/script-ExtendedInfo Script-DialogVideoInfo.xml:331
 msgctxt "#31239"
 msgid "Premiered on"
 msgstr "Erstaufführung am"
@@ -1115,8 +1114,8 @@ msgstr "Empfohlener Film/Serie"
 
 #: /16x9/VideoOSDSettings.xml:146
 msgctxt "#31255"
-msgid "3D"
-msgstr "3D"
+msgid "3D enabled"
+msgstr "3D aktiviert"
 
 #: /16x9/VideoOSDSettings.xml:167
 msgctxt "#31256"
@@ -1190,209 +1189,6 @@ msgstr "Es gibt keine Ergebnisse für dieses Widget"
 msgctxt "#31269"
 msgid "Genres (Plugin based)"
 msgstr "Genres (Plugin basierend)"
-
-#: /16x9/DialogMusicInfo.xml:333
-msgctxt "#31270"
-msgid "Your Rating"
-msgstr "Deine Bewertung"
-
-#: /16x9/DialogMusicInfo.xml:333
-msgctxt "#31271"
-msgid "YourRating"
-msgstr "DeineBewertung"
-
-#: /16x9/Variables.xml:21
-msgctxt "#31272"
-msgid "Not rated"
-msgstr "Keine"
-
-#: /16x9/Variables.xml:16
-msgctxt "#31273"
-msgid "I hate it"
-msgstr "Hasse es"
-
-#: /16x9/Variables.xml:17
-msgctxt "#31274"
-msgid "I don't like it"
-msgstr "Mags nicht"
-
-#: /16x9/Variables.xml:18
-msgctxt "#31275"
-msgid "It's okay"
-msgstr "Ist okay"
-
-#: /16x9/Variables.xml:19
-msgctxt "#31276"
-msgid "I like it"
-msgstr "Gefällt mir"
-
-#: /16x9/Variables.xml:20
-msgctxt "#31277"
-msgid "I love it"
-msgstr "Liebe es"
-
-#: /16x9/IncludesDialogSelect.xml:384
-msgctxt "#31278"
-msgid "This is your own personal rating and is not shared publicly"
-msgstr "Dies ist deine eigene Bewertung und wird nicht öffentlich geteilt"
-
-#: /16x9/IncludesDialogSelect.xml:412
-msgctxt "#31279"
-msgid "Select your rating"
-msgstr "Vergebe deine Bewertung"
-
-#: /16x9/IncludesDialogSelect.xml:447
-msgctxt "#31280"
-msgid "Submit"
-msgstr "Bewerten"
-
-#: /16x9/ViewTypes.xml:415
-msgctxt "#31281"
-msgid "Panel"
-msgstr "Panel"
-
-#: /16x9/script-script.extendedinfo-VideoList.xml:190
-msgctxt "#31282"
-msgid "My Account"
-msgstr "Mein Account"
-
-#: /16x9/script-script.extendedinfo-VideoList.xml:123
-msgctxt "#31283"
-msgid "Next page"
-msgstr "Nächste Seite"
-
-#: /16x9/script-script.extendedinfo-VideoList.xml:135
-msgctxt "#31284"
-msgid "Previous page"
-msgstr "Vorherige Seite"
-
-#: /16x9/Widgets.xml:449
-msgctxt "#31285"
-msgid "Weather settings"
-msgstr "Wetter-Einstellungen"
-
-#: /16x9/script-script.extendedinfo-VideoList.xml:134
-msgctxt "#31286"
-msgid "ExtendedInfo Script"
-msgstr "ExtendedInfo Script"
-
-#: /16x9/SkinSettings.xml
-msgctxt "#31287"
-msgid "Select TV Show Rating Provider"
-msgstr "Quelle der Serien-Bewertungen auswählen"
-
-#: /16x9/Variables.xml
-msgctxt "#31288"
-msgid "Select the rating provider of your configured movie scraper."
-msgstr "Wähle die Herkunft der Film-Bewertungen deines konfiguriertem Scrapers."
-
-#: /16x9/Variables.xml
-msgctxt "#31289"
-msgid "Select the rating provider of your configured TV show scraper."
-msgstr "Wähle die Herkunft der Serien-Bewertungen deines konfiguriertem Scrapers."
-
-#: /16x9/SkinSettings.xml
-msgctxt "#31290"
-msgid "Horizontal"
-msgstr "Horizontal"
-
-#: /16x9/SkinSettings.xml
-msgctxt "#31291"
-msgid "Vertical"
-msgstr "Vertikal"
-
-#: /16x9/SkinSettings.xml
-msgctxt "#31292"
-msgid "Set PVR Channels OSD Layout"
-msgstr "Setze TV Kanal OSD Ansicht "
-
-#: /16x9/Variables.xml
-msgctxt "#31293"
-msgid ""
-"Changes the OSD layout of the Live TV channels.[CR]Default is 'Horizontal'."
-msgstr "Ändert die Darstellung des OSD Layouts der TV Kanäle während der Wiedergabe.[CR]Standard ist 'Horizontal'."
-
-#: /16x9/VideoOSDBookmarks.xml
-msgctxt "#31294"
-msgid "No boomarks available"
-msgstr "Keine Kapitel verfügbar"
-
-#: /16x9/Variables.xml
-msgctxt "#31295"
-msgid "Hardware decoding is active"
-msgstr "Hardware Decoding aktiv"
-
-#: /16x9/Variables.xml
-msgctxt "#31296"
-msgid "Hardware decoding is inactive"
-msgstr "Hardware Decoding inaktiv"
-
-#: /16x9/IncludesDialogSettings.xml
-msgctxt "#31297"
-msgid "Media processing info"
-msgstr "Meida Processing Info"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31298"
-msgid "Subtitle styling"
-msgstr "Untertitelstil"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31299"
-msgid "Shift"
-msgstr "Shift"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31300"
-msgid "Shift[CR]Down"
-msgstr "Nach[CR]unten"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31301"
-msgid "Mode"
-msgstr "Modus"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31302"
-msgid "Offset"
-msgstr "Offset"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31303"
-msgid "Apply"
-msgstr "Apply"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31304"
-msgid "Shift [B]UP[/B]"
-msgstr "Schiebe nach [B]OBEN[/B]"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31305"
-msgid "Shift [B]DOWN[/B]"
-msgstr "Schiebe nach [B]UNTEN[/B]"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31306"
-msgid "Offset [B]MINUS[/B]"
-msgstr "Offset [B]MINUS[/B]"
-
-#: /16x9/VideoOSD.xml
-msgctxt "#31307"
-msgid "Offset [B]PLUS[/B]"
-msgstr "Offset [B]PLUS[/B]"
-
-#: /16x9/Variables.xml
-msgctxt "#31308"
-msgid ""
-"Enables the video fullscreen NextUp popup notification for LiveTV "
-"playback.[CR]Enabled by default."
-msgstr "Zeigt während der Wiedergabe die nachfolgende Live-TV Sendung als Popup an.[CR]Standardmäßig aktiviert."
-
-#: /16x9/SkinSettings.xml
-msgctxt "#31309"
-msgid "Live TV NextUp Popup"
-msgstr "'Als nächstes' Popup für Live-TV"
 
 msgctxt "#31500"
 msgid "Widget Group 1"

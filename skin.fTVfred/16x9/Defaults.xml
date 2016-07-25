@@ -91,7 +91,7 @@
 		<texturedownfocus>dialogs/SpinDownFO.png</texturedownfocus>
 		<textureupdisabled>dialogs/SpinUpDisabled.png</textureupdisabled>
 		<texturedowndisabled>dialogs/SpinDownDisabled.png</texturedowndisabled>
-		<reverse>true</reverse>
+		<reverse>yes</reverse>
 		<pulseonselect>false</pulseonselect>
 	</default>
 	<default type="spincontrol">
@@ -112,7 +112,7 @@
 		<texturedownfocus>dialogs/SpinDownFO.png</texturedownfocus>
 		<textureupdisabled>dialogs/SpinUpDisabled.png</textureupdisabled>
 		<texturedowndisabled>dialogs/SpinDownDisabled.png</texturedowndisabled>
-		<reverse>true</reverse>
+		<reverse>yes</reverse>
 		<pulseonselect>false</pulseonselect>
 	</default>
 	<default type="sliderex">
@@ -140,7 +140,6 @@
 		<texturesliderbar border="4">osd/progress_back.png</texturesliderbar>
 		<textureslidernib border="4">osd/progress_cache.png</textureslidernib>
 		<textureslidernibfocus border="4">osd/progress_bar.png</textureslidernibfocus>
-		<orientation>horizontal</orientation>
 	</default>
 	<default type="progress">
 		<height>44</height>
@@ -165,7 +164,7 @@
 		<disabledcolor>DisabledColor</disabledcolor>
 		<invalidcolor>DisabledColor</invalidcolor>
 		<texturefocus>-</texturefocus>
-		<pulseonselect>false</pulseonselect>
+		<pulseonselect>no</pulseonselect>
 		<hinttext>...</hinttext>
 	</default>
 </includes>

@@ -14,7 +14,7 @@
 			<control type="image">
 				<width>1540</width>
 				<height>648</height>
-				<texture border="5,65,5,5">dialogs/dialog_back.png</texture>
+				<texture>dialogs/smart_playlist_editor_back.png</texture>
 			</control>
 			<!-- Heading -->
 			<control type="label" id="2">
@@ -47,7 +47,7 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<aligny>center</aligny>
-					<reverse>true</reverse>
+					<reverse>yes</reverse>
 				</control>
 				<!-- Name Button -->
 				<control type="edit" id="12">
@@ -114,13 +114,6 @@
 							<width>550</width>
 							<height>84</height>
 							<texture border="3">settings/button_focus.png</texture>
-							<visible>Control.HasFocus(10)</visible>
-						</control>
-						<control type="image">
-							<width>550</width>
-							<height>84</height>
-							<texture border="3">settings/button_no_focus.png</texture>
-							<visible>!Control.HasFocus(10)</visible>
 						</control>
 						<control type="label">
 							<left>40</left>
@@ -223,7 +216,7 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<aligny>center</aligny>
-					<reverse>true</reverse>
+					<reverse>yes</reverse>
 				</control>
 				<!-- Default spin control -->
 				<control type="spincontrolex" id="17">
@@ -242,7 +235,7 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<aligny>center</aligny>
-					<reverse>true</reverse>
+					<reverse>yes</reverse>
 				</control>
 				<!-- Default spin control -->
 				<control type="spincontrolex" id="18">
@@ -261,7 +254,7 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<aligny>center</aligny>
-					<reverse>true</reverse>
+					<reverse>yes</reverse>
 				</control>
 				<!-- Default toggle -->
 				<control type="togglebutton" id="19">
@@ -302,7 +295,7 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<aligny>center</aligny>
-					<reverse>true</reverse>
+					<reverse>yes</reverse>
 				</control>
 				<!-- Default radio button -->
 				<control type="radiobutton" id="24">
@@ -333,6 +326,7 @@
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 				</control>
 			</control>
+
 			<!-- Button grouplist -->
 			<control type="grouplist" id="9001">
 				<bottom>3</bottom>
@@ -367,20 +361,6 @@
 					<textoffsety>27</textoffsety>
 					<label>186</label>
 				</control>
-			</control>
-			<control type="image">
-				<left>510</left>
-				<top>312</top>
-				<width>40</width>
-				<height>252</height>
-				<texture flipx="true" border="0,20,0,0">common/shadow.png</texture>
-			</control>
-			<control type="image">
-				<left>770</left>
-				<top>60</top>
-				<width>40</width>
-				<height>504</height>
-				<texture border="0,20,0,0">common/shadow.png</texture>
 			</control>
 		</control>
 	</controls>

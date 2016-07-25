@@ -9,18 +9,18 @@
 			<include>HiddenControl</include>
 			<onleft>noop</onleft>
 			<onright>303</onright>
-			<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
-			<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
-			<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">9001</ondown>
+			<onup condition="!IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+			<ondown condition="!IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+			<ondown condition="IsEmpty(Container(211).ListItemNoWrap(1).Label)">9001</ondown>
 		</control>
 		<!-- Move up -->
 		<control type="button" id="303">
 			<include>HiddenControl</include>
 			<onleft>304</onleft>
 			<onright>9000</onright>
-			<onup condition="!String.IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
-			<ondown condition="!String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
-			<ondown condition="String.IsEmpty(Container(211).ListItemNoWrap(1).Label)">9001</ondown>
+			<onup condition="!IsEmpty(Container(211).ListItemNoWrap(-1).Label)">Control.Move(211,-1)</onup>
+			<ondown condition="!IsEmpty(Container(211).ListItemNoWrap(1).Label)">Control.Move(211,1)</ondown>
+			<ondown condition="IsEmpty(Container(211).ListItemNoWrap(1).Label)">9001</ondown>
 		</control>
 		<!-- Hidden Buttons -->
 		<control type="button" id="404">
@@ -37,37 +37,37 @@
 			<include name="ResetAllWidgets">
 				<param name="ID">1000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">2000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">3000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">4000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">5000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">6000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">7000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">8000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">9000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">10000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">11000</param>
 			</include>
-			<include content="ResetAllWidgets">
+			<include name="ResetAllWidgets">
 				<param name="ID">12000</param>
 			</include>
 			<onfocus>SetFocus(910)</onfocus>
@@ -83,7 +83,7 @@
 			<control type="image">
 				<width>1540</width>
 				<height>748</height>
-				<texture border="5,65,5,5">dialogs/dialog_back.png</texture>
+				<texture>dialogs/skin_shortcuts_back.png</texture>
 			</control>
 			<!-- Heading -->
 			<control type="label" id="500">
@@ -95,7 +95,7 @@
 				<font>Bold30</font>
 				<label>21432</label>
 				<textcolor>ffdadada</textcolor>
-				<visible>String.IsEqual(Window.Property(groupname), mainmenu)</visible>
+				<visible>StringCompare(Window.Property(groupname), mainmenu)</visible>
 			</control>
 			<control type="label">
 				<left>40</left>
@@ -106,7 +106,7 @@
 				<font>Bold30</font>
 				<label>$LOCALIZE[31114]</label>
 				<textcolor>ffdadada</textcolor>
-				<visible>String.IsEqual(Window.Property(groupname), shutdown)</visible>
+				<visible>StringCompare(Window.Property(groupname), shutdown)</visible>
 			</control>
 			<!-- Left list -->
 			<control type="list" id="211">
@@ -302,8 +302,8 @@
 					<onclick>RunScript(script.toolbox,info=selectdialog,header=$ADDON[script.skinshortcuts 32044])</onclick>
 					<label>31509</label>
 					<label2>$VAR[ftvWidgetLabel]</label2>
-					<enable>!String.IsEqual(Container(211).ListItem.Property(defaultID),settings)</enable>
-					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<enable>!StringCompare(Container(211).ListItem.Property(defaultID),settings)</enable>
+					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
 				</control>
 				<!-- Manage widgets -->
 				<control id="998" type="button">
@@ -317,19 +317,19 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>- $LOCALIZE[31508] $VAR[ftvWidgetLabel]</label>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget1)">SetProperty(SubMenu,1000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget2)">SetProperty(SubMenu,2000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget3)">SetProperty(SubMenu,3000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget4)">SetProperty(SubMenu,4000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget5)">SetProperty(SubMenu,5000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget6)">SetProperty(SubMenu,6000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget7)">SetProperty(SubMenu,7000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget8)">SetProperty(SubMenu,8000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget9)">SetProperty(SubMenu,9000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget10)">SetProperty(SubMenu,10000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget11)">SetProperty(SubMenu,11000,home)</onclick>
-					<onclick condition="String.IsEqual(Container(211).ListItem.Property(ftvWidget),widget12)">SetProperty(SubMenu,12000,home)</onclick>
-					<visible>String.StartsWith(Container(211).ListItem.Property(ftvWidget),widget)</visible>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget1)">SetProperty(SubMenu,1000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget2)">SetProperty(SubMenu,2000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget3)">SetProperty(SubMenu,3000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget4)">SetProperty(SubMenu,4000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget5)">SetProperty(SubMenu,5000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget6)">SetProperty(SubMenu,6000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget7)">SetProperty(SubMenu,7000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget8)">SetProperty(SubMenu,8000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget9)">SetProperty(SubMenu,9000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget10)">SetProperty(SubMenu,10000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget11)">SetProperty(SubMenu,11000,home)</onclick>
+					<onclick condition="StringCompare(Container(211).ListItem.Property(ftvWidget),widget12)">SetProperty(SubMenu,12000,home)</onclick>
+					<visible>SubString(Container(211).ListItem.Property(ftvWidget),widget,left)</visible>
 					<onclick>ActivateWindow(1105)</onclick>
 				</control>
 				<!-- Change background -->
@@ -347,7 +347,7 @@
 					<label2>$VAR[BackgroundLabel2]</label2>
 					<onclick>SetProperty(LabelOverride,$ADDON[script.skinshortcuts 32045],home)</onclick>
 					<onclick>SendClick(311)</onclick>
-					<visible>String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>StringCompare(Window.Property(groupname),mainmenu)</visible>
 				</control>
 				<!-- Change thumbnail -->
 				<control type="button" id="306">
@@ -361,7 +361,7 @@
 					<texturefocus border="3">settings/button_focus.png</texturefocus>
 					<texturenofocus border="3">settings/button_no_focus.png</texturenofocus>
 					<label>$ADDON[script.skinshortcuts 32026]</label>
-					<visible>!String.IsEqual(Window.Property(groupname),mainmenu)</visible>
+					<visible>!StringCompare(Window.Property(groupname),mainmenu)</visible>
 				</control>
 				<!-- Remove -->
 				<control type="button" id="302">
@@ -452,17 +452,10 @@
 					<textoffsetx>23</textoffsetx>
 					<textoffsety>27</textoffsety>
 					<label>186</label>
-					<onback condition="!Window.IsVisible(home)">RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=99&amp;levels=5&amp;group=mainmenu|shutdown)</onback>
-					<onclick condition="!Window.IsVisible(home)">RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=99&amp;levels=0&amp;group=mainmenu|shutdown)</onclick>
+					<onback>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=99&amp;levels=5&amp;group=mainmenu|shutdown)</onback>
+					<onclick>RunScript(script.skinshortcuts,type=buildxml&amp;mainmenuID=99&amp;levels=0&amp;group=mainmenu|shutdown)</onclick>
 					<onclick>Close</onclick>
 				</control>
-			</control>
-			<control type="image">
-				<left>670</left>
-				<top>60</top>
-				<width>40</width>
-				<height>588</height>
-				<texture border="0,20,0,0">common/shadow.png</texture>
 			</control>
 		</control>
 	</controls>

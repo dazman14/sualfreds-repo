@@ -14,7 +14,7 @@
 			<control type="image">
 				<width>1540</width>
 				<height>664</height>
-				<texture border="5,65,5,5">dialogs/dialog_back.png</texture>
+				<texture>dialogs/groupmanager_back.png</texture>
 			</control>
 			<!-- Heading -->
 			<control type="label">
@@ -215,6 +215,7 @@
 				<ondown>noop</ondown>
 				<align>center</align>
 				<orientation>horizontal</orientation>
+
 				<!-- OK Button -->
 				<control type="button" id="29">
 					<width>320</width>
@@ -227,6 +228,7 @@
 					<textoffsety>27</textoffsety>
 					<label>186</label>
 				</control>
+
 				<!-- Delete Button -->
 				<control type="button" id="28">
 					<width>320</width>
@@ -239,6 +241,7 @@
 					<textoffsety>27</textoffsety>
 					<label>$LOCALIZE[117] $LOCALIZE[19141]</label>
 				</control>
+
 				<!-- Rename Button -->
 				<control type="button" id="27">
 					<width>320</width>
@@ -251,6 +254,7 @@
 					<textoffsety>27</textoffsety>
 					<label>$LOCALIZE[118] $LOCALIZE[19141]</label>
 				</control>
+
 				<!-- Add Button -->
 				<control type="button" id="26">
 					<width>320</width>
@@ -263,20 +267,7 @@
 					<textoffsety>27</textoffsety>
 					<label>$LOCALIZE[15019] $LOCALIZE[19141]</label>
 				</control>
-			</control>			
-			<control type="image">
-				<top>60</top>
-				<left>513</left>
-				<width>40</width>
-				<height>504</height>
-				<texture border="0,20,0,0">common/shadow.png</texture>
-			</control>
-			<control type="image">
-				<top>60</top>
-				<left>1026</left>
-				<width>40</width>
-				<height>504</height>
-				<texture border="0,20,0,0">common/shadow.png</texture>
+
 			</control>
 		</control>
 	</controls>
