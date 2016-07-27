@@ -562,7 +562,7 @@
 						<label>[COLOR ff707070]$LOCALIZE[31152]: [/COLOR]$INFO[ListItem.Premiered]</label>
 						<visible>!String.IsEmpty(ListItem.Premiered) + !String.IsEqual(System.Language,English)</visible>
 					</control>
-					<include>Rating_TV_Episodes</include>
+					<include>Rating_TV</include>
 					<include>AudioCodec</include>
 				</control>
 				<control type="group">
