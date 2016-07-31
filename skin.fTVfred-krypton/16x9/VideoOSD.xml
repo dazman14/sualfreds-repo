@@ -41,7 +41,7 @@
 		</control>
 		<!-- OSD -->
 		<control type="group">
-			<visible>!Window.IsVisible(osdvideosettings) + !Window.IsVisible(osdaudiosettings) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(subtitlesearch) + String.IsEmpty(Window(home).Property(ShowXRay))</visible>
+			<visible>!Window.IsVisible(osdvideosettings) + !Window.IsVisible(osdaudiosettings) + !Window.IsVisible(videobookmarks) + !Window.IsVisible(subtitlesearch) + !Window.IsVisible(playerprocessinfo) + String.IsEmpty(Window(home).Property(ShowXRay))</visible>
 			<!-- Masks -->
 			<control type="image">
 				<width>1920</width>
@@ -130,7 +130,7 @@
 					<font>Bold28</font>
 					<textcolor>ffebebeb</textcolor>
 					<label>[B]HD[/B]</label>
-					<visible>Integer.IsGreater(VideoPlayer.VideoResolution,719)</visible>
+					<visible>Integer.IsGreater(VideoPlayer.VideoResolution,710)</visible>
 				</control>
 				<!--  Resolution label -->
 				<control type="label">

@@ -415,6 +415,10 @@
 					<include content="Spacer">
 						<param name="visible" value="!String.IsEmpty(ListItem.AudioChannels)" />
 					</include>
+					<include>ListItemResolution</include>
+					<include content="Spacer">
+						<param name="visible" value="Integer.IsGreater(ListItem.VideoResolution,710)" />
+					</include>
 					<control type="image">
 						<top>2</top>
 						<width>147</width>
@@ -564,6 +568,7 @@
 					</control>
 					<include>Rating_TV</include>
 					<include>AudioCodec</include>
+					<include>ListItemResolution</include>
 				</control>
 				<control type="group">
 					<visible>Container.Content(episodes)</visible>
