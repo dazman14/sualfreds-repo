@@ -34,11 +34,11 @@
 		<value condition="Player.Forwarding8x">osd/ffx8.png</value>
 		<value condition="Player.Forwarding16x">osd/ffx16.png</value>
 		<value condition="Player.Forwarding32x">osd/ffx32.png</value>
-		<value condition="Player.Rewinding2x">osd/fwx2.png</value>
-		<value condition="Player.Rewinding4x">osd/fwx4.png</value>
-		<value condition="Player.Rewinding8x">osd/fwx8.png</value>
-		<value condition="Player.Rewinding16x">osd/ffw16.png</value>
-		<value condition="Player.Rewinding32x">osd/ffw32.png</value>
+		<value condition="Player.Rewinding2x">osd/rwx2.png</value>
+		<value condition="Player.Rewinding4x">osd/rwx4.png</value>
+		<value condition="Player.Rewinding8x">osd/rwx8.png</value>
+		<value condition="Player.Rewinding16x">osd/rwx16.png</value>
+		<value condition="Player.Rewinding32x">osd/rwx32.png</value>
 	</variable>
 	<variable name="videohwdecoder">
 		<value condition="Player.Process(videohwdecoder)">$LOCALIZE[31295]</value>
@@ -2325,6 +2325,7 @@
 		<value condition="ControlGroup(9).HasFocus(26)">$LOCALIZE[31289]</value>
 		<value condition="ControlGroup(9).HasFocus(27)">$LOCALIZE[31293]</value>
 		<value condition="ControlGroup(9).HasFocus(28)">$LOCALIZE[31308]</value>
+		<value condition="ControlGroup(9).HasFocus(29)">$LOCALIZE[31311]</value>
 	</variable>
 	<variable name="AlbumArtistName">
 		<value condition="!String.IsEmpty(ListItem.AlbumArtist)">$INFO[ListItem.AlbumArtist]</value>
