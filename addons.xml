@@ -278,7 +278,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.1.10b" 
+	version="3.2.0" 
 	name="fTV Fred Edition" 
 	provider-name="Sualfred"> 
 	<requires> 
@@ -310,13 +310,13 @@
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.1.10b[/B] 
-- Added user rating to visualisation 
-- Reworked music OSD menus 
-- Fixed equaliser.gif for albums 
-- Replaced artist slideshow script with skin helper service 
-- Fixed music playlist window issues 
-- Fixed broken addon screenshots 
+[B]3.2.0[/B] 
+- Added Rotten Tomatoes and Metacritics to DialogVideoInfo 
+- Added hint box to DialogVideoInfo 
+- Fixed list animations in video and extended info dialogs 
+- Fixed GlobalSearch fanarts 
+- Added button to 'no search results' message of GlobalSearch 
+- Fixed playlist position glitch in music visualisation 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 

@@ -186,9 +186,6 @@
 			<control type="label" id="199">
 				<include>HiddenControl</include>
 			</control>
-			<control type="button" id="198">
-				<include>HiddenControl</include>
-			</control>
 			<control type="group">
 				<!-- Background -->
 				<include>BackgroundImage</include>
@@ -213,7 +210,7 @@
 					</control>
 					<control type="group">
 						<centerleft>50%</centerleft>
-						<top>473</top>
+						<top>468</top>
 						<control type="label">
 							<height>32</height>
 							<font>Bold32</font>
@@ -228,6 +225,16 @@
 							<align>center</align>
 							<textcolor>ff717171</textcolor>
 							<label>$LOCALIZE[31112]</label>
+						</control>
+						<control id="198" type="button">
+							<centerleft>50%</centerleft>
+							<top>78</top>
+							<width>300</width>
+							<height>76</height>
+							<align>center</align>
+							<aligny>top</aligny>
+							<font>MedUpper24</font>
+							<textoffsety>27</textoffsety>
 						</control>
 					</control>
 				</control>
