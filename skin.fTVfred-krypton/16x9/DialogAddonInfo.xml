@@ -108,7 +108,7 @@
 			<animation effect="fade" end="100" start="0" time="200" delay="400">WindowOpen</animation>
 			<!-- Heading -->
 			<control type="label">
-				<top>-10</top>
+				<top>-7</top>
 				<width>1170</width>
 				<height>48</height>
 				<font>Med48</font>
@@ -342,6 +342,7 @@
 					<width>761</width>
 					<height>470</height>
 					<texture border="66,66,51,51">views/shadow_nf.png</texture>
+					<visible>!String.IsEmpty(ListItem.Art(fanart))</visible>
 				</control>
 				<control type="image">
 					<top>504</top>
