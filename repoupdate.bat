@@ -4,8 +4,18 @@ set TOOLS=%~dp0tools
 set SOURCE=%~dp0
 set GIT=C:\Program Files\Git\bin
 
+echo. ^_  ^_^_        ^_ ^_   ^_^_^_                 ^_   ^_          ^_      ^_
+echo.^| ^|/ ^/^_^_^_  ^_^_^| ^(^_^) ^| ^_ ^\^_^_^_ ^_ ^_^_  ^_^_^_  ^| ^| ^| ^|^_ ^_^_  ^_^_^| ^|^_^_ ^_^| ^|^_ ^_^_^_ ^_ ^_ 
+echo.^| ^' ^<^/ ^_ ^\^/ ^_^` ^| ^| ^|   ^/ ^-^_^) ^'^_ ^\^/ ^_ ^\ ^| ^|^_^| ^| ^'^_ ^\^/ ^_^` ^/ ^_^` ^|  ^_^/ ^-^_^) ^'^_^|
+echo.^|^_^|^\^_^\^_^_^_^/^\^_^_^,^_^|^_^| ^|^_^|^_^\^_^_^_^| ^.^_^_^/^\^_^_^_^/  ^\^_^_^_^/^| ^.^_^_^/^\^_^_^,^_^\^_^_^,^_^|^\^_^_^\^_^_^_^|^_^|  
+echo.                           ^|^_^|               ^|^_^|                          
+
+TIMEOUT /T 5 /NOBREAK
+goto :updatefiles
+
+:updatefiles
 echo.
-echo. [ Checking for new versions ]
+echo.[ Checking for new versions ]
 echo.
 echo ^<?xml version="1.0" encoding="UTF-8" standalone="yes"?^> > %~dp0addons.xml
 echo ^<addons^> >> %~dp0addons.xml
@@ -49,7 +59,9 @@ for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
 echo ^</addons^> >> %~dp0addons.xml
 for /f "delims= " %%a in ('%TOOLS%\fciv -md5 %~dp0addons.xml') do echo %%a > %~dp0addons.xml.md5
 echo.
-echo. [ Addons updated ]
+echo.
+echo.[ Addons updated ]
+echo.
 echo.
 goto :choice
 
@@ -61,19 +73,26 @@ goto :choice
 
 :repoupdate
 echo.
-echo. [ Committer ]
+echo.
+echo.[ Committer ]
+echo.
 echo.
 "%GIT%\git.exe" config --global push.default simple
 "%GIT%\git.exe" add *
 "%GIT%\git.exe" commit -a -m update
 "%GIT%\git.exe" push
 echo.
-echo. [ Done ]
 echo.
-pause
-exit
+echo.[ Done ]
+echo.
+echo.
+goto :exitspot
 
 :exitspot
-echo "You selected NO, exiting ..."
-pause 
+echo.
+echo.
+echo.[ Exiting ]
+echo.
+echo.
+PING 1.1.1.1 -n 1 -w 3000 >NUL
 exit
