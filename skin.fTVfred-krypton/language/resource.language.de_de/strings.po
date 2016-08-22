@@ -380,7 +380,7 @@ msgstr "Aktuelle Playliste"
 
 msgctxt "#31089"
 msgid "View Options"
-msgstr "View Optionen"
+msgstr "Anzeige[CR]Optionen"
 
 msgctxt "#31090"
 msgid "Update Library"
@@ -700,8 +700,8 @@ msgid "Show"
 msgstr "Ansicht"
 
 msgctxt "#31163"
-msgid "Start Party Mode"
-msgstr "Partymodus starten"
+msgid "Start[CR]Party Mode"
+msgstr "Starte[CR]Partymodus"
 
 msgctxt "#31164"
 msgid "Next Up"
@@ -1443,6 +1443,16 @@ msgstr "Stimmung"
 msgctxt "#31319"
 msgid "Searching for cast"
 msgstr "Suche Darsteller"
+
+#: /16x9/MyVideoNav.xml
+msgctxt "#31320"
+msgid "unwatched episodes"
+msgstr "ungesehene Folgen"
+
+#: /16x9/MyVideoNav.xml
+msgctxt "#31321"
+msgid "unwatched episode"
+msgstr "ungesehene Folge"
 
 msgctxt "#31500"
 msgid "Widget Group 1"

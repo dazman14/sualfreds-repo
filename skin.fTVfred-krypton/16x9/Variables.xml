@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <includes>
+	<variable name="UnwatchedEpisodes">
+		<value condition="Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),1)">$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[31320]]</value>
+		<value>$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[31321]]</value>
+	</variable>
 	<variable name="Rating_TV">
 		<value condition="!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,14)">rating/tv/14.png</value>
 		<value condition="!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,g) + !String.Contains(ListItem.Mpaa,pg)">rating/tv/g.png</value>
@@ -4446,6 +4450,12 @@
 		<value condition="String.EndsWith(VideoPlayer.Episode,s397)"> $LOCALIZE[31146], $LOCALIZE[20359] 397</value>
 		<value condition="String.EndsWith(VideoPlayer.Episode,s398)"> $LOCALIZE[31146], $LOCALIZE[20359] 398</value>
 		<value condition="String.EndsWith(VideoPlayer.Episode,s399)"> $LOCALIZE[31146], $LOCALIZE[20359] 399</value>
+	</variable>
+	<variable name="PlayerFullLabel">
+		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Artist,, - ]$INFO[MusicPlayer.Title]</value>
+		<value condition="VideoPlayer.Content(livetv)">$INFO[VideoPlayer.ChannelName]$INFO[VideoPlayer.Title, - ]</value>
+		<value condition="!String.IsEmpty(VideoPlayer.TVShowTitle)">$INFO[VideoPlayer.TVShowTitle]$VAR[PlayerEpisodeValue]$INFO[VideoPlayer.Title, - ]</value>
+		<value>$INFO[VideoPlayer.Title]</value>
 	</variable>
 	<variable name="PlayerBigLabel">
 		<value condition="!String.IsEmpty(MusicPlayer.Title)">$INFO[MusicPlayer.Title]</value>
