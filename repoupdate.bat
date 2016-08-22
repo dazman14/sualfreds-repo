@@ -1,12 +1,14 @@
 @echo off
 setlocal enabledelayedexpansion
-set tools_dir=%~dp0tools
+set TOOLS=%~dp0tools
+set SOURCE=%~dp0
+set GIT=C:\Program Files\Git\bin
 
+echo.
+echo. [ Checking for new versions ]
+echo.
 echo ^<?xml version="1.0" encoding="UTF-8" standalone="yes"?^> > %~dp0addons.xml
 echo ^<addons^> >> %~dp0addons.xml
-
-if exist plugin.video.amazon\resources\cache rd /s /q plugin.video.amazon\resources\cache >nul 2>&1
-
 for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
     del /q /s %%f\*.pyo >nul 2>&1>nul 2>&1
     del /q /s %%f\*.pyc >nul 2>&1
@@ -36,7 +38,7 @@ for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
 		move "%%f\%%f*.zip" temp\%%f\oldreleases >nul 2>&1
 		)
 		echo Packe %%f-!version!.zip
-		%tools_dir%\7za a %%f\%%f-!version!.zip %%f -tzip -ax!%%f*.zip> nul
+		%TOOLS%\7za a %%f\%%f-!version!.zip %%f -tzip -ax!%%f*.zip> nul
 		echo %%f-!version!.zip Prozess fertig.
 		echo. 
     ) else (
@@ -45,18 +47,22 @@ for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
     )
 )
 echo ^</addons^> >> %~dp0addons.xml
-for /f "delims= " %%a in ('%tools_dir%\fciv -md5 %~dp0addons.xml') do echo %%a > %~dp0addons.xml.md5
+for /f "delims= " %%a in ('%TOOLS%\fciv -md5 %~dp0addons.xml') do echo %%a > %~dp0addons.xml.md5
 echo.
 echo. [ Addons updated ]
 echo.
-pause
+goto :choice
+
+:choice
+set /P c=Should I update the repo? (Y/N)
+if /I "%c%" EQU "Y" goto :repoupdate
+if /I "%c%" EQU "N" goto :exitspot
+goto :choice
+
+:repoupdate
 echo.
 echo. [ Committer ]
 echo.
-set SOURCE=%~dp0
-set SVN=C:\Program Files\TortoiseGit\bin
-set GIT=C:\Program Files\Git\bin
-rem "%SVN%\TortoiseGitProc.exe" /command:commit /path:"%SOURCE%" /closeonend:3
 "%GIT%\git.exe" config --global push.default simple
 "%GIT%\git.exe" add *
 "%GIT%\git.exe" commit -a -m update
@@ -65,3 +71,9 @@ echo.
 echo. [ Done ]
 echo.
 pause
+exit
+
+:exitspot
+echo "You selected NO, exiting ..."
+pause 
+exit
