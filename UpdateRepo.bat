@@ -1,52 +1,4 @@
 @echo off
-
-TITEL Container
-
-:input
-cls
-ECHO.
-ECHO ************************************************
-ECHO * 1 = Clone directories *
-ECHO * 2 = Update repo files *
-ECHO * 3 = Repo commit *
-echo * *
-Echo * 4 = Close *
-ECHO ************************************************
-ECHO.
-
-color 0d
-choice /C:1234 
-
-
-if errorlevel 4 goto Close
-if errorlevel 3 goto Commit
-if errorlevel 2 goto Update
-if errorlevel 1 goto Clone
- 
-
-Rem *** 4 ***
-:Close
-goto ende
-
-
-Rem *** 3 ***
-:Commit
-echo.
-echo. [ Committer ]
-set SOURCE=%~dp0
-set SVN=C:\Program Files\TortoiseGit\bin
-echo.
-echo. Committing %SOURCE% ...
-"%SVN%\TortoiseGitProc.exe" /command:commit /path:"%SOURCE%" /closeonend:3
-echo. done.
-echo.
-echo. Operation complete.
-pause
-goto input
-
-
-Rem *** 2 ***
-:Update
 setlocal enabledelayedexpansion
 set tools_dir=%~dp0tools
 
@@ -95,23 +47,13 @@ for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
 echo ^</addons^> >> %~dp0addons.xml
 for /f "delims= " %%a in ('%tools_dir%\fciv -md5 %~dp0addons.xml') do echo %%a > %~dp0addons.xml.md5
 echo.
+echo. [ Addons updated ]
+echo.
 pause
-goto input
-
-
-Rem *** 1 ***
-:Clone
-set ftvjarvis=E:\github\skin.fTVfred-jarvis
-set ftvkrypton=E:\github\skin.fTVfred-krypton
-echo. 
-echo Copying files
-echo. 
-Rem XCOPY ..\Bello-Kodi-15.x-Nightlies skin.bellofredo /E /C /Q /I /Y
-Rem XCOPY %ftvjarvis% skin.fTVfred /E /C /Q /I /Y
-XCOPY %ftvkrypton% skin.fTVfred-krypton /E /C /Q /I /Y
-Rem XCOPY ..\script.screensaver.fTVscreensaver script.screensaver.fTVscreensaver /E /C /Q /I /Y
-pause
-goto input
-
-
-:ende
+echo.
+echo. [ Committer ]
+set SOURCE=%~dp0
+set SVN=C:\Program Files\TortoiseGit\bin
+echo.
+echo. Committing %SOURCE% ...
+"%SVN%\TortoiseGitProc.exe" /command:commit /path:"%SOURCE%" /closeonend:3
