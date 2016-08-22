@@ -9,11 +9,13 @@ echo.^| ^|/ ^/^_^_^_  ^_^_^| ^(^_^) ^| ^_ ^\^_^_^_ ^_ ^_^_  ^_^_^_  ^| ^| ^| ^|^
 echo.^| ^' ^<^/ ^_ ^\^/ ^_^` ^| ^| ^|   ^/ ^-^_^) ^'^_ ^\^/ ^_ ^\ ^| ^|^_^| ^| ^'^_ ^\^/ ^_^` ^/ ^_^` ^|  ^_^/ ^-^_^) ^'^_^|
 echo.^|^_^|^\^_^\^_^_^_^/^\^_^_^,^_^|^_^| ^|^_^|^_^\^_^_^_^| ^.^_^_^/^\^_^_^_^/  ^\^_^_^_^/^| ^.^_^_^/^\^_^_^,^_^\^_^_^,^_^|^\^_^_^\^_^_^_^|^_^|  
 echo.                           ^|^_^|               ^|^_^|                          
-
+echo.by sualfred
+echo.
 TIMEOUT /T 5 /NOBREAK
 goto :updatefiles
 
 :updatefiles
+echo.
 echo.
 echo.[ Checking for new versions ]
 echo.
@@ -38,29 +40,26 @@ for /f %%f in ('dir /b /a:d') do if exist %%f\addon.xml (
     )
     if not exist %%f\%%f-!version!.zip (
         echo. 
-		echo.
-		echo NEUE VERSION von %%f !		
+		echo Found new version of %%f
 		if exist "%%f\%%f*.zip" (
-		echo Erstelle Backups bisheriger Releases
+		echo Creating backup of existing old release
 		IF not exist temp mkdir temp	
 		IF not exist temp\%%f mkdir temp\%%f
 		IF not exist temp\%%f\oldreleases mkdir temp\%%f\oldreleases
 		move "%%f\%%f*.zip" temp\%%f\oldreleases >nul 2>&1
 		)
-		echo Packe %%f-!version!.zip
+        echo Creating %%f-!version!.zip
 		%TOOLS%\7za a %%f\%%f-!version!.zip %%f -tzip -ax!%%f*.zip> nul
-		echo %%f-!version!.zip Prozess fertig.
 		echo. 
     ) else (
-        echo.
-		echo %%f-!version!.zip bereits aktuell
+        echo. >nul 2>&1
+		echo %%f-!version!.zip is up-to-date >nul 2>&1
     )
 )
 echo ^</addons^> >> %~dp0addons.xml
 for /f "delims= " %%a in ('%TOOLS%\fciv -md5 %~dp0addons.xml') do echo %%a > %~dp0addons.xml.md5
 echo.
-echo.
-echo.[ Addons updated ]
+echo.[ Index updated ]
 echo.
 echo.
 goto :choice
@@ -74,7 +73,7 @@ goto :choice
 :repoupdate
 echo.
 echo.
-echo.[ Committer ]
+echo.[ Commiting to repo ]
 echo.
 echo.
 "%GIT%\git.exe" config --global push.default simple
@@ -83,10 +82,11 @@ echo.
 "%GIT%\git.exe" push
 echo.
 echo.
-echo.[ Done ]
+echo.[ Done. Exiting ]
 echo.
 echo.
-goto :exitspot
+PING 1.1.1.1 -n 1 -w 3000 >NUL
+exit
 
 :exitspot
 echo.
