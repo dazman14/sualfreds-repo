@@ -62,3 +62,4 @@ SET /p comment=Comment:
 "%GIT%\git.exe" add *
 "%GIT%\git.exe" commit -a -m "%comment%"
 "%GIT%\git.exe" push
+pause
