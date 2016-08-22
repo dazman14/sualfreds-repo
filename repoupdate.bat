@@ -52,14 +52,16 @@ echo.
 pause
 echo.
 echo. [ Committer ]
+echo.
 set SOURCE=%~dp0
 set SVN=C:\Program Files\TortoiseGit\bin
 set GIT=C:\Program Files\Git\bin
-echo.
-echo. Committing %SOURCE% ...
 rem "%SVN%\TortoiseGitProc.exe" /command:commit /path:"%SOURCE%" /closeonend:3
-SET /p comment=Comment:
+"%GIT%\git.exe" config --global push.default simple
 "%GIT%\git.exe" add *
-"%GIT%\git.exe" commit -a -m "%comment%"
+"%GIT%\git.exe" commit -a -m update
 "%GIT%\git.exe" push
+echo.
+echo. [ Done ]
+echo.
 pause
