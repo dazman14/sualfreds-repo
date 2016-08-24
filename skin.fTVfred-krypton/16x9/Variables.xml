@@ -2,7 +2,7 @@
 <includes>
 	<variable name="UnwatchedEpisodes">
 		<value condition="Integer.IsGreater(ListItem.Property(UnwatchedEpisodes),1)">$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[31320]]</value>
-		<value>$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[31321]]</value>
+		<value condition="Integer.IsEqual(ListItem.Property(UnwatchedEpisodes),1)">$INFO[ListItem.Property(UnWatchedEpisodes),, $LOCALIZE[31321]]</value>
 	</variable>
 	<variable name="Rating_TV">
 		<value condition="!String.IsEmpty(ListItem.Mpaa) + String.Contains(ListItem.Mpaa,14)">rating/tv/14.png</value>
@@ -1027,6 +1027,11 @@
 		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000) + !String.IsEmpty(Skin.String(11000-WidgetAd-Label))">$INFO[Skin.String(11000-WidgetAd-Label)]</value>
 		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000) + !String.IsEmpty(Skin.String(11000-WidgetAd-Label))">$INFO[Skin.String(12000-WidgetAd-Label)]</value>
 		<value>$LOCALIZE[16018]</value>
+	</variable>
+	<variable name="WidgetEpisodeLabel">
+		<value condition="Integer.IsGreater(ListItem.Property(episodes),1) + Integer.IsGreater(ListItem.Property(seasons),1)">$INFO[ListItem.Property(episodes),, $LOCALIZE[31322] ]$INFO[ListItem.Property(seasons),, $LOCALIZE[36905]]</value>
+		<value condition="Integer.IsGreater(ListItem.Property(episodes),1) + !Integer.IsGreater(ListItem.Property(seasons),1)">$INFO[ListItem.Property(episodes),, $LOCALIZE[31322] ]$INFO[ListItem.Property(seasons),, $LOCALIZE[36904]]</value>
+		<value condition="Integer.IsEqual(ListItem.Property(episodes),1)">$INFO[ListItem.Property(episodes),, $LOCALIZE[31323]]</value>
 	</variable>
 	<variable name="1000-WidgetAd-Text">
 		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
@@ -2469,7 +2474,7 @@
 	</variable>
 	<variable name="SettingsLabel-1">
 		<value condition="String.IsEqual(Window(settings).Property(SettingsCurrentItem),8)">$LOCALIZE[14036]</value>
-		<value condition="Window.IsVisible(addonbrowser)">$LOCALIZE[14206]</value>
+		<value condition="Window.IsVisible(addonbrowser)">$LOCALIZE[31324]</value>
 		<value condition="Window.IsVisible(MediaSettings)">$LOCALIZE[24001]</value>
 		<value condition="Window.IsVisible(PlayerSettings)">$LOCALIZE[31310]</value>
 		<value condition="Window.IsVisible(pvrsettings)">$LOCALIZE[14200]</value>
@@ -2478,7 +2483,7 @@
 	</variable>
 	<variable name="SettingsLabel0">
 		<value condition="String.IsEqual(Window(settings).Property(SettingsCurrentItem),8)">$LOCALIZE[22082]</value>
-		<value condition="Window.IsVisible(InterfaceSettings)">$LOCALIZE[14206]</value>
+		<value condition="Window.IsVisible(InterfaceSettings)">$LOCALIZE[31324]</value>
 		<value condition="Window.IsVisible(addonbrowser)">$LOCALIZE[24001]</value>
 		<value condition="Window.IsVisible(MediaSettings)">$LOCALIZE[31310]</value>
 		<value condition="Window.IsVisible(PlayerSettings)">$LOCALIZE[14200]</value>

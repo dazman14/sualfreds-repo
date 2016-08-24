@@ -1090,13 +1090,13 @@ msgstr "[LIGHT]Empfohlen wegen [/LIGHT]"
 
 #: /16x9/Variables.xml:876
 msgctxt "#31250"
-msgid "Nothing to watch?[CR][LIGHT]Try [/LIGHT]"
-msgstr "Nichts anzusehen?[CR][LIGHT]Wie wärs mit [/LIGHT]"
+msgid "[LIGHT]Nothing to watch?[CR]Try [/LIGHT]"
+msgstr "[LIGHT]Nichts anzusehen?[CR]Wie wärs mit [/LIGHT]"
 
 #: /16x9/ParametersHomeWidgets.xml:77
 msgctxt "#31251"
-msgid "[LIGHT]Included in[/LIGHT] [COLOR ftvgold]Kodi[/COLOR]"
-msgstr "[LIGHT]Enthalten in[/LIGHT] [COLOR ftvgold]Kodi[/COLOR]"
+msgid "[LIGHT]Watch it now with[/LIGHT] [COLOR ftvgold]Kodi[/COLOR]"
+msgstr "[LIGHT]Jetzt abspielen mit[/LIGHT] [COLOR ftvgold]Kodi[/COLOR]"
 
 #: /16x9/ParametersHomeWidgets.xml:113
 msgctxt "#31252"
@@ -1453,6 +1453,21 @@ msgstr "ungesehene Folgen"
 msgctxt "#31321"
 msgid "unwatched episode"
 msgstr "ungesehene Folge"
+
+#: /16x9/Variables.xml
+msgctxt "#31322"
+msgid "episodes in"
+msgstr "Folgen in"
+
+#: /16x9/Variables.xml
+msgctxt "#31323"
+msgid "episode available"
+msgstr "Folge verfügbar"
+
+#: /16x9/Settings.xml
+msgctxt "#31324"
+msgid "Interface"
+msgstr "Oberfläche"
 
 msgctxt "#31500"
 msgid "Widget Group 1"
