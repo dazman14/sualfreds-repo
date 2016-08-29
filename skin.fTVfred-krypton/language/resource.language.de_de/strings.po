@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: skin.ftv pvr mod\n"
 "Report-Msgid-Bugs-To: http://trac.xbmc.org/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2016-08-18 07:50+0000\n"
+"PO-Revision-Date: 2016-08-29 04:09+0000\n"
 "Last-Translator: sualfred <su4lfred@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/skinrefred/skinftv-pvr-mod/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -972,8 +972,8 @@ msgstr "Einschalten"
 
 #: \16x9\SkinSettings.xml:475
 msgctxt "#31227"
-msgid "Backup or restore fTV settings"
-msgstr "fTV Einstellungen sichern oder wiederherstellen"
+msgid "Backup fTV settings"
+msgstr "Backup fTV Einstellungen"
 
 #: \16x9\Variables.xml:1881
 msgctxt "#31228"
@@ -1469,6 +1469,16 @@ msgctxt "#31324"
 msgid "Interface"
 msgstr "Oberfläche"
 
+#: /16x9/IncludesWidgetLayout.xml
+msgctxt "#31325"
+msgid "Return to"
+msgstr "Kehre zurück zu"
+
+#: /16x9/Home.xml
+msgctxt "#31326"
+msgid "Loading [I]Home[/I] ..."
+msgstr "Lade [I]Startseite[/I] ..."
+
 msgctxt "#31500"
 msgid "Widget Group 1"
 msgstr "Widget Gruppe 1"
@@ -1594,18 +1604,6 @@ msgstr "'Quadrat' für Music / Add-ons"
 msgctxt "#31530"
 msgid "'Square Info' for Music / Add-ons"
 msgstr "'Quadrat Info' für Music / Add-ons"
-
-msgctxt "#31531"
-msgid "loading home"
-msgstr "lade Startseite"
-
-msgctxt "#31532"
-msgid "updating widgets"
-msgstr "update widgets"
-
-msgctxt "#31533"
-msgid "done!"
-msgstr "fertig!"
 
 msgctxt "#31534"
 msgid "Air Time"

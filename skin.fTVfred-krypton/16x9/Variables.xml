@@ -119,10 +119,6 @@
 		<value condition="String.StartsWith(System.BuildVersion,17.)">Kodi Krypton</value>
 		<value condition="String.StartsWith(System.BuildVersion,16.)">Kodi Jarvis</value>
 	</variable>
-	<variable name="PreloadLabel">
-		<value condition="Control.IsVisible(91) | !String.IsEmpty(Window(home).Property(WaitForControl))">$LOCALIZE[31531]</value>
-		<value>$LOCALIZE[31533]</value>
-	</variable>
 	<variable name="InfoImage">
 		<value condition="String.IsEqual(Window(home).Property(SetUserRating),video) + !String.IsEmpty(ListItem.Art(tvshow.poster))">$INFO[ListItem.Art(tvshow.poster)]</value>
 		<value condition="String.IsEqual(Window(home).Property(SetUserRating),video) + !String.IsEmpty(ListItem.Art(poster))">$INFO[ListItem.Art(poster)]</value>
@@ -1033,113 +1029,18 @@
 		<value condition="Integer.IsGreater(ListItem.Property(episodes),1) + !Integer.IsGreater(ListItem.Property(seasons),1)">$INFO[ListItem.Property(episodes),, $LOCALIZE[31322] ]$INFO[ListItem.Property(seasons),, $LOCALIZE[36904]]</value>
 		<value condition="Integer.IsEqual(ListItem.Property(episodes),1)">$INFO[ListItem.Property(episodes),, $LOCALIZE[31323]]</value>
 	</variable>
-	<variable name="1000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(1000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="2000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(2000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(2000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(2000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(2000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(2000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(2000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(2000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="3000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(3000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(3000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(3000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(3000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(3000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(3000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(3000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="4000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(4000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(4000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(4000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(4000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(4000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(4000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(4000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="5000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(5000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(5000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(5000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(5000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(5000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(5000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(5000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="6000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(6000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(6000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(6000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(6000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(6000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(6000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(6000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="7000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(7000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(7000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(7000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(7000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(7000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(7000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(7000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="8000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(8000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(8000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(8000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(8000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(8000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(8000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(8000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="9000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(9000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(9000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(9000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(9000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(9000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(9000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(9000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="10000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(10000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(10000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(10000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(10000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(10000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(10000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(10000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="11000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(11000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(11000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(11000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(11000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(11000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(11000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(11000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
-	</variable>
-	<variable name="12000-WidgetAd-Text">
-		<value condition="String.IsEqual(Skin.String(12000-WidgetAd-Label),$LOCALIZE[31242])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(12000-WidgetAd-Label),$LOCALIZE[31243])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(12000-WidgetAd-Label),$LOCALIZE[31244])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(12000-WidgetAd-Label),$LOCALIZE[31245])">$LOCALIZE[31248]</value>
-		<value condition="String.IsEqual(Skin.String(12000-WidgetAd-Label),$LOCALIZE[31246])">$LOCALIZE[31249]</value>
-		<value condition="String.IsEqual(Skin.String(12000-WidgetAd-Label),$LOCALIZE[31247])">$LOCALIZE[31250]</value>
-		<value condition="String.IsEqual(Skin.String(12000-WidgetAd-Label),$LOCALIZE[31254])">$LOCALIZE[31249]</value>
+	<variable name="WidgetAdText">
+		<value condition="!String.IsEmpty(ListItem.Property(tagline))">[LIGHT]$INFO[ListItem.Property(tagline)][/LIGHT][CR]$INFO[ListItem.Label,[B][COLOR ffffffff],[/COLOR][/B]]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),inprogressshow) + Integer.IsGreater(ListItem.Property(unwatched),1)">$INFO[ListItem.Property(unwatched),, [LIGHT]$LOCALIZE[31320][CR]$LOCALIZE[31325] [/LIGHT]]$INFO[ListItem.Label,[COLOR ffffffff][B],[/B][/COLOR]]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),inprogressshow) + Integer.IsEqual(ListItem.Property(unwatched),1)">$INFO[ListItem.Property(unwatched),, [LIGHT]$LOCALIZE[31321][CR]$LOCALIZE[31325] [/LIGHT]]$INFO[ListItem.Label,[COLOR ffffffff][B],[/B][/COLOR]]</value>		
+		<value condition="String.IsEqual(ListItem.Property(bannerType),newmovie)">$LOCALIZE[31248][COLOR ffffffff]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),newshow)">$LOCALIZE[31248][COLOR ffffffff]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),newepisode)">$LOCALIZE[31248][COLOR ffffffff]$INFO[ListItem.Property(tvshow),[B],[/B][CR]]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),randommovie)">$LOCALIZE[31250][COLOR ffffffff]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),randomshow)">$LOCALIZE[31250][COLOR ffffffff]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),recommendedshow)">$LOCALIZE[31249]$INFO[ListItem.Property(similartitle),[LIGHT],[/LIGHT][CR]][COLOR ffffffff]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),recommendedmovie)">$LOCALIZE[31249]$INFO[ListItem.Property(similartitle),[LIGHT],[/LIGHT][CR]][COLOR ffffffff]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
+		<value condition="String.IsEqual(ListItem.Property(bannerType),recommendedmedia)">$LOCALIZE[31249]$INFO[ListItem.Property(similartitle),[LIGHT],[/LIGHT][CR]][COLOR ffffffff]$INFO[ListItem.Label,[B],[/B]][/COLOR]</value>
 	</variable>
 	<variable name="WidgetLabel-1">
 		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetLabel-1)]</value>
@@ -1476,6 +1377,118 @@
 		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyle-8)]</value>
 		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyle-8)]</value>
 		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyle-8)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-1">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-1)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-1)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-2">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-2)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-2)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-3">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-3)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-3)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-4">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-4)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-4)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-5">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-5)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-5)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-6">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-6)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-6)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-7">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-7)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-7)]</value>
+	</variable>
+	<variable name="WidgetStyleLabel-8">
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),1000)">$INFO[Skin.String(1000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),2000)">$INFO[Skin.String(2000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),3000)">$INFO[Skin.String(3000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),4000)">$INFO[Skin.String(4000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),5000)">$INFO[Skin.String(5000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),6000)">$INFO[Skin.String(6000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),7000)">$INFO[Skin.String(7000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),8000)">$INFO[Skin.String(8000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),9000)">$INFO[Skin.String(9000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),10000)">$INFO[Skin.String(10000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),11000)">$INFO[Skin.String(11000-WidgetStyleLabel-8)]</value>
+		<value condition="String.IsEqual(Window(home).Property(SubMenu),12000)">$INFO[Skin.String(12000-WidgetStyleLabel-8)]</value>
 	</variable>
 	<variable name="NextEpisodeCountdown">
 		<value condition="String.IsEqual(Player.TimeRemaining(hh),00) + String.IsEqual(Player.TimeRemaining(mm),00)">$INFO[Player.TimeRemaining(ss),osd/nextup/countdown/,.png]</value>
@@ -2314,7 +2327,7 @@
 		<value condition="ControlGroup(9).HasFocus(20)">$LOCALIZE[31034]</value>
 		<value condition="ControlGroup(9).HasFocus(21)">$LOCALIZE[31039]</value>
 		<value condition="ControlGroup(9).HasFocus(22)">$LOCALIZE[31040]</value>
-		<value condition="ControlGroup(9).HasFocus(23)">$LOCALIZE[31228]</value>
+		<!--<value condition="ControlGroup(9).HasFocus(23)">$LOCALIZE[31228]</value>-->
 		<value condition="ControlGroup(9).HasFocus(24)">$LOCALIZE[31233]</value>
 		<value condition="ControlGroup(9).HasFocus(25)">$LOCALIZE[31288]</value>
 		<value condition="ControlGroup(9).HasFocus(26)">$LOCALIZE[31289]</value>
@@ -2387,6 +2400,7 @@
 		<value condition="Control.HasFocus(9002)">$LOCALIZE[31056]</value>
 		<value condition="Control.HasFocus(9003)">$LOCALIZE[31124]</value>
 		<value condition="Control.HasFocus(9004)">$LOCALIZE[31127]</value>
+		<value condition="Control.HasFocus(9005)">$LOCALIZE[31228]</value>
 		<value condition="Control.HasFocus(20)">$LOCALIZE[10047]</value>
 		<value condition="!String.IsEmpty(Window(home).Property(SettingInfo))">$INFO[Window(home).Property(SettingInfo)]</value>
 		<value>$INFO[Control.GetLabel(6)]</value>

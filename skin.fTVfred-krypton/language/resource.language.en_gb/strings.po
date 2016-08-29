@@ -947,8 +947,8 @@ msgstr "Tune in"
 
 #: \16x9\SkinSettings.xml:475
 msgctxt "#31227"
-msgid "Backup or restore fTV settings"
-msgstr "Backup or restore fTV settings"
+msgid "Backup fTV settings"
+msgstr "Backup fTV settings"
 
 #: \16x9\Variables.xml:1881
 msgctxt "#31228"
@@ -1433,6 +1433,16 @@ msgstr "episode available"
 #: /16x9/Settings.xml
 msgctxt "#31324"
 msgid "Interface"
+msgstr "Interface"
+
+#: /16x9/IncludesWidgetLayout.xml
+msgctxt "#31325"
+msgid "Return to"
+msgstr "Return to"
+
+#: /16x9/Home.xml
+msgctxt "#31326"
+msgid "Loading [I]Home[/I] ..."
 msgstr ""
 
 msgctxt "#31500"
@@ -1558,18 +1568,6 @@ msgstr "'Square' for Music / Add-ons"
 msgctxt "#31530"
 msgid "'Square Info' for Music / Add-ons"
 msgstr "'Square Info' for Music / Add-ons"
-
-msgctxt "#31531"
-msgid "loading home"
-msgstr "loading home"
-
-msgctxt "#31532"
-msgid "updating widgets"
-msgstr "updating widgets"
-
-msgctxt "#31533"
-msgid "done!"
-msgstr "done!"
 
 msgctxt "#31534"
 msgid "Air Time"
