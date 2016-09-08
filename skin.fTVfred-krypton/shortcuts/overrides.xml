@@ -27,9 +27,28 @@
 	<icon labelID="360">DefaultScreensaver.png</icon>
 	<icon labelID="20045">DefaultMastermode.png</icon>
 	<icon labelID="settings">DefaultSettings.png</icon>
+	<requiredshortcut label="$LOCALIZE[10004]">ActivateWindow(Settings)</requiredshortcut>
+	<requiredshortcut label="$LOCALIZE[137]">RunScript(script.globalsearch)</requiredshortcut>
 	<groupoverride group="shutdown" condition="true">Close</groupoverride>
+	<!--<visibleoverride condition="PVR.HasTVChannels">RunScript(script.skin.helper.service,action=dialogok,header=$LOCALIZE[257],message=$LOCALIZE[31327])</visibleoverride>
 	<visibleoverride condition="Library.HasContent(Movies)">ActivateWindow(Videos,Files,return)</visibleoverride>
-	<visibleoverride condition="Library.HasContent(TVShows)">ActivateWindow(Videos,Files,return)</visibleoverride>
+	<visibleoverride condition="Library.HasContent(TVShows)">ActivateWindow(Videos,Files,return)</visibleoverride>-->
+	<override action="globaloverride" group="mainmenu">
+		<condition>!Control.IsVisible(91)</condition>
+	</override>
+	<override action="globaloverride" group="mainmenu">
+		<condition>Control.IsVisible(91)</condition>
+		<action>noop</action>
+	</override>
+	<contextmenu>
+		<!-- Enable context menu on control 211 -->
+		<enableon>211</enableon>
+		<enableon>303</enableon>
+		<enableon>304</enableon>
+		<!-- Add enable/disable controls -->
+		<item control="313" condition="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),False)">$LOCALIZE[24021]</item>
+		<item control="313" condition="String.IsEqual(Container(211).ListItem.Property(skinshortcuts-disabled),True)">$LOCALIZE[24022]</item>
+	</contextmenu>
 	<propertydefault labelID="19019" property="ftvWidget">livetv</propertydefault>
 	<propertydefault labelID="weather" property="ftvWidget">weather</propertydefault>
 	<propertydefault labelID="favourites" property="ftvWidget">favourites</propertydefault>
@@ -52,7 +71,6 @@
 				<shortcut label="31517" type="movie" icon="ftv_icon.png">ActivateWindow(Videos,special://skin/extras/video/WarHistoryMovies.xsp,return)</shortcut>
 				<shortcut label="31258" type="movie" icon="ftv_icon.png">ActivateWindow(Videos,special://skin/extras/video/3DMovies.xsp,return)</shortcut>
 				<shortcut label="135" type="movie" icon="ftv_icon.png">ActivateWindow(Videos,library://video/movies/genres.xml/,return)</shortcut>
-				<shortcut label="31269" type="movie" icon="ftv_icon.png">ActivateWindow(Videos,plugin://script.skin.helper.service/?action=browsegenres&amp;type=movie&amp;limit=1000,return)</shortcut>
 			</node>
 			<node label="20343">
 				<shortcut label="31175" type="tvshow" icon="ftv_icon.png">ActivateWindow(Videos,special://skin/extras/video/RecentlyUpdatedTVShows.xsp,return)</shortcut>
@@ -66,7 +84,6 @@
 				<shortcut label="31516" type="tvshow" icon="ftv_icon.png">ActivateWindow(Videos,special://skin/extras/video/DramaThrillerTVShows.xsp,return)</shortcut>	
 				<shortcut label="31518" type="tvshow" icon="ftv_icon.png">ActivateWindow(Videos,special://skin/extras/video/WarHistoryTVShows.xsp,return)</shortcut>
 				<shortcut label="135" type="tvshow" icon="ftv_icon.png">ActivateWindow(Videos,library://video/tvshows/genres.xml/,return)</shortcut>
-				<shortcut label="31269" type="tvshow" icon="ftv_icon.png">ActivateWindow(Videos,plugin://script.skin.helper.service/?action=browsegenres&amp;type=tvshow&amp;limit=1000,return)</shortcut>
 			</node>
 			<node label="2">
 				<shortcut label="31183" type="music" icon="ftv_icon.png">ActivateWindow(Music,musicdb://recentlyplayedalbums/,return)</shortcut>

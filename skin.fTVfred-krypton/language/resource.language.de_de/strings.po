@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: skin.ftv pvr mod\n"
 "Report-Msgid-Bugs-To: http://trac.xbmc.org/\n"
 "POT-Creation-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2016-08-29 04:09+0000\n"
+"PO-Revision-Date: 2016-09-08 10:57+0000\n"
 "Last-Translator: sualfred <su4lfred@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/skinrefred/skinftv-pvr-mod/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -1186,10 +1186,10 @@ msgctxt "#31268"
 msgid "There are no results for this widget"
 msgstr "Es gibt keine Ergebnisse für dieses Widget"
 
-#: /shortcuts/overrides.xml:55
+#: /16x9/script-skinshortcuts.xml
 msgctxt "#31269"
-msgid "Genres (Plugin based)"
-msgstr "Genres (Plugin basierend)"
+msgid "Focus on startup"
+msgstr "Aktiv nach Ladevorgang"
 
 #: /16x9/DialogMusicInfo.xml:333
 msgctxt "#31270"
@@ -1478,6 +1478,13 @@ msgstr "Kehre zurück zu"
 msgctxt "#31326"
 msgid "Loading [I]Home[/I] ..."
 msgstr "Lade [I]Startseite[/I] ..."
+
+#: /shortcuts/overrides.xml
+msgctxt "#31327"
+msgid ""
+"No PVR channels have been found yet. Please wait for the PVR clients to "
+"start up or check your PVR configuration."
+msgstr "Es wurden bisher keine PVR Kanäle gefunden. Bitte warte bis der PVR Klient gestaret ist or überprüfe deine Einstellungen."
 
 msgctxt "#31500"
 msgid "Widget Group 1"

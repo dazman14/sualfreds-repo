@@ -282,7 +282,7 @@
 	</include>
 	<!--Square Info-->
 	<include name="ViewSquareInfoLayout">
-		<itemlayout condition="String.Contains(Container.FolderPath,movies/genre) | String.Contains(Container.FolderPath,tvshows/genre) | String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres)" height="576" width="436">
+		<itemlayout condition="String.Contains(Container.FolderPath,movies/genre) | String.Contains(Container.FolderPath,tvshows/genre)" height="576" width="436">
 			<control type="group">
 				<animation center="250,288" condition="true" effect="zoom" end="85" start="85">Conditional</animation>
 				<control type="group">
@@ -391,7 +391,7 @@
 				</control>
 			</control>
 		</itemlayout>
-		<itemlayout condition="!String.Contains(Container.FolderPath,movies/genre) + !String.Contains(Container.FolderPath,tvshows/genre) + !String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres)" height="576" width="436">
+		<itemlayout condition="!String.Contains(Container.FolderPath,movies/genre) + !String.Contains(Container.FolderPath,tvshows/genre)" height="576" width="436">
 			<control type="group">
 				<animation center="250,288" condition="true" effect="zoom" end="85" start="85">Conditional</animation>
 				<control type="group">
@@ -478,7 +478,7 @@
 				</control>
 			</control>
 		</itemlayout>
-		<focusedlayout condition="String.Contains(Container.FolderPath,movies/genre) | String.Contains(Container.FolderPath,tvshows/genre) | String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres)" height="576" width="436">
+		<focusedlayout condition="String.Contains(Container.FolderPath,movies/genre) | String.Contains(Container.FolderPath,tvshows/genre)" height="576" width="436">
 			<control type="button">
 				<texturefocus>-</texturefocus>
 				<texturenofocus>-</texturenofocus>
@@ -609,7 +609,7 @@
 				</control>
 			</control>
 		</focusedlayout>
-		<focusedlayout condition="!String.Contains(Container.FolderPath,movies/genre) + !String.Contains(Container.FolderPath,tvshows/genre) + !String.Contains(Container.FolderPath,plugin://script.skin.helper.service/?action=browsegenres)" height="576" width="436">
+		<focusedlayout condition="!String.Contains(Container.FolderPath,movies/genre) + !String.Contains(Container.FolderPath,tvshows/genre)" height="576" width="436">
 			<control type="button">
 				<texturefocus>-</texturefocus>
 				<texturenofocus>-</texturenofocus>
@@ -897,7 +897,7 @@
 					<shadowcolor>88000000</shadowcolor>
 					<label>$VAR[EpisodeValue]</label>
 					<visible>!String.IsEqual(ListItem.Label,..)</visible>
-					<animation condition="Control.HasFocus($PARAM[ID]) | Container($PARAM[ID]).OnNext | Container($PARAM[ID]).OnPrevious" effect="fade" end="0" start="100" time="0">Focus</animation>
+					<animation effect="fade" end="0" start="100" time="0">Focus</animation>
 					<animation condition="!Control.HasFocus($PARAM[ID]) + !Container($PARAM[ID]).OnNext + !Container($PARAM[ID]).OnPrevious" effect="fade" end="0" start="100" time="0">Conditional</animation>
 				</control>
 				<control type="label">
@@ -1207,7 +1207,7 @@
 					<textcolor>ffffffff</textcolor>
 					<shadowcolor>88000000</shadowcolor>
 					<label>$INFO[ListItem.ChannelName]</label>
-					<animation condition="Control.HasFocus($PARAM[ID]) | Container($PARAM[ID]).OnNext | Container($PARAM[ID]).OnPrevious" effect="fade" end="0" start="100" time="0">Focus</animation>
+					<animation effect="fade" end="0" start="100" time="0">Focus</animation>
 					<animation condition="!Control.HasFocus($PARAM[ID]) + !Container($PARAM[ID]).OnNext + !Container($PARAM[ID]).OnPrevious" effect="fade" end="0" start="100" time="0">Conditional</animation>
 				</control>
 				<control type="label">
