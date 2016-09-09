@@ -10,7 +10,7 @@ echo.^|^_^|^\^_^\^_^_^_^/^\^_^_^,^_^|^_^| ^|^_^|^_^\^_^_^_^| ^.^_^_^/^\^_^_^_^/ 
 echo.                           ^|^_^|               ^|^_^|                          
 echo.by sualfred
 echo.
-TIMEOUT /T 5 /NOBREAK
+TIMEOUT /T 2 /NOBREAK
 goto :updatefiles
 
 :updatefiles
@@ -61,13 +61,8 @@ echo.
 echo.[ Index updated ]
 echo.
 echo.
-goto :choice
-
-:choice
-set /P c=Should I update the repo? (Y/N)
-if /I "%c%" EQU "Y" goto :repoupdate
-if /I "%c%" EQU "N" goto :exitspot
-goto :choice
+TIMEOUT /T 2 /NOBREAK
+goto :repoupdate
 
 :repoupdate
 echo.
