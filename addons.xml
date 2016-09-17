@@ -278,7 +278,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.2.9" 
+	version="3.2.9a" 
 	name="fTV Fred Edition" 
 	provider-name="Sualfred"> 
 	<requires> 
@@ -310,9 +310,8 @@
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.2.9[/B] 
- - Fixed TV recordings widget 
- - Cleaned up and improved widget code 
+[B]3.2.9a[/B] 
+- Fixed custom startup bug 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 
