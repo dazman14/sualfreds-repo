@@ -278,7 +278,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.2.9a" 
+	version="3.3.0" 
 	name="fTV Fred Edition" 
 	provider-name="Sualfred"> 
 	<requires> 
@@ -310,8 +310,10 @@
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.2.9a[/B] 
-- Fixed custom startup bug 
+[B]3.3.0[/B] 
+- Fixed animation of focused items in the viewtypes 
+- GlobalSeach cleanup 
+- Improved PVR windows 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 
