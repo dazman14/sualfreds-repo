@@ -218,7 +218,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.3.4" 
+	version="3.3.4a" 
 	name="fTV Fred Edition" 
 	provider-name="Sualfred"> 
 	<requires> 
