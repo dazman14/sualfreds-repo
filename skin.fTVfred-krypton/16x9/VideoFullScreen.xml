@@ -11,7 +11,7 @@
 			<animation delay="100" effect="fade" end="0" start="100" time="200">Hidden</animation>
 		</control>
 		<control type="group" id="99">
-			<visible>String.IsEmpty(Window(home).Property(ShowXRay)) + !Window.IsVisible(playerprocessinfo) + !Window.IsVisible(pvrosdchannels)</visible>
+			<visible>String.IsEmpty(Window(home).Property(ShowXRay)) + !Window.IsVisible(playerprocessinfo) + !Window.IsVisible(pvrosdchannels) + !Window.IsVisible(script-nextup-notification-NextUpInfo.xml) + !Window.IsVisible(script-nextup-notification-StillWatchingInfo.xml)</visible>
 			<control id="99" type="group">
 				<animation reversible="true" type="WindowOpen">
 					<effect end="100" start="0" time="200" type="fade" />
@@ -108,17 +108,6 @@
 						<label>$VAR[PlayerResolution]</label>
 					</control>
 				</control>
-				<!--  Current time 
-				<control id="99" type="label">
-					<right>92</right>
-					<bottom>45</bottom>
-					<width>800</width>
-					<height>30</height>
-					<font>Reg27</font>
-					<align>right</align>
-					<textcolor>fff3f3f3</textcolor>
-					<label>$INFO[System.Time]</label>
-				</control>-->
 				<!--Xray Icon-->
 				<control id="99" type="grouplist">
 					<right>92</right>
