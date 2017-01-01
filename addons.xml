@@ -218,7 +218,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.3.9" 
+	version="3.4.0" 
 	name="fTV Fred Edition (Krypton)" 
 	provider-name="Sualfred"> 
 	<requires> 
@@ -249,8 +249,10 @@
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.3.9[/B] 
-- Just minor things and code cleanup. Happy new year, folks 
+[B]3.4.0[/B] 
+- Reworked PVR info dialogs 
+- Workaround for "Browse TV Show" button in DialogVideoInfo for Emby users 
+- Other minor changes 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 

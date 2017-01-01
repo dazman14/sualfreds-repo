@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <window id="1109" type="dialog">
-	<visible>VideoPlayer.Content(livetv) + !String.IsEmpty(VideoPlayer.NextTitle) + !Skin.HasSetting(PVRNextUpDisabled) + !Window.IsVisible(videoosd) + !Window.IsVisible(1113) + String.IsEmpty(Window(home).Property(ShowXRay)) + Window.IsVisible(fullscreenvideo) + Integer.IsEqual(Player.TimeRemaining(hh),00) + Integer.IsEqual(Player.TimeRemaining(mm),00) + Integer.IsLessOrEqual(Player.TimeRemaining(ss),16) + !Integer.IsLessOrEqual(Player.TimeRemaining(ss),1) + !String.IsEmpty(Player.Duration) + [Integer.IsGreater(Player.Duration(mm),05) | Integer.IsGreater(Player.Duration(hh),00)]</visible>
+	<visible>VideoPlayer.Content(livetv) + !String.IsEmpty(VideoPlayer.NextTitle) + !Skin.HasSetting(PVRNextUpDisabled) + !Window.IsVisible(videoosd) + !Window.IsVisible(1113) + String.IsEmpty(Window(home).Property(ShowXRay)) + Window.IsVisible(fullscreenvideo) + Integer.IsEqual(Player.TimeRemaining(hh),00) + Integer.IsEqual(Player.TimeRemaining(mm),00) + Integer.IsLessOrEqual(Player.TimeRemaining(ss),25) + Integer.IsGreaterOrEqual(Player.TimeRemaining(ss),10) + !Integer.IsEmpty(Player.Duration) + [Integer.IsGreater(Player.Duration(mm),05) | Integer.IsGreater(Player.Duration(hh),00)]</visible>
 	<onload>Dialog.Close(fullscreeninfo,true)</onload>
 	<controls>
 		<control type="group">
@@ -13,14 +13,6 @@
 				<bottom>90</bottom>
 				<width>378</width>
 				<height>423</height>
-				<control type="label">
-					<width>auto</width>
-					<height>50</height>
-					<font>Med40</font>
-					<textcolor>ffffffff</textcolor>
-					<shadowcolor>ff080808</shadowcolor>
-					<label>31164</label>
-				</control>
 				<control type="image">
 					<top>70</top>
 					<width>378</width>
@@ -49,12 +41,29 @@
 					<height>295</height>
 					<aspectratio>scale</aspectratio>
 					<texture>http://localhost:52307/getpvrthumb&amp;title=$INFO[VideoPlayer.NextTitle]&amp;channel=$INFO[VideoPlayer.ChannelName]&amp;type=fanart</texture>
+					<fadetime>400</fadetime>
 				</control>
 				<control type="image">
 					<top>365</top>
 					<width>378</width>
 					<height>68</height>
 					<texture>osd/nextup/background.png</texture>
+				</control>
+				<control type="image">
+					<top>22</top>
+					<left>-48</left>
+					<width>473</width>
+					<height>459</height>
+					<texture border="51">views/shadow_fo.png</texture>
+					<colordiffuse>abffffff</colordiffuse>
+				</control>
+				<control type="label">
+					<width>auto</width>
+					<height>50</height>
+					<font>Med40</font>
+					<textcolor>ffffffff</textcolor>
+					<shadowcolor>ff080808</shadowcolor>
+					<label>31164</label>
 				</control>
 				<control type="label">
 					<top>379</top>
