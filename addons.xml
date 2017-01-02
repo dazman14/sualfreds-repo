@@ -218,7 +218,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.4.0" 
+	version="3.4.1" 
 	name="fTV Fred Edition (Krypton)" 
 	provider-name="Sualfred"> 
 	<requires> 
@@ -249,9 +249,9 @@
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.4.0[/B] 
-- Reworked PVR info dialogs 
-- Workaround for "Browse TV Show" button in DialogVideoInfo for Emby users 
+[B]3.4.1[/B] 
+- Replaced ExtendendInfo with a local custom info dialog for the pseudo xray feature. This also enables the info dialog for episodes. 
+- Fixed broken metacritic and rottentomatoes ratings 
 - Other minor changes 
 See changelog.txt for more details.</news> 
 	</extension> 
