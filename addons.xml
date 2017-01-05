@@ -218,7 +218,7 @@
 </addon> 
 <addon 
 	id="skin.fTVfred-krypton" 
-	version="3.4.2" 
+	version="3.4.3" 
 	name="fTV Fred Edition (Krypton)" 
 	provider-name="Sualfred"> 
 	<requires> 
@@ -249,9 +249,9 @@
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.4.2[/B] 
-- More script.skin.helper.service fixes 
-- Added label for discontinued shows in video info dialog 
+[B]3.4.3[/B] 
+- Relayouted MyPVRChannels.xml 
+- Relayouted MyPVRGuide.xml 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 

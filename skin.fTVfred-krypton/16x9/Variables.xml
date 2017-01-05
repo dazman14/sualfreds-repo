@@ -2359,7 +2359,7 @@
 		<value condition="Window.IsVisible(pictures)">$LOCALIZE[1]</value>
 		<value condition="Window.IsVisible(programs)">$LOCALIZE[0]</value>
 		<value condition="[Window.IsVisible(settings) | Window.IsVisible(SettingsCategory.xml) | Window.IsVisible(skinsettings) | Window.IsVisible(systeminfo) | Window.IsVisible(addonbrowser) | Window.IsVisible(profiles) | Window.IsVisible(filemanager)]">$LOCALIZE[5]</value>
-		<value condition="Window.IsVisible(weather)">$LOCALIZE[8]</value>		
+		<value condition="Window.IsVisible(weather)">$LOCALIZE[8]</value>
 		<value>$INFO[Container.FolderName]</value>
 	</variable>
 	<variable name="MusicNavLabel2">
@@ -4461,10 +4461,6 @@
 		<value condition="String.EndsWith(ListItem.Episode,s398)">$LOCALIZE[31146] $LOCALIZE[20359] 398</value>
 		<value condition="String.EndsWith(ListItem.Episode,s399)">$LOCALIZE[31146] $LOCALIZE[20359] 399</value>
 		<value>$INFO[ListItem.Label]</value>
-	</variable>
-	<variable name="PVRPath">
-		<value condition="String.IsEqual(Container.FolderPath,pvr://channels/tv/all channels/)">$LOCALIZE[19287]</value>
-		<value>$INFO[Container.FolderName]</value>
 	</variable>
 	<variable name="SeekStepIcon">
 		<value condition="[!String.IsEmpty(Player.SeekOffset) + !String.Contains(Player.SeekOffset,-)] | [!String.IsEmpty(Player.SeekStepSize) + !String.Contains(Player.SeekStepSize,-)]">osd/step_forward.png</value>
