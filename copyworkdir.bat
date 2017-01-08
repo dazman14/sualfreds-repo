@@ -10,7 +10,7 @@ del /q /s %target%\*.pyo
 del /q /s %target%\*.pyc 
 del /q /s %target%\*.psd 
 rd /S /Q %target%\.git
-pause
 echo HTPC auch?
+pause
 XCOPY %target% %htpc% /E /C /Q /I /Y
 pause
