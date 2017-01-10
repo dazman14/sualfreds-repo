@@ -43,6 +43,22 @@
 		<source>https://github.com/brianhornsby/plugin.audio.tuneinradio</source> 
 	</extension> 
 </addon> 
+<addon id="repository.beta.emby.kodi" name="Kodi Emby Beta Addons" version="1.0.5" provider-name="marcelveldt,angelblue05,im85288,xnappo,null_pointer"> 
+	<requires> 
+		<import addon="xbmc.addon" version="12.0.0"/> 
+	</requires> 
+	<extension point="xbmc.addon.repository" name="Kodi Emby Beta Addons Repository"> 
+		<info compressed="false">http://embydata.com/downloads/addons/xbmb3c/kodi-beta-repo/addons.xml</info> 
+		<checksum>http://embydata.com/downloads/addons/xbmb3c/kodi-beta-repo/addons.xml.md5</checksum> 
+		<datadir zip="true">http://embydata.com/downloads/addons/xbmb3c/kodi-beta-repo/</datadir> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<summary>Kodi Emby Addon Repository</summary> 
+		<description>This repo contains the Kodi Emby addon along with compatible Kodi skins</description> 
+		<disclaimer></disclaimer> 
+		<platform>all</platform> 
+	</extension> 
+</addon> 
 <addon id="repository.fredsrepo" name="Sualfreds Repo" version="1.0.5" provider-name="sualfred"> 
 	<extension point="xbmc.addon.repository" name="Sualfreds Repository"> 
 		<info compressed="false">https://raw.githubusercontent.com/sualfred/sualfreds-repo/master/addons.xml</info> 
@@ -53,6 +69,19 @@
 		<summary>Sualfreds Repo for his noob Kodi things</summary> 
 		<description></description> 
 		<disclaimer></disclaimer> 
+		<platform>all</platform> 
+	</extension> 
+</addon> 
+<addon id="repository.marcelveldt" version="1.0.1" name="Marcelveldt's BETA repository" provider-name="marcelveldt"> 
+ECHO ist ausgeschaltet (OFF).
+	<extension point="xbmc.addon.repository" name="Marcelveldt's BETA repository"> 
+		<info compressed="false">https://raw.githubusercontent.com/marcelveldt/repository.marcelveldt/master/addons.xml</info> 
+		<checksum>https://raw.githubusercontent.com/marcelveldt/repository.marcelveldt/master/addons.xml.md5</checksum> 
+		<datadir zip="true">https://raw.githubusercontent.com/marcelveldt/repository.marcelveldt/master/</datadir> 
+	</extension> 
+	<extension point="xbmc.addon.metadata"> 
+		<summary lang="en">Kodi repository for beta/test versions of Marcelveldt's addons</summary> 
+		<description lang="en">Kodi repository for beta/test versions of Marcelveldt's addons, for stable versions please just use the official Kodi repository. This repo is for test/beta versions of my work only</description> 
 		<platform>all</platform> 
 	</extension> 
 </addon> 
@@ -112,6 +141,61 @@
 		<license>GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007</license> 
 	</extension> 
 </addon> 
+<addon id="script.module.musicbrainz" 
+       name="Musicbrainz NGS webservice python bindings" 
+       version="0.6.0" 
+       provider-name="marcelveldt"> 
+  <requires> 
+  <import addon="xbmc.python" version="2.24.0"/> 
+  </requires> 
+  <extension point="xbmc.python.module" 
+             library="lib" /> 
+  <extension point="xbmc.addon.metadata"> 
+    <summary>Python bindings for Musicbrainz' NGS webservice</summary> 
+    <description>Kodi module library for the Python bindings for Musicbrainz' NGS webservice developed by alastair.</description> 
+    <license>GNU GENERAL PUBLIC LICENSE Version 2</license> 
+    <source>https://github.com/marcelveldt/script.module.musicbrainz</source> 
+    <platform>all</platform> 
+  </extension> 
+</addon> 
+<addon id="script.module.simplecache" name="Simple Cache Module" version="1.0.11" provider-name="marcelveldt"> 
+    <requires> 
+        <import addon="xbmc.python" version="2.24.0"/> 
+    </requires> 
+    <extension point="xbmc.python.module" library="lib" /> 
+    <extension point="xbmc.addon.metadata"> 
+        <summary>Provides a simple file- and memory based cache for Kodi addons</summary> 
+        <description>Provides a simple file- and memory based cache for Kodi addons</description> 
+        <license>Apache 2.0</license> 
+        <source>https://github.com/marcelveldt/script.module.simplecache</source> 
+        <platform>all</platform> 
+    </extension> 
+</addon> 
+<addon id="script.module.skin.helper.artutils" 
+       name="Skin Helper Artwork and metadata Module" 
+       version="1.0.28" 
+       provider-name="marcelveldt"> 
+    <requires> 
+        <import addon="xbmc.python" version="2.24.0"/> 
+        <import addon="script.module.requests" version="2.3.0"/> 
+        <import addon="script.module.beautifulsoup" version="3.0.8" /> 
+        <import addon="script.module.thetvdb" version="0.0.1" /> 
+        <import addon="script.module.musicbrainz" version="0.0.1" /> 
+        <import addon="script.module.simplecache" version="1.0.0"/> 
+        <import addon="script.module.arrow" version="0.6.0"/> 
+    </requires> 
+    <extension point="xbmc.python.module" library="lib" /> 
+    <extension point="xbmc.addon.metadata"> 
+        <summary>Metadata and artwork from common sources TMDB, IMDB and fanart.tv </summary> 
+        <description> 
+            The Skin Helper artwork and metadata module provides rich metadata, including artwork for  
+            various metatypes by scraping this information from sites like TMDB, musicbrainz and fanart.tv. 
+        </description> 
+        <license>Apache 2.0</license> 
+        <source>https://github.com/marcelveldt/script.module.skin.helper.artutils</source> 
+        <platform>all</platform> 
+    </extension> 
+</addon> 
 <addon id="script.screensaver.fTVscreensaver" name="fTV Screensaver" version="0.1.3" provider-name="Sualfred"> 
     <requires> 
         <import addon="xbmc.python" version="2.1.0"/> 
@@ -153,7 +237,26 @@
 	</extension> 
 </addon> 
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
-	<addon id="script.skin.helper.service" name="Skin Helper Service" version="1.0.141" provider-name="marcelveldt"> 
+	<addon id="script.skin.helper.colorpicker" name="Skin Helper Service ColorPicker" version="1.0.9" provider-name="marcelveldt"> 
+	<requires> 
+		<import addon="xbmc.python" version="2.24.0"/> 
+		<import addon="xbmc.addon" version="12.0.0"/> 
+		<import addon="script.module.pil" version="1.1.7"/> 
+	</requires> 
+    <extension point="xbmc.python.library" library="default.py" /> 
+	<extension point="xbmc.addon.metadata"> 
+		<summary lang="en">Colorpicker for Kodi Skins. Part of Skin Helper Suite</summary> 
+        <description>Colorpicker for Kodi Skins. Part of Skin Helper Suite</description> 
+		<language></language> 
+		<platform>all</platform> 
+		<license>GPL v2.0</license> 
+		<forum>http://forum.kodi.tv/showthread.php?tid=235676</forum> 
+		<website></website> 
+		<source>https://github.com/marcelveldt/script.skin.helper.colorpicker</source> 
+	</extension> 
+</addon> 
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
+	<addon id="script.skin.helper.service" name="Skin Helper Service" version="1.0.143" provider-name="marcelveldt"> 
 	<requires> 
 		<import addon="xbmc.python" version="2.13.0"/> 
 		<import addon="xbmc.addon" version="12.0.0"/> 
