@@ -275,21 +275,21 @@ ECHO ist ausgeschaltet (OFF).
 	</extension> 
 </addon> 
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
-	<addon id="script.skin.helper.service" name="Skin Helper Service" version="1.1.1" provider-name="marcelveldt"> 
+<addon id="script.skin.helper.service" name="Skin Helper Service" version="1.1.1" provider-name="marcelveldt"> 
 	<requires> 
 		<import addon="xbmc.python" version="2.13.0"/> 
 		<import addon="xbmc.addon" version="12.0.0"/> 
         <import addon="script.module.simplejson" version="3.3.0"/> 
         <import addon="script.module.simplecache" version="1.0.0"/> 
         <import addon="script.module.skin.helper.artutils" version="1.0.0"/> 
-	</requires> 
+    </requires> 
     <extension point="kodi.context.item"> 
         <menu id="kodi.core.main"> 
             <item library="resources\lib\context_animatedart.py"> 
               <label>32024</label> 
               <visible>IsEmpty(Window(Home).Property(SkinHelper.EnableAnimatedPosters)) + Container.Content(movies)</visible> 
-            </item> 
-            <item library="resources\lib\context_pvr.py"> 
+              </item> 
+              <item library="resources\lib\context_pvr.py"> 
                 <label>32023</label> 
                 <description>PVR artwork Configuration</description> 
                 <visible> 
@@ -308,21 +308,21 @@ ECHO ist ausgeschaltet (OFF).
                 </visible> 
             </item> 
         </menu> 
-	</extension> 
-    <extension point="xbmc.python.library" library="default.py" /> 
-	<extension point="xbmc.python.pluginsource" library="plugin.py"> 
     </extension> 
-	<extension library="service.py" point="xbmc.service" start="login" /> 
-	<extension point="xbmc.addon.metadata"> 
-		<summary lang="en">Helper service for Kodi skins</summary> 
-        <description>Helper service for Kodi skins</description> 
-		<language></language> 
-		<platform>all</platform> 
-		<license>GPL v2.0</license> 
-		<forum>http://forum.kodi.tv/showthread.php?tid=235676</forum> 
-		<website></website> 
-		<source>https://github.com/marcelveldt/script.skin.helper.service</source> 
-	</extension> 
+    <extension point="xbmc.python.library" library="default.py" /> 
+    <extension point="xbmc.python.pluginsource" library="plugin.py"> 
+    </extension> 
+    <extension library="service.py" point="xbmc.service" start="login" /> 
+    <extension point="xbmc.addon.metadata"> 
+      <summary lang="en">Helper service for Kodi skins</summary> 
+      <description>Helper service for Kodi skins</description> 
+      <language></language> 
+      <platform>all</platform> 
+      <license>GPL v2.0</license> 
+      <forum>http://forum.kodi.tv/showthread.php?tid=235676</forum> 
+      <website></website> 
+      <source>https://github.com/marcelveldt/script.skin.helper.service</source> 
+    </extension> 
 </addon> 
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
 	<addon id="script.skin.helper.skinbackup" name="Skin Helper Service Skin Backup" version="1.0.12" provider-name="marcelveldt"> 
