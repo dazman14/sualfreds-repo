@@ -124,22 +124,6 @@ ECHO ist ausgeschaltet (OFF).
     <platform>all</platform> 
   </extension> 
 </addon> 
-﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
-<addon id="script.bellofredo.extrapack" name="BelloFredo Extrapack" version="1.1.2" provider-name="sualfred"> 
-	<requires> 
-		<import addon="xbmc.python" version="2.13.0"/> 
-		<import addon="xbmc.addon" version="12.9.10"/> 
-	</requires> 
-	<extension point="xbmc.python.script" library="default.py"> 
-		<provides>executable</provides> 
-	</extension> 
-	<extension point="xbmc.addon.metadata"> 
-		<language/> 
-		<summary lang="en">BelloFredo Extrapack</summary> 
-		<description lang="en">Downloads extras for BelloFredo. Based on the original script of AeonMQ.</description> 
-		<platform>all</platform> 
-	</extension> 
-</addon> 
 <addon id="script.module.musicbrainz" 
        name="Musicbrainz NGS webservice python bindings" 
        version="0.6.0" 
@@ -275,21 +259,21 @@ ECHO ist ausgeschaltet (OFF).
 	</extension> 
 </addon> 
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
-<addon id="script.skin.helper.service" name="Skin Helper Service" version="1.1.1" provider-name="marcelveldt"> 
+<addon id="script.skin.helper.service" name="Skin Helper Service" version="1.1.5" provider-name="marcelveldt"> 
 	<requires> 
 		<import addon="xbmc.python" version="2.13.0"/> 
 		<import addon="xbmc.addon" version="12.0.0"/> 
         <import addon="script.module.simplejson" version="3.3.0"/> 
         <import addon="script.module.simplecache" version="1.0.0"/> 
-        <import addon="script.module.skin.helper.artutils" version="1.0.0"/> 
-    </requires> 
+        <import addon="script.module.metadatautils" version="1.0.0"/> 
+	</requires> 
     <extension point="kodi.context.item"> 
         <menu id="kodi.core.main"> 
             <item library="resources\lib\context_animatedart.py"> 
               <label>32024</label> 
               <visible>IsEmpty(Window(Home).Property(SkinHelper.EnableAnimatedPosters)) + Container.Content(movies)</visible> 
-              </item> 
-              <item library="resources\lib\context_pvr.py"> 
+            </item> 
+            <item library="resources\lib\context_pvr.py"> 
                 <label>32023</label> 
                 <description>PVR artwork Configuration</description> 
                 <visible> 
@@ -308,21 +292,21 @@ ECHO ist ausgeschaltet (OFF).
                 </visible> 
             </item> 
         </menu> 
-    </extension> 
+	</extension> 
     <extension point="xbmc.python.library" library="default.py" /> 
-    <extension point="xbmc.python.pluginsource" library="plugin.py"> 
+	<extension point="xbmc.python.pluginsource" library="plugin.py"> 
     </extension> 
-    <extension library="service.py" point="xbmc.service" start="login" /> 
-    <extension point="xbmc.addon.metadata"> 
-      <summary lang="en">Helper service for Kodi skins</summary> 
-      <description>Helper service for Kodi skins</description> 
-      <language></language> 
-      <platform>all</platform> 
-      <license>GPL v2.0</license> 
-      <forum>http://forum.kodi.tv/showthread.php?tid=235676</forum> 
-      <website></website> 
-      <source>https://github.com/marcelveldt/script.skin.helper.service</source> 
-    </extension> 
+	<extension library="service.py" point="xbmc.service" start="login" /> 
+	<extension point="xbmc.addon.metadata"> 
+		<summary lang="en">Helper service for Kodi skins</summary> 
+        <description>Helper service for Kodi skins</description> 
+		<language></language> 
+		<platform>all</platform> 
+		<license>GPL v2.0</license> 
+		<forum>http://forum.kodi.tv/showthread.php?tid=235676</forum> 
+		<website></website> 
+		<source>https://github.com/marcelveldt/script.skin.helper.service</source> 
+	</extension> 
 </addon> 
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
 <addon id="script.skin.helper.skinbackup" name="Skin Helper Service Skin Backup" version="1.0.12" provider-name="marcelveldt"> 
@@ -366,68 +350,7 @@ ECHO ist ausgeschaltet (OFF).
 		<source>https://github.com/marcelveldt/script.skin.helper.widgets</source> 
 	</extension> 
 </addon> 
-<addon id="skin.bellofredo" version="4.6.2" name="Bello Fredo" provider-name="sualfred"> 
-  <requires> 
-		<import addon="xbmc.gui" version="5.9.0" /> 
-		<import addon="service.skin.widgets" version="0.0.29"/> 
-		<import addon="service.library.data.provider" version="0.0.1" /> 
-		<import addon="script.artwork.downloader" version="12.0.24" /> 
-		<import addon="script.globalsearch" version="2.0.8" /> 
-		<import addon="script.artistslideshow" version="1.6.5" /> 
-		<import addon="script.playalbum" version="1.0.1" /> 
-		<import addon="script.extendedinfo" version="2.0.10" /> 
-		<import addon="script.skin.info.service" version="1.0.0" /> 
-		<import addon="script.grab.fanart" version="0.12.8" /> 
-		<import addon="script.skinshortcuts" version="0.5.0" /> 
-		<import addon="script.playalbum" version="2.0.1" /> 
-		<import addon="weather.openweathermap.extended" version="1.0.1" /> 
-		<import addon="plugin.audio.tuneinradio" version="2.1.0" /> 
-		<import addon="script.toolbox" version="1.0.0" />		 
-		<import addon="script.imdbupdate" version="0.7.4" />			 
-		<import addon="script.bellofredo.extrapack" version="1.1.1" />		 
-		<import addon="script.favourites" version="6.0.1" />		 
-	</requires> 
-	<extension point="xbmc.gui.skin" defaultthemename="Textures.xbt" effectslowdown="0.75" debugging="false"> 
-	    <res width="1280" height="720" aspect="16:9" default="true" folder="720p"/> 
-	</extension> 
-  <extension point="xbmc.addon.metadata"> 
-    <summary lang="en">A GUI for Kodi Media Center</summary> 
-    <description lang="en">This skin started as an unofficial Port of the Bello skin (by Nessus) for the Kodi 15.x Nightlies and ended up in an independent skin with a lot of modifications, such as 100% customizable widgets, new themes, modded elements, hundreds of improvements, and much more...</description> 
-    <disclaimer lang="en">Mouse usage is not supported</disclaimer> 
-    <platform>all</platform> 
-    <license>Creative Commons Attribution-NonCommercial-Share Alike 3.0 Unported License</license> 
-    <forum>http://forum.kodi.tv/showthread.php?tid=219378</forum> 
-    <email></email> 
-    <source>https://github.com/sualfred/Bello-Kodi-15.x-Nightlies</source> 
-  </extension> 
-</addon> 
-<addon 
-	id="skin.fTVfred" 
-	version="2.2.1" 
-	name="fTV (with Live TV + Mods)" 
-	provider-name="Sualfred (Orignal skin by Hitcher)"> 
-	<requires> 
-		<import addon="xbmc.gui" version="5.10.0"/> 
-		<import addon="script.toolbox" version="1.0.0"/> 
-		<import addon="script.favourites" version="5.0.2"/> 
-		<import addon="script.extendedinfo" version="2.0.3"/> 
-		<import addon="script.globalsearch" version="3.0.4"/> 
-		<import addon="script.skinshortcuts" version="0.4.0"/> 
-		<import addon="script.artwork.downloader" version="12.0.29"/> 
-		<import addon="script.skin.helper.service" version="1.0.23"/> 
-		<import addon="script.module.autocompletion" version="1.1.2"/> 
-	</requires> 
-	<extension point="xbmc.gui.skin" effectslowdown="1.00" debugging="false"> 
-		<res width="1920" height="1080" aspect="16:9" default="true" folder="16x9" /> 
-	</extension> 
-	<extension point="xbmc.addon.metadata"> 
-		<platform>all</platform> 
-		<summary lang="en">Skin based on the Fire TV UI</summary> 
-		<disclaimer lang="en">Does not support:[CR]Mouse[CR]Touch[CR]Live TV</disclaimer> 
-		<description lang="en">Basic fTV skin (by Hitcher) with nearly full PVR functionality, plus changed a lot of behaviours and added dozens of other features[CR]Skin description: Provides the look and feel of the Fire TV user interface.[CR]For the complete experience enable 'TV Show wide icons' and either use Artwork Downloader to grab logos or create your own artwork and add it to the database (see forum for more details).</description> 
-	</extension> 
-</addon> 
-<addon id="skin.fTVfred-krypton" version="3.6.3a" name="fTV Fred Edition (Krypton)" provider-name="Sualfred"> 
+<addon id="skin.fTVfred-krypton" version="3.6.4" name="fTV Fred Edition (Krypton)" provider-name="Sualfred"> 
 	<requires> 
 		<import addon="xbmc.gui" version="5.12.0"/> 
 		<import addon="script.toolbox" version="1.1.1"/> 
@@ -461,10 +384,8 @@ ECHO ist ausgeschaltet (OFF).
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.6.3[/B] 
-- Adjustet panel layout for addons 
-- Reworked PVR group manager dialog 
-- A lot of other PVR window and dialog adjustments and fixes 
+[B]3.6.4[/B] 
+- Small video player cast fix 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 
