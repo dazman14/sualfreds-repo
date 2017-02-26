@@ -350,7 +350,7 @@ ECHO ist ausgeschaltet (OFF).
 		<source>https://github.com/marcelveldt/script.skin.helper.widgets</source> 
 	</extension> 
 </addon> 
-<addon id="skin.fTVfred-krypton" version="3.6.5a" name="fTV Fred Edition (Krypton)" provider-name="Sualfred"> 
+<addon id="skin.fTVfred-krypton" version="3.6.6" name="fTV Fred Edition (Krypton)" provider-name="Sualfred"> 
 	<requires> 
 		<import addon="xbmc.gui" version="5.12.0"/> 
 		<import addon="script.toolbox" version="1.1.1"/> 
@@ -384,8 +384,8 @@ ECHO ist ausgeschaltet (OFF).
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.6.5[/B] 
-- Fixed ExtendedInfo trailer loop issue 
+[B]3.6.6[/B] 
+- Redesigned virtual keyboard 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 
