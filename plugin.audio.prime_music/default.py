@@ -23,6 +23,8 @@ import xbmcaddon
 import xbmcvfs
 from HTMLParser import HTMLParser
 import resources.lib.ScrapeUtils as ScrapeUtils
+from BeautifulSoup import BeautifulSoup
+import ssl
 
 addon = xbmcaddon.Addon()
 addonID = addon.getAddonInfo('id')
@@ -34,7 +36,7 @@ icon = os.path.join(addonFolder, "icon.png")#.encode('utf-8')
 
 def translation(id):
     return addon.getLocalizedString(id) #.encode('utf-8')
-    
+
 if not os.path.exists(os.path.join(addonUserDataFolder, "settings.xml")):
     xbmc.executebuiltin(unicode('XBMC.Notification(Info:,'+translation(30081)+',10000,'+icon+')').encode("utf-8"))
     addon.openSettings()
@@ -67,12 +69,15 @@ forceDVDPlayer = addon.getSetting("forceDVDPlayer") == "true"
 
 cookieFile = os.path.join(addonUserDataFolder, siteVersion + ".cookies")
 
-NODEBUG = False 
+NODEBUG = False
 
 opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
 userAgent = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2566.0 Safari/537.36"
 opener.addheaders = [('User-agent', userAgent)]
 
+
+if addon.getSetting('ssl_verif') == 'true' and hasattr(ssl, '_create_unverified_context'):
+    ssl._create_default_https_context = ssl._create_unverified_context
 
 
 def index():
@@ -99,7 +104,6 @@ def listAlbums(url):
     content = content.replace("\\","")
     if 'id="catCorResults"' in content:
         content = content[:content.find('id="catCorResults"')]
-    
     args = urlparse.parse_qs(url[1:])
     page = args.get('page', None)
     if page is not None:
@@ -239,7 +243,7 @@ def getSongList(content, with_album_and_artist=False):
     spl = content.split('id="dmusic_tracklist_player_row_')
     for i in range(1, len(spl), 1):
         entry = spl[i]
-        if not 'CheckPrime"></i>' in entry:
+        if not 'contentSubscriptionMode&quot;:&quot;UNLIMITED&quot;' in entry and not 'contentSubscriptionMode&quot;:&quot;PRIME&quot;' in entry:
             continue
         match = re.compile('data-asin="(.+?)"', re.DOTALL).findall(entry)
         if match :
@@ -314,7 +318,7 @@ def listSearchedSongs(url):
 
 
 def playTrack(asin):
-    content = trackPostUnicodePage('https://music.amazon.de/dmls/', asin)
+    content = trackPostUnicodeGetHLSPage('https://music.amazon.de/dmls/', asin)
     temp_file_path = addonUserDataFolder + "/temp.m3u8"
     if xbmcvfs.exists(temp_file_path):
         xbmcvfs.delete(temp_file_path)
@@ -332,7 +336,15 @@ def playTrack(asin):
     xbmcplugin.setResolvedUrl(pluginhandle, True, listitem=play_item)
     if forceDVDPlayer:
         xbmc.Player(xbmc.PLAYER_CORE_DVDPLAYER).play(temp_file_path, play_item)
-    
+
+def playMP3Track(songId):
+    content = trackPostUnicodeGetRestrictedPage('https://music.amazon.de/dmls/', songId)
+    url_list_match = re.compile('urlList":\["(.+?)"',re.DOTALL).findall(content)
+    if url_list_match:
+        mp3_file_string = url_list_match[0]
+        play_item = xbmcgui.ListItem(path=mp3_file_string)
+        xbmcplugin.setResolvedUrl(pluginhandle, True, listitem=play_item)
+
 
 def listGenres():
     addDir(translation(30020), urlMain+"/s?rh=n%3A5686557031%2Cn%3A180643031%2Cp_n_format_browse-bin%3A180848031&bbn=5686557031&sort=featured-rank&ie=UTF8", 'listAlbums', "")
@@ -384,6 +396,7 @@ def getUnicodePage(url):
 
 def showPlaylistContent():
     content = playlistPostUnicodePage('https://music.amazon.de/cirrus/', url)
+    debug(content)
     spl = content.split("metadata")
     for i in range(1, len(spl), 1):
         entry = spl[i]
@@ -399,6 +412,9 @@ def showPlaylistContent():
             album_image_match = album_image[0]
         if songTitle and '"primeStatus":"PRIME"' in entry:
             addLink(artist[0]+": "+songTitle[0], "playTrack", trackID[0], album_image_match, "", "", artist[0], album_title[0])
+        elif songTitle and ('"purchased":"true"' in entry or '"instantImport":"true"' in entry):
+            trackID=re.compile('"objectId":"(.+?)"').findall(entry)
+            addLink(artist[0]+": "+songTitle[0], "playMP3Track", trackID[0], album_image_match, "", "", artist[0], album_title[0])
     next_available=re.compile('"nextResultsToken":"(.+?)"').findall(content)
     if next_available and next_available[0].isdigit():
         playlist_id = url.split('&')
@@ -411,7 +427,7 @@ def showPlaylistContent():
     xbmcplugin.endOfDirectory(pluginhandle)
     xbmc.sleep(100)
 
-def listOwnPlaylists(): 
+def listOwnPlaylists():
     content = playlistPostUnicodePage('https://music.amazon.de/cirrus/')
     spl = content.split("adriveId")
     for i in range(1, len(spl), 1):
@@ -434,7 +450,7 @@ def playlistPostUnicodePage(url, playlistId = ""):
                 ('X-Requested-With', 'XMLHttpRequest'),
                 ('Accept-Encoding', 'gzip, deflate'),
                 ('Content-Type', 'application/x-www-form-urlencoded'),
-                ('Accept', 'application/json, text/javascript, */*; q=0.01'), 
+                ('Accept', 'application/json, text/javascript, */*; q=0.01'),
                 ('csrf-token', addon.getSetting('csrf_Token')),
                 ('csrf-rnd', addon.getSetting('csrf_rndToken')),
                 ('csrf-ts', addon.getSetting('csrf_tsToken'))]
@@ -453,9 +469,8 @@ def playlistPostUnicodePage(url, playlistId = ""):
 
     return content
 
-def trackPostUnicodePage(url, asin, isRetry = False):
+def trackPostUnicodeGetHLSPage(url, asin, isRetry = False):
     print url
-    
     post_opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
     headers = { 'User-agent': userAgent,
                 'Content-Encoding': 'amz-1.0',
@@ -480,9 +495,35 @@ def trackPostUnicodePage(url, asin, isRetry = False):
         deleteCookies()
         login("dummy")
         if not isRetry:
-            return trackPostUnicodePage(url, asin, True)
+            return trackPostUnicodeGetHLSPage(url, asin, True)
 
     return content
+
+def trackPostUnicodeGetRestrictedPage(url, trackId, isRetry = False):
+    post_opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cj))
+    headers = { 'User-agent': userAgent,
+                'Content-Encoding': 'amz-1.0',
+                'Content-Type': 'application/json',
+                'X-Amz-Target': 'com.amazon.digitalmusiclocator.DigitalMusicLocatorServiceExternal.getRestrictedStreamingURL',
+                'csrf-token': addon.getSetting('csrf_Token'),
+                'csrf-rnd': addon.getSetting('csrf_rndToken'),
+                'csrf-ts': addon.getSetting('csrf_tsToken')
+                }
+    data = '{"customerId":"' + addon.getSetting('customerID') + '","deviceToken":{"deviceTypeId":"A16ZV8BU3SN1N3","deviceId":"' + addon.getSetting('req_dev_id') + '"},"appMetadata":{"https":"true"},"clientMetadata":{"clientId":"WebCP"},"contentId":{"identifier":"' + trackId + '","identifierType":"COID"},"bitRateList":"' + audioQuality + '"}'
+    coded_req = urllib2.Request(url, data, headers)
+    content = ""
+    try:
+        req = post_opener.open(coded_req)
+        if "content-type" in req.headers and "charset=" in req.headers['content-type']:
+            encoding=req.headers['content-type'].split('charset=')[-1]
+            content = unicode(req.read(), encoding)
+        else:
+            content = unicode(req.read(), "utf-8")
+    except urllib2.HTTPError as e:
+        log("Error on requestin restricted track: " + unicode(e.read(), "utf-8"))
+    return content
+
+
 
 def getAsciiPage(url):
     req = opener.open(url)
@@ -515,7 +556,6 @@ def search(type):
 #                listMovies(urlMain+"/mn/search/ajax/?_encoding=UTF8&url=node%3D3356010031&field-keywords="+search_string)
 #            elif type=="tv":
 #                listShows(urlMain+"/mn/search/ajax/?_encoding=UTF8&url=node%3D3356011031&field-keywords="+search_string)
-        
 
 
 def login(content = None, statusOnly = False):
@@ -548,7 +588,7 @@ def login(content = None, statusOnly = False):
                 br.addheaders = [('User-Agent', userAgent)]
                 content = br.open(urlMainS+"/gp/dmusic/marketing/CloudPlayerLaunchPage/ref=dm_dp_mcn_cp")
                 br.select_form(name="signIn")
-                br["email"] = email 
+                br["email"] = email
                 br["password"] = password
                 br.addheaders = [('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8'),
                          ('Accept-Encoding', 'gzip, deflate'),
@@ -561,6 +601,25 @@ def login(content = None, statusOnly = False):
                 br.submit()
                 resp = br.response().read()
                 content = unicode(resp, "utf-8")
+                while 'auth-mfa-form' in content :
+                    soup = parseHTML(content)
+                    log('MFA form')
+                    if 'auth-mfa-form' in content:
+                        msg = soup.find('form', attrs={'id': 'auth-mfa-form'})
+                        msgtxt = msg.p.renderContents().strip()
+                        kb = xbmc.Keyboard('', msgtxt)
+                        kb.doModal()
+                        if kb.isConfirmed() and kb.getText():
+                            xbmc.executebuiltin('ActivateWindow(busydialog)')
+                            br.select_form(nr=0)
+                            br['otpCode'] = kb.getText()
+                        else:
+                            return "none"
+                    br.submit()
+                    resp = br.response().read()
+                    content = unicode(resp, "utf-8")
+                    soup = parseHTML(content)
+                    xbmc.executebuiltin('Dialog.Close(busydialog)')
                 content = content.replace("\\","")
                 captcha_match = re.compile('ap_captcha_title', re.DOTALL).findall(content)
                 if captcha_match:
@@ -596,13 +655,19 @@ def login(content = None, statusOnly = False):
         else:
             return "none"
 
+
+def parseHTML(response):
+    response = re.sub(r'(?i)(<!doctype \w+).*>', r'\1>', response)
+    soup = BeautifulSoup(response, convertEntities=BeautifulSoup.HTML_ENTITIES)
+    return soup
+
+
 def cleanInput(str):
     if type(str) is not unicode:
         str = unicode(str, "iso-8859-15")
         xmlc = re.compile('&#(.+?);', re.DOTALL).findall(str)
         for c in xmlc:
             str = str.replace("&#"+c+";", unichr(int(c)))
-    
     p = HTMLParser()
     str = p.unescape(str)
     #str = str.encode("utf-8")
@@ -726,7 +791,6 @@ url = __unquote(params.get('url', ''))
 asin = __unquote(params.get('asin', ''))
 thumb = __unquote(params.get('thumb', ''))
 name = __unquote(params.get('name', ''))
-unicode_name = __unquote(params.get('name', ''))
 g_artist = __unquote(params.get('artist', ''))
 g_album = __unquote(params.get('album', ''))
 videoType = __unquote(params.get('videoType', ''))
@@ -751,12 +815,12 @@ if os.path.exists(os.path.join(addonUserDataFolder, "cookies")):
 
 if mode == 'playTrack':
     playlist_name = ""
-    playlist_name = xbmcgui.Window(10000).getProperty("AmazonMusic-CurrentPlaylist") 
+    playlist_name = xbmcgui.Window(10000).getProperty("AmazonMusic-CurrentPlaylist")
     if playlist_name:
         xbmcgui.Window(10000).setProperty("AmazonMusic-PlayingPlaylist", playlist_name)
 else:
-    xbmcgui.Window(10000).clearProperty("AmazonMusic-CurrentPlaylist") 
-    xbmcgui.Window(10000).clearProperty("AmazonMusic-PlayingPlaylist") 
+    xbmcgui.Window(10000).clearProperty("AmazonMusic-CurrentPlaylist")
+    xbmcgui.Window(10000).clearProperty("AmazonMusic-PlayingPlaylist")
 
 #log(mode)
 
@@ -775,6 +839,8 @@ if os.path.exists(cookieFile):
         listGenres()
     elif mode == 'playTrack':
         playTrack(asin)
+    elif mode == 'playMP3Track':
+        playMP3Track(asin)
     elif mode == 'search':
         search(url)
     elif mode == 'login':
