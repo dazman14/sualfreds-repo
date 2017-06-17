@@ -44,7 +44,10 @@
 		<source>https://github.com/brianhornsby/plugin.audio.tuneinradio</source> 
 	</extension> 
 </addon> 
-<addon id="plugin.video.emby" name="Emby" version="2.3.47a" provider-name="Emby.media"> 
+<addon  id="plugin.video.emby" 
+        name="Emby"  
+        version="2.3.48a" 
+        provider-name="Emby.media"> 
   <requires> 
     <import addon="xbmc.python" version="2.19.0"/> 
     <import addon="script.module.requests" version="2.9.1" /> 
@@ -74,7 +77,6 @@
     <source>https://github.com/MediaBrowser/plugin.video.emby</source> 
     <summary lang="en"></summary> 
     <description lang="en">Welcome to Emby for Kodi A whole new way to manage and view your media library. The Emby addon for Kodi combines the best of Kodi - ultra smooth navigation, beautiful UIs and playback of any file under the sun, and Emby - the most powerful fully open source multi-client media metadata indexer and server.&#10;&#10;Emby for Kodi is the absolute best way to enjoy the incredible Kodi playback engine combined with the power of Emby's centralized database. Features: Direct integration with the Kodi library for native Kodi speed Instant synchronization with the Emby server Full support for Movie, TV and Music collections Emby Server direct stream and transcoding support - use Kodi when you are away from home</description> 
-	<news>Temporary release on my repo until the PR is merged and the official developers pushed a new version to the Emby repo. This version fixes the broken episode metadata update progress. A DB reset is required.</news> 
   </extension> 
 </addon> 
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?> 
@@ -483,7 +485,7 @@ ECHO ist ausgeschaltet (OFF).
 		<source>https://github.com/marcelveldt/script.skin.helper.widgets</source> 
 	</extension> 
 </addon> 
-<addon id="skin.fTVfred-krypton" version="3.7.3a" name="fTV Fred Edition (Krypton)" provider-name="Sualfred"> 
+<addon id="skin.fTVfred-krypton" version="3.7.4" name="fTV Fred Edition (Krypton)" provider-name="Sualfred"> 
 	<requires> 
 		<import addon="xbmc.gui" version="5.12.0"/> 
 		<import addon="script.toolbox" version="1.1.1"/> 
@@ -517,9 +519,8 @@ ECHO ist ausgeschaltet (OFF).
             <screenshot>resources/screen5.jpg</screenshot> 
         </assets> 
 		<news>Changelog: 
-[B]3.7.3[/B] 
-- Removed the option to set the rating provider for movies and shows 
-- Added ExtendedInfo Script button to the video info dialog 
+[B]3.7.4[/B] 
+- Hide vote counter if integer is 0 
 See changelog.txt for more details.</news> 
 	</extension> 
 </addon> 
