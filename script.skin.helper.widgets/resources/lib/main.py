@@ -9,13 +9,12 @@
 
 import urlparse
 from utils import log_msg, log_exception, ADDON_ID, create_main_entry
-from simplecache import SimpleCache
 import xbmcplugin
 import xbmc
 import xbmcaddon
 import xbmcgui
 import sys
-from artutils import ArtUtils, process_method_on_list
+from metadatautils import MetadataUtils
 
 ADDON_HANDLE = int(sys.argv[1])
 
@@ -26,8 +25,7 @@ class Main(object):
     def __init__(self):
         ''' Initialization '''
 
-        self.artutils = ArtUtils()
-        self.cache = SimpleCache()
+        self.metadatautils = MetadataUtils()
         self.addon = xbmcaddon.Addon(ADDON_ID)
         self.win = xbmcgui.Window(10000)
         self.options = self.get_options()
@@ -36,9 +34,8 @@ class Main(object):
         if self.win.getProperty("SkinHelperShutdownRequested"):
             log_msg("Not forfilling request: Kodi is exiting!", xbmc.LOGWARNING)
             xbmcplugin.endOfDirectory(handle=ADDON_HANDLE)
-            return
 
-        if not "mediatype" in self.options or not "action" in self.options:
+        elif not "mediatype" in self.options or not "action" in self.options:
             # we need both mediatype and action, so show the main listing
             self.mainlisting()
         else:
@@ -49,8 +46,7 @@ class Main(object):
 
     def close(self):
         '''Cleanup Kodi Cpython instances'''
-        self.artutils.close()
-        self.cache.close()
+        self.metadatautils.close()
         del self.addon
         del self.win
         log_msg("MainModule exited")
@@ -113,17 +109,15 @@ class Main(object):
         xbmcplugin.setContent(ADDON_HANDLE, media_type)
 
         # try to get from cache first...
-        # we use a checksum based on the options to make sure the cache is ignored when needed
         all_items = []
         cache_str = "SkinHelper.Widgets.%s.%s" % (media_type, action)
         if not self.win.getProperty("widgetreload2"):
             # at startup we simply accept whatever is in the cache
             cache_checksum = None
         else:
-            cache_checksum = ""
-            for key in sorted(self.options):
-                cache_checksum += "%s.%s" % (key, self.options[key])
-        cache = self.cache.get(cache_str, checksum=cache_checksum)
+            # we use a checksum based on the reloadparam to make sure we have the most recent data
+            cache_checksum = self.options.get("reload","")
+        cache = self.metadatautils.cache.get(cache_str, checksum=cache_checksum)
         if cache and not self.options.get("skipcache") == "true":
             log_msg("MEDIATYPE: %s - ACTION: %s -- got items from cache - CHECKSUM: %s"
                     % (media_type, action, cache_checksum))
@@ -137,7 +131,9 @@ class Main(object):
             # dynamically import and load the correct module, class and function
             try:
                 media_module = __import__(media_type)
-                media_class = getattr(media_module, media_type.capitalize())(self.addon, self.artutils, self.options)
+                media_class = getattr(
+                    media_module,
+                    media_type.capitalize())(self.addon, self.metadatautils, self.options)
                 all_items = getattr(media_class, action)()
                 del media_class
             except AttributeError:
@@ -150,12 +146,12 @@ class Main(object):
                 all_items = sorted(all_items, key=lambda k: random.random())
 
             # prepare listitems and store in cache
-            all_items = process_method_on_list(self.artutils.kodidb.prepare_listitem, all_items)
-            self.cache.set(cache_str, all_items, checksum=cache_checksum)
+            all_items = self.metadatautils.process_method_on_list(self.metadatautils.kodidb.prepare_listitem, all_items)
+            self.metadatautils.cache.set(cache_str, all_items, checksum=cache_checksum)
 
         # fill that listing...
         xbmcplugin.addSortMethod(int(sys.argv[1]), xbmcplugin.SORT_METHOD_UNSORTED)
-        all_items = process_method_on_list(self.artutils.kodidb.create_listitem, all_items)
+        all_items = self.metadatautils.process_method_on_list(self.metadatautils.kodidb.create_listitem, all_items)
         xbmcplugin.addDirectoryItems(ADDON_HANDLE, all_items, len(all_items))
 
         # end directory listing
@@ -197,8 +193,8 @@ class Main(object):
         all_items.append((xbmc.getLocalizedString(10134), "favouriteslisting", "DefaultAddonAlbumInfo.png"))
 
         # process the listitems and display listing
-        all_items = process_method_on_list(create_main_entry, all_items)
-        all_items = process_method_on_list(self.artutils.kodidb.prepare_listitem, all_items)
-        all_items = process_method_on_list(self.artutils.kodidb.create_listitem, all_items)
+        all_items = self.metadatautils.process_method_on_list(create_main_entry, all_items)
+        all_items = self.metadatautils.process_method_on_list(self.metadatautils.kodidb.prepare_listitem, all_items)
+        all_items = self.metadatautils.process_method_on_list(self.metadatautils.kodidb.create_listitem, all_items)
         xbmcplugin.addDirectoryItems(ADDON_HANDLE, all_items, len(all_items))
         xbmcplugin.endOfDirectory(handle=ADDON_HANDLE)

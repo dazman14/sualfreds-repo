@@ -6,28 +6,33 @@
     Main service entry point
 '''
 
-from resources.lib.utils import log_msg
+from resources.lib.utils import log_msg, ADDON_ID
 from resources.lib.kodi_monitor import KodiMonitor
 import xbmc
 import xbmcgui
+import xbmcaddon
 import time
 
-widget_task_interval = 520
-win = xbmcgui.Window(10000)
-kodimonitor = KodiMonitor(win=win)
+TASK_INTERVAL = 520
+WIN = xbmcgui.Window(10000)
+ADDON = xbmcaddon.Addon(ADDON_ID)
+MONITOR = KodiMonitor(win=WIN, addon=ADDON)
 log_msg('Backgroundservice started', xbmc.LOGNOTICE)
 
 # keep the kodi monitor alive which processes database updates to refresh widgets
-while not kodimonitor.abortRequested():
-    
+while not MONITOR.abortRequested():
+
     # set generic widget reload
-    if widget_task_interval >= 300:
-        win.setProperty("widgetreload2", time.strftime("%Y%m%d%H%M%S", time.gmtime()))
-        widget_task_interval = 0
+    if TASK_INTERVAL >= 300:
+        WIN.setProperty("widgetreload2", time.strftime("%Y%m%d%H%M%S", time.gmtime()))
+        TASK_INTERVAL = 0
     else:
-        widget_task_interval += 10
-    
+        TASK_INTERVAL += 10
+
     # sleep for 10 seconds
-    kodimonitor.waitForAbort(10)
-    
+    MONITOR.waitForAbort(10)
+
+del MONITOR
+del WIN
+del ADDON
 log_msg('Backgroundservice stopped', xbmc.LOGNOTICE)

@@ -9,7 +9,6 @@
 
 from utils import create_main_entry
 from operator import itemgetter
-from artutils import process_method_on_list
 from movies import Movies
 from tvshows import Tvshows
 from songs import Songs
@@ -22,22 +21,23 @@ import random
 class Media(object):
     '''all media (mixed) widgets provided by the script'''
 
-    def __init__(self, addon, artutils, options):
+    def __init__(self, addon, metadatautils, options):
         '''Initializations pass our common classes and the widget options as arguments'''
-        self.artutils = artutils
+        self.metadatautils = metadatautils
         self.addon = addon
         self.options = options
-        self.movies = Movies(self.addon, self.artutils, self.options)
-        self.tvshows = Tvshows(self.addon, self.artutils, self.options)
-        self.songs = Songs(self.addon, self.artutils, self.options)
-        self.albums = Albums(self.addon, self.artutils, self.options)
-        self.pvr = Pvr(self.addon, self.artutils, self.options)
-        self.episodes = Episodes(self.addon, self.artutils, self.options)
+        self.movies = Movies(self.addon, self.metadatautils, self.options)
+        self.tvshows = Tvshows(self.addon, self.metadatautils, self.options)
+        self.songs = Songs(self.addon, self.metadatautils, self.options)
+        self.albums = Albums(self.addon, self.metadatautils, self.options)
+        self.pvr = Pvr(self.addon, self.metadatautils, self.options)
+        self.episodes = Episodes(self.addon, self.metadatautils, self.options)
 
     def listing(self):
         '''main listing with all our movie nodes'''
         all_items = [
             (self.addon.getLocalizedString(32011), "inprogress&mediatype=media", "DefaultMovies.png"),
+            (self.addon.getLocalizedString(32070), "inprogressshowsandmovies&mediatype=media", "DefaultMovies.png"),
             (self.addon.getLocalizedString(32005), "recent&mediatype=media", "DefaultMovies.png"),
             (self.addon.getLocalizedString(32004), "recommended&mediatype=media", "DefaultMovies.png"),
             (self.addon.getLocalizedString(32007), "inprogressandrecommended&mediatype=media", "DefaultMovies.png"),
@@ -47,7 +47,7 @@ class Media(object):
             (self.addon.getLocalizedString(32058), "top250&mediatype=media", "DefaultMovies.png"),
             (self.addon.getLocalizedString(32001), "favourites&mediatype=media", "DefaultMovies.png")
         ]
-        return process_method_on_list(create_main_entry, all_items)
+        return self.metadatautils.process_method_on_list(create_main_entry, all_items)
 
     def recommended(self):
         ''' get recommended media '''
@@ -82,6 +82,12 @@ class Media(object):
         all_items = self.movies.inprogress()
         all_items += self.episodes.inprogress()
         all_items += self.pvr.recordings()
+        return sorted(all_items, key=itemgetter("lastplayed"), reverse=True)[:self.options["limit"]]
+
+    def inprogressshowsandmovies(self):
+        ''' get in progress media '''
+        all_items = self.movies.inprogress()
+        all_items += self.episodes.inprogress()
         return sorted(all_items, key=itemgetter("lastplayed"), reverse=True)[:self.options["limit"]]
 
     def similar(self):
@@ -120,7 +126,7 @@ class Media(object):
         '''get favourite media'''
         from favourites import Favourites
         self.options["mediafilter"] = "media"
-        return Favourites(self.addon, self.artutils, self.options).favourites()
+        return Favourites(self.addon, self.metadatautils, self.options).favourites()
 
     def favourite(self):
         '''synonym to favourites'''
